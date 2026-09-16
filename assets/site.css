@@ -482,6 +482,16 @@ section{padding-block:var(--rhythm)}
 .prose hr{border:0;border-top:1px solid var(--rule);margin:3em 0}
 .prose .lede{color:var(--muted)}
 
+/* A job description is one English posting on both sites, so the 繁中 page
+   carries a line under the H1 saying so. That line lands in the slot
+   `.prose h1 + p` dresses as a lede, which would hand the opening sentence's
+   emphasis to a piece of chrome, so it opts out and passes the lede treatment
+   to the paragraph behind it. Subtle rather than muted: it is a label about
+   the page, not the first thing the page says. */
+.prose h1 + .jd-note{font-size:.9375rem;line-height:var(--lh-ui);
+  color:var(--subtle);margin-top:1.3em}
+.prose .jd-note + p{font-size:var(--fs-sub);margin-top:1.6em}
+
 /* Header illustrations on job and blog posts. They arrive as a bare markdown
    image inside its own paragraph, and several are square at 2048px, so without
    a cap one of them fills three screens. Capped well under --measure because a
@@ -516,6 +526,13 @@ tbody td{color:var(--muted)}
   letter-spacing:var(--tr-meta);white-space:nowrap;
   min-width:0;overflow:hidden;text-overflow:ellipsis}
 .rows-note{margin-top:2.5em}
+
+/* A page that links down to its own list has to land below the sticky bar. A
+   section's own top padding is not enough: it bottoms out at 56px while the bar
+   stands 83px tall, so on a phone the heading arrives underneath it. This is
+   deliberately smaller than the bar, because the padding is still there and the
+   two add up. */
+[id]{scroll-margin-top:56px}
 
 /* ── Footer ── */
 /* Superseded by the Ink footer block below. */

@@ -21,7 +21,7 @@
 <meta name="twitter:title" content="LINE chatbot 已經不夠聰明了嗎？用「能見度三層級」診斷你卡在哪一層">
 <meta name="twitter:description" content="你的 LINE chatbot 答不出「我在 Shopee 買的到貨了嗎」？問題不在選錯廠商，是卡在 data boundary。用 Ezily 的「Chatbot 能見度三層級」5 題自我診斷，看清下一步該升級工具還是 data architecture。">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&amp;family=DM+Sans:wght@400;500;600;700&amp;family=Noto+Sans+TC:wght@400;500;700&amp;family=Noto+Serif+TC:wght@600;700&amp;display=swap">
-<link rel="stylesheet" href="/assets/site.css?v=1947117b6a">
+<link rel="stylesheet" href="/assets/site.css?v=a370b337a5">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://ezily.io/#organization","name":"Ezily","url":"https://ezily.io/","logo":{"@type":"ImageObject","@id":"https://ezily.io/#logo","url":"https://ezily.io/assets/ezily-logo.svg"},"sameAs":["https://www.linkedin.com/company/ezily","https://www.instagram.com/ezily.io/","https://www.threads.com/@ezily.io"],"areaServed":{"@type":"Country","name":"Taiwan"}},{"@type":"WebSite","@id":"https://ezily.io/#website","url":"https://ezily.io/","name":"Ezily","publisher":{"@id":"https://ezily.io/#organization"},"inLanguage":["zh-TW","en-US"]},{"@type":"BlogPosting","@id":"https://ezily.io/zh/blog/line-chatbot-visibility-layers-2026#page","url":"https://ezily.io/zh/blog/line-chatbot-visibility-layers-2026","name":"LINE chatbot 已經不夠聰明了嗎？用「能見度三層級」診斷你卡在哪一層","isPartOf":{"@id":"https://ezily.io/#website"},"inLanguage":"zh-TW","description":"你的 LINE chatbot 答不出「我在 Shopee 買的到貨了嗎」？問題不在選錯廠商，是卡在 data boundary。用 Ezily 的「Chatbot 能見度三層級」5 題自我診斷，看清下一步該升級工具還是 data architecture。","headline":"LINE chatbot 已經不夠聰明了嗎？用「能見度三層級」診斷你卡在哪一層","mainEntityOfPage":{"@id":"https://ezily.io/zh/blog/line-chatbot-visibility-layers-2026#page"},"publisher":{"@id":"https://ezily.io/#organization"},"author":{"@id":"https://ezily.io/#organization"},"breadcrumb":{"@id":"https://ezily.io/zh/blog/line-chatbot-visibility-layers-2026#breadcrumb"}},{"@type":"BreadcrumbList","@id":"https://ezily.io/zh/blog/line-chatbot-visibility-layers-2026#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Ezily","item":"https://ezily.io/zh"},{"@type":"ListItem","position":2,"name":"部落格","item":"https://ezily.io/zh/blog"},{"@type":"ListItem","position":3,"name":"LINE chatbot 已經不夠聰明了嗎？用「能見度三層級」診斷你卡在哪一層","item":"https://ezily.io/zh/blog/line-chatbot-visibility-layers-2026"}]}]}</script>
 <script>document.documentElement.classList.add("js")</script>
 </head>
@@ -40,7 +40,7 @@
 <button class="navtoggle" type="button" aria-expanded="false" aria-controls="sitenav" aria-label="選單">
 <svg viewBox="0 0 20 20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
 <path class="nt-a" d="M3 6h14"/><path class="nt-b" d="M3 13h14"/></svg></button>
-<nav id="sitenav" aria-label="頁面"><div class="navgroup"><a class="navtop" href="/zh/touchpoints">Touchpoints<svg class="caret" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4.5 6 8.5l4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></a><div class="navmenu"><a href="/zh/line-mini-app">電商品牌的 LINE Mini App<span class="d">它是什麼、和 LIFF 差在哪</span></a><a href="/zh/engagement-best-practices">互動經營<span class="d">把接觸變成用得到的顧客資料</span></a><a href="/zh/conversion-best-practices">轉換優化<span class="d">每個入口一個落地頁</span></a></div></div><div class="navgroup"><a class="navtop" href="/zh/orchestrate">Ezily Orchestrate</a></div><div class="navgroup"><span class="navtop" tabindex="0">資源<svg class="caret" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4.5 6 8.5l4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span><div class="navmenu"><a href="/zh/blog">部落格<span class="d">電商經營筆記</span></a><a href="/zh/careers">人才招募<span class="d">目前的職缺</span></a></div></div></nav>
+<nav id="sitenav" aria-label="頁面"><div class="navgroup"><a class="navtop" href="/zh/touchpoints">Touchpoints<svg class="caret" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4.5 6 8.5l4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></a><div class="navmenu"><a href="/zh/line-mini-app">電商品牌的 LINE Mini App<span class="d">它是什麼、和 LIFF 差在哪</span></a><a href="/zh/engagement-best-practices">互動經營<span class="d">把接觸變成用得到的顧客資料</span></a><a href="/zh/conversion-best-practices">轉換優化<span class="d">每個入口一個落地頁</span></a></div></div><div class="navgroup"><a class="navtop" href="/zh/orchestrate">Orchestrate</a></div><div class="navgroup"><span class="navtop" tabindex="0">資源<svg class="caret" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4.5 6 8.5l4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span><div class="navmenu"><a href="/zh/blog">部落格<span class="d">電商經營筆記</span></a><a href="/zh/careers">人才招募<span class="d">目前的職缺</span></a></div></div></nav>
 <a class="langlink" href="/blog/line-chatbot-visibility-layers-2026" hreflang="en-US">EN</a>
 <a class="btn btn-brand btn-sm" href="https://miniapp.line.me/2009655149-RnfKkD5d/touchpoint/c6e658bf-82a4-4840-b374-ed4ada2a9bbb" data-contact target="_blank" rel="noopener">跟我們聊聊</a>
 </div></header>
@@ -52,11 +52,7 @@
 <p>重點摘要（3 項 takeaway）</p>
 <ol>
 <li>LINE 官方於 2025 年 11 月推出「AI 聊天機器人（β）」後，FAQ 自動回覆已變成聊天進階方案（月費 NT$100）內建功能，不再是第三方 chatbot 廠商的差異化理由。</li>
-</ol>
-<ol>
 <li>Chatbot 能見度三層級（Chatbot Visibility Layers，Ezily 提出的框架）：Layer 1 只看得到品牌上傳的 FAQ 文件；Layer 2 看得到單一通路的訂單／會員資料；Layer 3 看得到跨通路即時資料（訂單、庫存、廣告互動、會員 360）。</li>
-</ol>
-<ol>
 <li>多數台灣電商品牌的 LINE chatbot 卡在 Layer 2，答不出「我在 Shopee 買的到貨了嗎」這類跨通路問題。真正的升級不是換 chatbot 廠商，是在既有 chatbot 前端後面加上一層 cross-channel data infrastructure（跨通路資料基礎設施）。</li>
 </ol>
 <h2>為什麼 2026 年要重新看待 LINE chatbot？</h2>
@@ -87,11 +83,7 @@
 <p>它不能答什麼？</p>
 <ol>
 <li>任何會動的資料（real-time inventory、order status、會員點數）</li>
-</ol>
-<ol>
 <li>跨通路的顧客脈絡（Shopee 的訂單、官網的購物車）</li>
-</ol>
-<ol>
 <li>需要 query database 才能回答的問題</li>
 </ol>
 <p>適合誰： 單價高、SKU 少、客服問題以政策／規格為主的品牌（例如課程、服務預約、少量 SKU 的精品品牌）。適合你的訊號：客服訊息中 80% 以上是重複的 FAQ 類問題。</p>
@@ -106,27 +98,15 @@
 <p>這一層把品牌散落在不同系統的資料整合起來：</p>
 <ol>
 <li>Shopline / Shopee / MOMO 的訂單與商品</li>
-</ol>
-<ol>
 <li>Real-time inventory（官網 + 門市 + 倉庫）</li>
-</ol>
-<ol>
 <li>Meta Ads / LINE LAP（LINE Ads Platform，LINE 官方廣告投放系統）的投放互動紀錄</li>
-</ol>
-<ol>
 <li>POS 的線下購買</li>
-</ol>
-<ol>
 <li>Customer 360 view（將同一位顧客在所有通路的互動、交易、偏好資料整合成單一檔案）</li>
 </ol>
 <p>有了這層，接回來的 chatbot（無論是 LINE 原生、Omnichat、或其他工具）才答得出以下這類問題：</p>
 <ol>
 <li>「我昨天在 Shopee 買的那筆到貨了嗎？」 → chatbot 直接 query Shopee 訂單 API</li>
-</ol>
-<ol>
 <li>「這雙鞋我的尺寸還有嗎？」 → chatbot 查 real-time inventory，不限通路</li>
-</ol>
-<ol>
 <li>「我在官網下的那筆和 Shopee 的能一起出貨嗎？」 → chatbot 交叉比對顧客兩邊 order status</li>
 </ol>
 <p>這就是 Ezily 做的事。Ezily 不是另一個 LINE chatbot 廠商，而是把 Shopline、Shopee、Meta Ads、POS、會員歷史整合成一層 data layer，讓任何 chatbot 前端都能即時查得到。顧客在 LINE 問「我昨天在 Shopee 買的運動鞋到貨了嗎」時，bot 是真的去 query database，而不是回一句「請洽客服」。</p>
@@ -135,26 +115,12 @@
 <p>用這 5 題快速判斷：</p>
 <ol>
 <li>顧客在 LINE 問「我上週的訂單到貨了嗎？」你的 chatbot 能直接答嗎？</li>
-</ol>
-<ol>
 <li>顧客問「這雙鞋 US9 還有幾雙？」chatbot 是即時查 inventory，還是給固定答覆？</li>
-</ol>
-<ol>
 <li>顧客在 Shopee 買過的品項，在你的 LINE chatbot 裡查得到嗎？</li>
-</ol>
-<ol>
 <li>你的 chatbot 能根據顧客在 Meta 廣告的互動紀錄，推薦不同訊息嗎？</li>
-</ol>
-<ol>
 <li>顧客的 LINE 互動資料，能即時回寫到你的會員中心嗎？</li>
-</ol>
-<ol>
 <li>5 題都不能 → 你在 Layer 1 或還沒開始用 chatbot</li>
-</ol>
-<ol>
 <li>2 到 3 題可以 → 你在 Layer 2，卡在單通路 data boundary</li>
-</ol>
-<ol>
 <li>4 到 5 題都可以 → 你已經在 Layer 3，恭喜</li>
 </ol>
 <h2>LINE chatbot 不好用，要換廠商還是換架構？</h2>
@@ -188,7 +154,7 @@
 </svg>
 <p class="small">在 LINE 裡跟我們聊聊。這個入口本身就是一個 Ezily 做的 LINE Mini App。</p>
 <div class="socials"><a href="https://www.linkedin.com/company/ezily" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM10 9h3.8v1.7h.05c.53-1 1.83-2.05 3.76-2.05C21 8.65 22 11 22 14.3V21h-4v-6c0-1.5-.5-2.6-1.9-2.6-1.1 0-1.7.75-2 1.5-.1.25-.1.6-.1.95V21h-4z" fill="currentColor"/></svg></a><a href="https://www.instagram.com/ezily.io/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.2" y="3.2" width="17.6" height="17.6" rx="5" fill="none" stroke="currentColor" stroke-width="1.9"/><circle cx="12" cy="12" r="4.1" fill="none" stroke="currentColor" stroke-width="1.9"/><circle cx="17.3" cy="6.7" r="1.25" fill="currentColor"/></svg></a><a href="https://www.threads.com/@ezily.io" target="_blank" rel="noopener" aria-label="Threads"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.2 21c-5.1 0-8.2-3.5-8.2-9s3.1-9 8.2-9c3.6 0 6 1.7 7 4.4" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><path d="M8.7 14.4c.6 1.5 2 2.3 3.6 2.3 2 0 3.4-1 3.4-2.4 0-1.7-1.7-2.3-3.7-2.3-2.6 0-4.3 1.1-4.3 3 0 2.3 2 3.7 4.8 3.7 3.6 0 6.3-2.5 6.3-6.6" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg></a></div></div>
-<div class="foot-col"><h2>產品</h2><nav><a href="/zh/touchpoints">Touchpoints</a><a href="/zh/line-mini-app">LINE Mini App</a><a href="/zh/engagement-best-practices">互動經營</a><a href="/zh/conversion-best-practices">轉換優化</a><a href="/zh/orchestrate">Ezily Orchestrate</a></nav></div><div class="foot-col"><h2>資源</h2><nav><a href="/zh/blog">部落格</a><a href="/zh/careers">人才招募</a></nav></div>
+<div class="foot-col"><h2>產品</h2><nav><a href="/zh/touchpoints">Touchpoints</a><a href="/zh/line-mini-app">LINE Mini App</a><a href="/zh/engagement-best-practices">互動經營</a><a href="/zh/conversion-best-practices">轉換優化</a><a href="/zh/orchestrate">Orchestrate</a></nav></div><div class="foot-col"><h2>資源</h2><nav><a href="/zh/blog">部落格</a><a href="/zh/careers">人才招募</a></nav></div>
 <div class="foot-col"><h2>聯絡我們</h2>
 <!-- Ink, not yellow: DESIGN.md §5 allows one Celebrate Yellow CTA per page and
      the closing demo CTA is it. This matches the header pill instead. -->
