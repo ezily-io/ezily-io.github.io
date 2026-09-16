@@ -64,18 +64,6 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ezily.io/engagement-best-practices"/>
   </url>
   <url>
-    <loc>https://ezily.io/legal</loc>
-    <xhtml:link rel="alternate" hreflang="en-US" href="https://ezily.io/legal"/>
-    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://ezily.io/zh/legal"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ezily.io/legal"/>
-  </url>
-  <url>
-    <loc>https://ezily.io/zh/legal</loc>
-    <xhtml:link rel="alternate" hreflang="en-US" href="https://ezily.io/legal"/>
-    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://ezily.io/zh/legal"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ezily.io/legal"/>
-  </url>
-  <url>
     <loc>https://ezily.io/line-mini-app</loc>
     <xhtml:link rel="alternate" hreflang="en-US" href="https://ezily.io/line-mini-app"/>
     <xhtml:link rel="alternate" hreflang="zh-TW" href="https://ezily.io/zh/line-mini-app"/>

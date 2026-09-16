@@ -46,7 +46,6 @@ Every page is published in American English at https://ezily.io/ and in Traditio
 
 ### Legal
 
-- [Legal & Compliance](https://ezily.io/legal)
 - [Ezily Acceptable Use Policy (AUP)](https://ezily.io/legal/aup)
 - [Ezily Data Processing Agreement (DPA)](https://ezily.io/legal/dpa)
 - [Ezily Privacy Policy](https://ezily.io/legal/privacy-policy)
@@ -93,7 +92,6 @@ Every page is published in American English at https://ezily.io/ and in Traditio
 
 ### Legal
 
-- [法律與法規遵循](https://ezily.io/zh/legal)
 - [Ezily 允許使用政策](https://ezily.io/zh/legal/aup)
 - [Ezily 資料處理協議](https://ezily.io/zh/legal/dpa)
 - [Ezily 隱私權政策](https://ezily.io/zh/legal/privacy-policy)
