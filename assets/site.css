@@ -38,7 +38,7 @@
      panel is kept from §5, which the ladder has no rung for. */
   --r-xs:8px; --r-sm:12px; --r-badge:16px; --r-card:20px;
   --r-group:24px; --r-panel:28px; --r-xl:40px; --r-pill:100px;
-  --wrap:1180px; --wrap-nav:1104px; --pad:24px;
+  --wrap:1180px; --pad:24px;
 
   /* Depth. §5 keeps dividers as the default grouping device; the merge admits
      exactly one elevation tier, for the floating bar and the standalone card.
@@ -230,27 +230,54 @@ html[lang^="en"] .mark{background-size:100% .95em;padding:.02em .18em}
 /* ── Chrome ── */
 .bar{position:sticky;top:0;z-index:30;padding-top:12px;
   transition:padding-top .2s ease}
-/* The bar is a floating object at every scroll position, so nothing about it
-   changes shape on scroll. The rule this replaces faded a bottom border in
-   under a flush bar; there is no flush state left to divide, and on the hero's
-   mesh a flush white band reads as exactly the seam it was meant to hide.
-   The shadow deepens slightly once content is actually running under the pill,
-   which is the only thing the scroll state still has to say. It is a shadow
-   swap, so nothing moves by a pixel, and the no-JS default is the resting
-   pill, which is the correct appearance. */
+/* The pill carries a ground once content runs underneath it, and none at all
+   before that. Above the fold it is the only painted box on the screen, and a
+   reader measuring the header against the headline reads its border, not the
+   logo inside it: at 1180px the box sits 24px wider than the 1132px text
+   column on each side, so the bar looked wider than the page it sat on even
+   with the logo exactly on the headline's line. A box cannot put its edge and
+   its contents on the same line. Removing the box at the top is what lets the
+   contents keep the line.
+
+   The shadow still deepens once content is actually under the pill, which is
+   the only thing the scroll state used to say. */
 .js .bar[data-scrolled="true"] .bar-in{box-shadow:0 14px 38px rgba(28,11,46,.10),
   0 1px 0 rgba(28,11,46,.04)}
-.bar-in{max-width:var(--wrap-nav);margin:0 auto;padding:12px 14px 12px 22px;
+/* Written as the exception rather than as the default: with no JS there is no
+   data-scrolled, the resting pill below stands, and the bar is never a set of
+   unbacked links over a hero. Same reasoning the shadow swap above uses.
+   The border keeps its 1px and loses only its colour, so the ground returns
+   without moving a single child by a pixel. */
+.js .bar[data-scrolled="false"] .bar-in{background:transparent;backdrop-filter:none;
+  border-color:transparent;box-shadow:none}
+/* One reader keeps the pill at the top regardless: the mobile menu is open, and
+   its flattened list would otherwise sit on the hero with nothing behind it.
+   Declared after the rule above because both carry the same specificity. */
+.js .bar[data-nav="open"] .bar-in{background:rgba(255,255,255,.82);
+  backdrop-filter:saturate(150%) blur(12px);
+  border-color:var(--rule);box-shadow:var(--shadow-nav)}
+/* The pill takes the page container and the page padding, so its contents sit
+   on the 1132px content box every other section is set to: the logo starts
+   where the hero headline starts and the CTA ends where the copy ends. It used
+   to run at the incoming system's own 1104px with a 22/14 inset, which put the
+   logo 37px inside the headline and the CTA 29px inside the text column. Since
+   both numbers now come from --wrap and --pad rather than from arithmetic that
+   happens to agree, the alignment holds at every width instead of only above
+   the container. The inline padding runs one pixel short of --pad because the
+   pill carries a 1px border that .wrap does not, and under border-box that
+   border sits inside the container and would push every child a pixel right. */
+.bar-in{max-width:var(--wrap);margin:0 auto;padding:12px calc(var(--pad) - 1px);
   display:flex;align-items:center;gap:16px;flex-wrap:wrap;
   background:rgba(255,255,255,.82);backdrop-filter:saturate(150%) blur(12px);
   border:1px solid var(--rule);border-radius:var(--r-group);box-shadow:var(--shadow-nav);
-  transition:border-radius .2s ease,border-color .2s ease,box-shadow .2s ease}
+  transition:background-color .2s ease,border-radius .2s ease,border-color .2s ease,
+    box-shadow .2s ease}
 .bar-in > a[aria-label="Ezily"]{min-height:44px;display:inline-flex;align-items:center}
 .logo{height:26px;width:auto;display:block}
 .bar nav{display:flex;gap:4px;margin-inline-start:auto;flex-wrap:wrap}
 /* Link styling lives on .navtop and .navmenu a further down. A generic
    `.bar nav a` rule here outranks both and breaks the dropdown. */
-.langlink{font-size:var(--fs-label);font-weight:600;line-height:var(--lh-ui);color:var(--muted);text-decoration:none;
+.langlink{font-size:var(--fs-label);font-weight:600;color:var(--muted);text-decoration:none;
   padding:12px 16px;border-radius:var(--r-pill);background:var(--paper-deep);
   min-height:44px;display:inline-flex;align-items:center;white-space:nowrap}
 
@@ -332,13 +359,38 @@ section{padding-block:var(--rhythm)}
    reason it was written: it leaves no empty cell and centres nothing. */
 .hero-grid{display:grid;grid-template-columns:repeat(12,1fr);
   column-gap:var(--gutter);row-gap:var(--space-9)}
-.hero-head{grid-column:1 / 10}   /* 9 columns, 843px — two lines, both languages */
+/* 7 columns, 650px. The 9-column head this replaces was measured against a
+   24-character headline and was the only width that held it to two lines; the
+   hero copy was rewritten to 7 and 7 characters on 2026-09-16, and at that
+   length 7 columns lands both languages on two lines with room to spare. The
+   columns that came free are what the schematic occupies. Order matters here:
+   the copy got shorter first, and the layout followed. Taking the columns with
+   the old headline in place would have run it to four lines and broken
+   CLAUDE.md's two-line cap, which outranks DESIGN.md. */
+.hero-head{grid-column:1 / 8}
 /* The foot starts on the headline's left edge, not offset into column 4. Offset,
    it left a 240px indent with the lead floating clear of both edges of its own
    band and dead space on either side of it. The composition stays asymmetric
    through the width step (9 columns against 7) and the negative space it opens
    on the right, which is what §6 asks for — it was never asking for the indent. */
 .hero-foot{grid-column:1 / 8;display:flex;flex-direction:column;gap:24px;align-items:flex-start}
+/* The schematic takes the five columns the headline gave up and spans both
+   rows, so the hero is still asymmetric by width rather than by an empty cell:
+   650px of copy against 386px of diagram. aria-hidden in the markup, because it
+   restates the section below it and a screen reader would hear the entry points
+   twice. */
+.hero-vis{grid-column:8 / 13;grid-row:1 / 3;align-self:center;justify-self:end;
+  width:100%;max-width:360px}
+.hero-vis svg{display:block;width:100%;height:auto}
+/* The capsules take Border Strong and the lines that carry them take Rule.
+   Both at Rule the diagram measured 1.27:1 against Paper and disappeared into
+   the hero's mesh at its rendered 360px; the entry points have to read as
+   objects while the flow between them stays quiet. Border Strong is 3.36:1,
+   the same hairline .btn-outline is drawn with. */
+.hv-i rect{stroke:var(--border-strong);stroke-width:1.5}
+.hv-i path{stroke:var(--rule);stroke-width:1.5}
+.hv-node circle:first-child{stroke:var(--lilac);stroke-width:1.5}
+.hv-node circle:last-child{fill:var(--purple)}
 
 /* Dividers over shadows: 2px gaps on a Rule field become hairlines */
 .group{display:grid;margin-top:var(--gap-body)}
@@ -554,6 +606,7 @@ tbody td{color:var(--muted)}
      difference against .hero-head and the space it opens on the right, which
      is the same reading the base rule records. */
   .hero-foot{grid-column:1 / 10}
+  .hero-vis{display:none}
   /* .group.c3 stays three across down to 768. Two columns would leave the
      third cell alone beside an empty half, and §6 rules the cell count exact. */
   .flow{grid-template-columns:repeat(2,1fr)}
@@ -564,6 +617,10 @@ tbody td{color:var(--muted)}
   .group.c2,.group.c3,.group.c4,.compare,.slots,.flow{grid-template-columns:1fr}
   .hero-grid{grid-template-columns:1fr}
   .hero-head,.hero-foot{grid-column:auto}
+  /* The schematic is decorative and the single-column hero is already the
+     tallest thing on a phone. Stacked, it pushed the CTAs off the first screen
+     on a 390px device, which costs more than the diagram is worth there. */
+  .hero-vis{display:none}
   .btn{padding-inline:28px}
   .row{grid-template-columns:1fr}
   .row-m{max-width:100%}
@@ -577,7 +634,20 @@ tbody td{color:var(--muted)}
 
 /* ── Nav: logo left, links centre-right, CTA far right ── */
 .navgroup{position:relative;display:flex}
-.navtop{display:inline-flex;align-items:center;gap:8px;font-size:.9375rem;font-weight:500;line-height:var(--lh-ui);
+/* Leading is pinned rather than taken from --lh-ui, and the reason is that
+   these two are the only controls in the bar whose height the reader's script
+   decides. §11.2's UI tier is per-script on purpose (1.6 on 繁中, 1.4 on Latin)
+   because it sets how a line of UI copy breathes. On a single-line control
+   sitting in a fixed 44px target it is not doing that job: it is setting the
+   box height, and at 15px the two scripts then disagree by 3px. The bar takes
+   its height from its tallest child, so the header stood at 71px in English
+   and 74px in Chinese and the language switch jumped three pixels, taking the
+   whole page with it. Pinning the leading lets the 44px both controls already
+   declare actually govern, in both languages. Everything else in the bar
+   already resolves to 44: the logo link, the toggle, and the CTA whose own
+   line box stays under the target in either script. */
+.navtop,.langlink{line-height:1.2}
+.navtop{display:inline-flex;align-items:center;gap:8px;font-size:.9375rem;font-weight:500;
   color:var(--muted);text-decoration:none;padding:12px;border-radius:var(--r-pill);min-height:44px}
 .navgroup:focus-within .navtop{color:var(--ink)}
 .navtop[aria-current]{color:var(--ink);background:var(--paper-deep)}
@@ -723,9 +793,26 @@ tbody td{color:var(--muted)}
 
 /* ── Hero entrance: fires once on load, in reading order ── */
 @keyframes ez-rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@keyframes ez-settle{from{opacity:0;transform:scale(.975)}to{opacity:1;transform:none}}
 .js .hero .h1,.js .hero .lead,.js .hero .cta-row{animation:ez-rise .6s var(--ease) both}
 .js .hero .lead{animation-delay:.06s}
 .js .hero .cta-row{animation-delay:.14s}
+/* The schematic enters on the same finite entrance as the copy beside it and
+   then stops. §7 bans infinite loops outright, and §14.4 already refused a
+   floating phone mock on exactly that ground, so nothing here breathes, pulses
+   or repeats: five capsules fade in on the reveal stagger, the node settles
+   last, and the hero is a still image from that moment on.
+   Opacity carries the capsules rather than a transform, because a transform on
+   an SVG group resolves against user units and drifts with the viewBox scale. */
+.js .hero-vis .hv-i{animation:ez-fade .5s var(--ease) both}
+.js .hero-vis .hv-i:nth-of-type(1){animation-delay:.18s}
+.js .hero-vis .hv-i:nth-of-type(2){animation-delay:calc(.18s + var(--stagger))}
+.js .hero-vis .hv-i:nth-of-type(3){animation-delay:calc(.18s + var(--stagger) * 2)}
+.js .hero-vis .hv-i:nth-of-type(4){animation-delay:calc(.18s + var(--stagger) * 3)}
+.js .hero-vis .hv-i:nth-of-type(5){animation-delay:calc(.18s + var(--stagger) * 4)}
+.js .hero-vis .hv-node{animation:ez-settle .5s var(--ease) both;
+  animation-delay:calc(.18s + var(--stagger) * 5);
+  transform-box:fill-box;transform-origin:center}
 
 /* ── Interaction: named properties, never `all` ── */
 /* Three rules govern this section.
@@ -798,6 +885,7 @@ tbody td{color:var(--muted)}
   .js [data-rv],.js [data-rv] *{opacity:1!important;transform:none!important;
     transition:none!important;animation:none!important}
   .js .hero .h1,.js .hero .lead,.js .hero .cta-row{animation:none;opacity:1;transform:none}
+  .js .hero-vis .hv-i,.js .hero-vis .hv-node{animation:none;opacity:1;transform:none}
   /* Fewer and gentler, not none: colour and background still transition, so a
      hover or a press still reads as an answer. Only movement is dropped. */
   .btn,.row,.cell,.card,.navtoggle .nt-a,.navtoggle .nt-b,.navtop .caret,
@@ -905,6 +993,11 @@ tbody td{color:var(--muted)}
      reader asked to be rid of, so its ground goes fully opaque rather than
      nearly so. The bar itself stays transparent — it is only the carrier. */
   .bar-in{background:var(--paper-raised);backdrop-filter:none}
+  /* And it keeps that surface at the top of the page too. The transparent
+     header is a material effect, and this reader has asked for fewer of them,
+     so they get the resting pill on the hero rather than unbacked links. */
+  .js .bar[data-scrolled="false"] .bar-in{background:var(--paper-raised);
+    border-color:var(--rule);box-shadow:var(--shadow-nav)}
 }
 @media (prefers-contrast:more){
   /* Hairlines are this site's separation device, so raising contrast means
