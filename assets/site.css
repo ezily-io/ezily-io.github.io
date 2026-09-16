@@ -526,6 +526,12 @@ tbody td{color:var(--muted)}
   letter-spacing:var(--tr-meta);white-space:nowrap;
   min-width:0;overflow:hidden;text-overflow:ellipsis}
 .rows-note{margin-top:2.5em}
+/* The apply button sits under the list it belongs to, clear of the last row's
+   hairline rather than tucked against it. */
+.rows-cta{margin-top:2.25rem}
+/* Same button at the foot of a posting, where it is that page's one gold
+   action. `.prose p` sets the rhythm above it, so this sets its own. */
+.prose-cta{margin-top:2.75rem}
 
 /* A page that links down to its own list has to land below the sticky bar. A
    section's own top padding is not enough: it bottoms out at 56px while the bar
