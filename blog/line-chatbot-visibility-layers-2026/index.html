@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LINE Chatbot Not Smart Enough? Diagnose Where You're Stuck With the Visibility Layers Framework</title>
+<meta name="description" content="LINE chatbot can&#x27;t answer cross-channel questions? It&#x27;s not a vendor problem. It&#x27;s a data boundary. Use Ezily&#x27;s Visibility Layers framework to diagnose.">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1">
+<link rel="canonical" href="https://ezily.io/blog/line-chatbot-visibility-layers-2026">
+<link rel="alternate" hreflang="en-US" href="https://ezily.io/blog/line-chatbot-visibility-layers-2026">
+<link rel="alternate" hreflang="zh-TW" href="https://ezily.io/zh/blog/line-chatbot-visibility-layers-2026">
+<link rel="alternate" hreflang="x-default" href="https://ezily.io/blog/line-chatbot-visibility-layers-2026">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Ezily">
+<meta property="og:title" content="LINE Chatbot Not Smart Enough? Diagnose Where You&#x27;re Stuck With the Visibility Layers Framework">
+<meta property="og:description" content="LINE chatbot can&#x27;t answer cross-channel questions? It&#x27;s not a vendor problem. It&#x27;s a data boundary. Use Ezily&#x27;s Visibility Layers framework to diagnose.">
+<meta property="og:url" content="https://ezily.io/blog/line-chatbot-visibility-layers-2026">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="zh_TW">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="LINE Chatbot Not Smart Enough? Diagnose Where You&#x27;re Stuck With the Visibility Layers Framework">
+<meta name="twitter:description" content="LINE chatbot can&#x27;t answer cross-channel questions? It&#x27;s not a vendor problem. It&#x27;s a data boundary. Use Ezily&#x27;s Visibility Layers framework to diagnose.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&amp;family=DM+Sans:wght@400;500;600;700&amp;family=Noto+Sans+TC:wght@400;500;700&amp;family=Noto+Serif+TC:wght@600;700&amp;display=swap">
+<link rel="stylesheet" href="/assets/site.css?v=1947117b6a">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://ezily.io/#organization","name":"Ezily","url":"https://ezily.io/","logo":{"@type":"ImageObject","@id":"https://ezily.io/#logo","url":"https://ezily.io/assets/ezily-logo.svg"},"sameAs":["https://www.linkedin.com/company/ezily","https://www.instagram.com/ezily.io/","https://www.threads.com/@ezily.io"],"areaServed":{"@type":"Country","name":"Taiwan"}},{"@type":"WebSite","@id":"https://ezily.io/#website","url":"https://ezily.io/","name":"Ezily","publisher":{"@id":"https://ezily.io/#organization"},"inLanguage":["zh-TW","en-US"]},{"@type":"BlogPosting","@id":"https://ezily.io/blog/line-chatbot-visibility-layers-2026#page","url":"https://ezily.io/blog/line-chatbot-visibility-layers-2026","name":"LINE Chatbot Not Smart Enough? Diagnose Where You're Stuck With the Visibility Layers Framework","isPartOf":{"@id":"https://ezily.io/#website"},"inLanguage":"en-US","description":"LINE chatbot can't answer cross-channel questions? It's not a vendor problem. It's a data boundary. Use Ezily's Visibility Layers framework to diagnose.","headline":"LINE Chatbot Not Smart Enough? Diagnose Where You're Stuck With the Visibility Layers Framework","mainEntityOfPage":{"@id":"https://ezily.io/blog/line-chatbot-visibility-layers-2026#page"},"publisher":{"@id":"https://ezily.io/#organization"},"author":{"@id":"https://ezily.io/#organization"},"breadcrumb":{"@id":"https://ezily.io/blog/line-chatbot-visibility-layers-2026#breadcrumb"}},{"@type":"BreadcrumbList","@id":"https://ezily.io/blog/line-chatbot-visibility-layers-2026#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Ezily","item":"https://ezily.io/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://ezily.io/blog"},{"@type":"ListItem","position":3,"name":"LINE Chatbot Not Smart Enough? Diagnose Where You're Stuck With the Visibility Layers Framework","item":"https://ezily.io/blog/line-chatbot-visibility-layers-2026"}]}]}</script>
+<script>document.documentElement.classList.add("js")</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="bar"><div class="bar-in">
+<a href="/" aria-label="Ezily"><svg class="logo" viewBox="40 38 228 96" role="img" aria-label="Ezily" focusable="false">
+<path fill="#1C0B2E" d="M113.4,67.95c-3.28-1.92-7.08-3.03-11.14-3.07c-0.09,0-0.17,0-0.25,0c-12.43,0.02-22.5,10.1-22.5,22.54c0,14.5,11.32,22.61,22.7,22.53c3.98-0.03,7.72-1.09,10.96-2.93c3.43-2.27,6.22-5.41,8.07-9.11v-3.52c0-0.13-0.05-0.23-0.16-0.23c-0.09,0-0.19,0.13-0.3,0.23c-3.5,3.41-8.85,5.26-15.12,5.26c-7.47,0-12.82-3.23-14.11-9.13h31.96c0.13-1.02,0.2-2.05,0.2-3.11v0C123.71,79.32,119.62,72.18,113.4,67.95z M91.55,83.23c1.2-5.07,5.62-7.93,10.79-7.93c5.72,0,9.77,2.67,10.6,7.93H91.55z"/>
+<path fill="#1C0B2E" d="M128.92,99.28l21.55-23.1h-20.19V66.09h35.92v9.55l-21.55,23.1h22.01v10.09h-37.74V99.28z"/>
+<path fill="#1C0B2E" d="M197.96,45.17h11.91v63.66h-11.91V45.17z"/>
+<path fill="#1C0B2E" d="M224.06,126.11l8.09-18.64L215.7,66.09h12.73l10,28.19h0.18l9.91-28.19h12.28l-24.46,60.02H224.06z"/>
+<path fill="#1C0B2E" d="M188.98,52.81c0,4.37-3.09,7.37-7.37,7.37s-7.37-3-7.37-7.37c0-4.27,3.09-7.28,7.37-7.28S188.98,48.54,188.98,52.81z"/>
+<path fill="#1C0B2E" d="M175.66,66.09h11.91v42.74h-11.91V66.09z"/>
+<path fill="#7C3AED" d="M75.24,87.39c0-12.93,8.73-20.55,14.05-23.48H67.48c-12.96,0-23.46,10.5-23.46,23.46v0c0,12.96,10.5,23.46,23.46,23.46h21.45C85.93,109.21,75.24,102.71,75.24,87.39z"/>
+</svg></a>
+<button class="navtoggle" type="button" aria-expanded="false" aria-controls="sitenav" aria-label="Menu">
+<svg viewBox="0 0 20 20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+<path class="nt-a" d="M3 6h14"/><path class="nt-b" d="M3 13h14"/></svg></button>
+<nav id="sitenav" aria-label="Pages"><div class="navgroup"><a class="navtop" href="/touchpoints">Touchpoints<svg class="caret" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4.5 6 8.5l4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></a><div class="navmenu"><a href="/line-mini-app">LINE Mini App for E-commerce<span class="d">What it is, and how it differs from LIFF</span></a><a href="/engagement-best-practices">Engagement Best Practices<span class="d">Turning contact into data you can act on</span></a><a href="/conversion-best-practices">Conversion Best Practices<span class="d">One destination per entry point</span></a></div></div><div class="navgroup"><a class="navtop" href="/orchestrate">Ezily Orchestrate</a></div><div class="navgroup"><span class="navtop" tabindex="0">Resources<svg class="caret" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4.5 6 8.5l4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span><div class="navmenu"><a href="/blog">Blog<span class="d">Notes on running an e-commerce business</span></a><a href="/careers">Careers<span class="d">Open roles</span></a></div></div></nav>
+<a class="langlink" href="/zh/blog/line-chatbot-visibility-layers-2026" hreflang="zh-TW">繁中</a>
+<a class="btn btn-brand btn-sm" href="https://miniapp.line.me/2009655149-RnfKkD5d/touchpoint/c6e658bf-82a4-4840-b374-ed4ada2a9bbb" data-contact target="_blank" rel="noopener">Talk with us</a>
+</div></header>
+<main id="main"><article class="prose wrap"><h1>LINE Chatbot Not Smart Enough? Diagnose Where You're Stuck With the Visibility Layers Framework</h1><p>LINE chatbot can't answer cross-channel questions? It's not a vendor problem. It's a data boundary. Use Ezily's Visibility Layers framework to diagnose.</p>
+<p>Your LINE follower bought a pair of sneakers on Shopee yesterday. Today she messages your LINE Official Account: "Got these in US9? I want a second pair as a gift, can they ship together?"</p>
+<p>Your LINE chatbot replies: "Please contact our store for stock availability." Or worse: "I can't answer that."</p>
+<p>The chatbot isn't dumb. It just can't see your Shopee orders, and it can't see your real-time inventory.</p>
+<p>The real LINE chatbot battleground in 2026 isn't FAQ auto-reply anymore. LINE shipped that as a native feature in November 2025. The question that actually matters now is: what data can your chatbot see? This article uses the Chatbot Visibility Layers framework to help you diagnose where you're stuck, and whether your next move should be a tool upgrade or a data architecture upgrade.</p>
+<p>3 takeaways</p>
+<ol>
+<li>LINE's official AI Chat Bot (Beta), launched in November 2025, makes FAQ auto-reply a built-in feature of the Chat Advanced Plan (NT$100/month). It's no longer a differentiator for third-party chatbot vendors.</li>
+</ol>
+<ol>
+<li>Chatbot Visibility Layers (an Ezily framework). Layer 1: visibility limited to FAQ documents you've uploaded; Layer 2: visibility into a single channel's orders and member data; Layer 3: real-time cross-channel visibility (orders, inventory, ad interactions, customer 360).</li>
+</ol>
+<ol>
+<li>Most Taiwan e-commerce brands sit at Layer 2 and can't answer questions like "did my Shopee order ship?" The real upgrade isn't switching chatbot vendors. It's adding a cross-channel data infrastructure layer behind whatever chatbot front-end you already have.</li>
+</ol>
+<h2>Why You Need to Rethink LINE Chatbot in 2026</h2>
+<p>Because LINE itself just moved the starting line.</p>
+<p>In November 2025, LINE Official Account launched the AI Chat Bot (Beta), bundled with the Chat Advanced Plan, the value-add tier LINE introduced in March 2025 at NT$100/month, which extends chat history, raises tag caps, and adds Notes backup (source: LINE Biz-Solutions official announcement). Upload a PDF, a URL, or an image, and the AI builds FAQs and auto-replies inside the chat. No integration work, no code, no third-party vendor fee.</p>
+<p>The implication: AI FAQ auto-reply is table stakes from 2026 onward, not a competitive edge. Brands have been paying a third-party chatbot vendor every month just for FAQ automation. That line item is now baseline LINE functionality.</p>
+<p>What actually separates a good chatbot from a bad one now is data visibility: what your chatbot can query.</p>
+<h2>Chatbot Visibility Layers: Which Layer Are You Stuck At?</h2>
+<p>Chatbot Visibility Layers is the diagnostic framework Ezily uses to map LINE chatbot options for Taiwan e-commerce brands. It sorts them not by features or price, but by what data the chatbot can actually access. Higher isn't always better. The right layer depends on your operational reality.</p>
+<p>Layer</p>
+<p>Data Visibility</p>
+<p>Typical Solution</p>
+<p>Monthly Cost Anchor</p>
+<p>Layer 1</p>
+<p>Your uploaded FAQ documents only</p>
+<p>LINE's native AI Chat Bot (Beta)</p>
+<p>NT$100+ (Chat Advanced Plan)</p>
+<p>Layer 2</p>
+<p>Single-channel order/member data</p>
+<p>Crescendo Lab, Omnichat, Super 8, BotBonnie, Chatisfy, etc.</p>
+<p>Varies by vendor and module</p>
+<p>Layer 3</p>
+<p>Real-time cross-channel data (orders, inventory, ad interactions, customer 360)</p>
+<p>Cross-channel data layer + any chatbot front-end</p>
+<p>Scales with architecture</p>
+<h3>Layer 1: what LINE's native AI Chat Bot (Beta) can and can't do</h3>
+<p>What it can answer: the FAQ content you've uploaded. Drop in business hours, return policies, and product spec sheets, and the AI builds the Q&amp;A structure itself and auto-replies to relevant questions in the chat. LINE also flags suggested FAQ updates based on real user interaction patterns (source: LINE Official Account Help Center).</p>
+<p>What it can't answer:</p>
+<ol>
+<li>Anything that changes in real time (live inventory, order status, member points)</li>
+</ol>
+<ol>
+<li>Cross-channel context (Shopee orders, web store cart contents)</li>
+</ol>
+<ol>
+<li>Anything that requires a database query</li>
+</ol>
+<p>Who it fits: brands with high AOV, low SKU count, and customer service queries that are mostly policy or spec questions: course providers, appointment-based services, and small luxury catalogs. The signal it fits you: 80%+ of your customer service messages are repetitive FAQ-style questions.</p>
+<p>Who it doesn't fit: multi-SKU e-commerce, brands with real-time inventory pressure, and any operation where customers routinely need order status.</p>
+<h3>Layer 2: where a vendor chatbot actually stops</h3>
+<p>Layer 2 is where most Taiwan brands sit today. Crescendo Lab (漸強實驗室), Omnichat, Super 8, BotBonnie, and Chatisfy are LINE technology partners offering segmentation, tag management, gamification modules, and customer journey design. Functionally, they go well beyond Layer 1.</p>
+<p>Their actual business value is turning conversation traffic into orders. Omnichat's 2022 retail conversational commerce report puts chatbot-triggered cart re-engagement at 11.35% conversion, OMO (online-merge-offline) conversational sales at 7.14%, and personalized LINE welcome messages at 7.21% (source: Omnichat 2022 retail conversational commerce report).</p>
+<p>But Layer 2 shares a common ceiling: its data visibility usually stops at whichever channel the vendor integrated with.</p>
+<p>Here's the scenario playing out every day. Your brand runs a Shopee flagship store, a Shopline web store, and a LINE Official Account. A customer orders on Shopee yesterday, then messages you on LINE today: "where's my order?" Your Layer 2 chatbot is wired to your web store's order system, not Shopee. So it can't answer.</p>
+<p>This isn't a vendor effort problem. Most Layer 2 vendors default to a "LINE + one e-commerce platform" integration pattern. Your customers don't care about that technical boundary. They just know they asked you in LINE and expect you to know.</p>
+<h3>Layer 3: why your chatbot needs a cross-channel data layer</h3>
+<p>A cross-channel data layer is the data infrastructure that unifies sales, inventory, customer, and ad data from different systems into one queryable layer. It's not another chatbot vendor. It's the data plumbing that lets any chatbot answer the questions that actually matter.</p>
+<p>This layer pulls in:</p>
+<ol>
+<li>Shopline, Shopee, MOMO: orders and product data</li>
+</ol>
+<ol>
+<li>Real-time inventory (web store + physical stores + warehouse)</li>
+</ol>
+<ol>
+<li>Meta Ads and LINE LAP (LINE Ads Platform, LINE's official ad-buying system): campaign interaction data</li>
+</ol>
+<ol>
+<li>POS: in-store purchases</li>
+</ol>
+<ol>
+<li>Customer 360 view: a single profile combining the same customer's interactions, transactions, and preferences across every channel</li>
+</ol>
+<p>With this layer in place, any chatbot front-end (LINE's native bot, Omnichat, or otherwise) can finally answer questions like:</p>
+<ol>
+<li>"Did the order I placed on Shopee yesterday ship?" → chatbot queries the Shopee orders API directly</li>
+</ol>
+<ol>
+<li>"Do you still have this shoe in my size?" → chatbot checks real-time inventory across channels</li>
+</ol>
+<ol>
+<li>"Can my web store order ship together with my Shopee one?" → chatbot cross-references both order records</li>
+</ol>
+<p>This is what Ezily actually does. Ezily isn't another LINE chatbot vendor. It's the data layer that unifies Shopline, Shopee, Meta Ads, POS, and member history into one place your chatbot can query in real time. When a customer asks "did my Shopee sneakers ship?", the bot runs an actual database query instead of falling back to "please contact customer service."</p>
+<p>Who it fits: brands operating across more than one platform (web store + at least one marketplace), OMO operators with physical stores, and any brand whose customer LTV is high enough that failing cross-channel questions costs real revenue.</p>
+<h2>5-Question Self-Diagnostic: Which Layer Is Your Chatbot Stuck At?</h2>
+<p>Run through these five:</p>
+<ol>
+<li>When a customer asks in LINE "did last week's order arrive?", can your chatbot answer directly?</li>
+</ol>
+<ol>
+<li>When a customer asks "how many US9s do you have in this shoe?", does your chatbot query live inventory, or give a canned response?</li>
+</ol>
+<ol>
+<li>Can your LINE chatbot see items the customer bought on Shopee?</li>
+</ol>
+<ol>
+<li>Can your chatbot tailor messages based on the customer's Meta Ads interaction history?</li>
+</ol>
+<ol>
+<li>Can LINE interaction data write back to your member database in real time?</li>
+</ol>
+<ol>
+<li>Zero "yes" → You're at Layer 1, or you haven't started using a chatbot yet.</li>
+</ol>
+<ol>
+<li>Two or three "yes" answers put you at Layer 2, stuck at the single-channel data boundary.</li>
+</ol>
+<ol>
+<li>Four or five put you at Layer 3.</li>
+</ol>
+<h2>LINE Chatbot Underperforming? Change Vendors, or Change Architecture?</h2>
+<p>If you're at Layer 2 and the chatbot still feels underwhelming, the issue isn't that you picked the wrong vendor. The entire market sits behind the same data boundary.</p>
+<p>Switch to another Layer 2 vendor and you'll get a slightly different feature mix and maybe a lower monthly fee. But when a customer asks "did my Shopee order ship?", the new vendor will fail the same way.</p>
+<p>The real upgrade path is to keep whatever chatbot front-end you already use (LINE's native bot, Crescendo Lab, Omnichat, anything) and add a cross-channel data infrastructure layer behind it. Omnichat's CEO made the same argument in an early-2026 column: the industry is shifting from "chatbots that talk" to "AI Agents that do things." The prerequisite for "doing" is access to the data the task requires (source: Omnichat AI Chatbot strategy column). LINE itself, at LINE BIZ CONVERGE 2025 in December, previewed the LAP AI Agent rolling out in phases across Q1 2026 (source: LINE BIZ CONVERGE 2025 recap). AI Agents will become the norm. But an AI Agent without a cross-channel data layer is still just a prettier Layer 1 or Layer 2.</p>
+<p>Ezily is that data infrastructure.</p>
+<h2>FAQ</h2>
+<p>Q1: What's the difference between LINE's native AI Chat Bot (Beta) and a third-party chatbot vendor?</p>
+<p>Layer 1 (LINE native) only answers from FAQ documents you've uploaded; it costs NT$100/month via the Chat Advanced Plan. Layer 2 (third-party vendors like Crescendo Lab, Omnichat, Super 8, BotBonnie, Chatisfy) adds segmentation, tagging, gamification modules, customer journey design, and other marketing functions, but data visibility usually stops at the single channel they've integrated with. The two layers solve different problems.</p>
+<p>Q2: Why can't my chatbot vendor answer cross-channel order questions?</p>
+<p>Because most Layer 2 vendors default to a "LINE + one e-commerce platform" integration pattern. Your Shopee orders, MOMO orders, and POS sales data sit outside their data visibility. That integration scope is common across vendors, so it is not a single-vendor problem. What to check is whether the scope covers the channels you actually sell on.</p>
+<p>Q3: Will switching to a different LINE chatbot vendor solve the data visibility problem?</p>
+<p>Usually not. You'll get a slightly different feature mix in another Layer 2 tool, but the data boundary stays. The real upgrade is adding a cross-channel data layer (Layer 3) behind your existing chatbot, so any front-end can query Shopline, Shopee, POS, inventory, and the customer 360 view in real time.</p>
+<p>Q4: Do small brands need Layer 3?</p>
+<p>Not always. If you operate on a single platform with a limited SKU set and 80%+ of your customer service is repeat FAQs, Layer 1 (LINE's native AI Chat Bot Beta at NT$100/month) plus light use of Layer 2 is enough. The ROI on a cross-channel data layer is clearest for brands running multiple platforms, with real-time inventory pressure, and an OMO footprint.</p>
+<p>Q5: Will LINE's upcoming LAP AI Agent change this architecture?</p>
+<p>It will make the chatbot front-end smarter, but it won't magically solve data visibility. The prerequisite for an AI Agent to actually do anything, whether that is pulling order status, pushing a coupon, or processing a return, is still access to that data. AI Agents sharpen this fight; they don't end it. LAP AI Agent rolls out in Q1 2026 in three phases: Campaign, Creative, and Report Agents.</p>
+<p>Q6: How is Chatbot Visibility Layers different from the existing "LINE Chatbot Tool Comparison" articles already ranking?</p>
+<p>Most existing comparison articles start from "which vendor should I pick?" and assume your problem is choice selection. Chatbot Visibility Layers starts from "what data can your bot actually query?" Layer 2 vendors are similar on that axis; the differences are pricing and feature combinations, not data visibility boundaries. Switching vendors doesn't solve a cross-channel data problem.</p></article></main>
+<footer class="foot"><div class="foot-in">
+<div class="foot-cols">
+<div class="foot-col foot-brand"><svg class="logo" viewBox="40 38 228 96" role="img" aria-label="Ezily" focusable="false">
+<path fill="#FAF8F3" d="M113.4,67.95c-3.28-1.92-7.08-3.03-11.14-3.07c-0.09,0-0.17,0-0.25,0c-12.43,0.02-22.5,10.1-22.5,22.54c0,14.5,11.32,22.61,22.7,22.53c3.98-0.03,7.72-1.09,10.96-2.93c3.43-2.27,6.22-5.41,8.07-9.11v-3.52c0-0.13-0.05-0.23-0.16-0.23c-0.09,0-0.19,0.13-0.3,0.23c-3.5,3.41-8.85,5.26-15.12,5.26c-7.47,0-12.82-3.23-14.11-9.13h31.96c0.13-1.02,0.2-2.05,0.2-3.11v0C123.71,79.32,119.62,72.18,113.4,67.95z M91.55,83.23c1.2-5.07,5.62-7.93,10.79-7.93c5.72,0,9.77,2.67,10.6,7.93H91.55z"/>
+<path fill="#FAF8F3" d="M128.92,99.28l21.55-23.1h-20.19V66.09h35.92v9.55l-21.55,23.1h22.01v10.09h-37.74V99.28z"/>
+<path fill="#FAF8F3" d="M197.96,45.17h11.91v63.66h-11.91V45.17z"/>
+<path fill="#FAF8F3" d="M224.06,126.11l8.09-18.64L215.7,66.09h12.73l10,28.19h0.18l9.91-28.19h12.28l-24.46,60.02H224.06z"/>
+<path fill="#FAF8F3" d="M188.98,52.81c0,4.37-3.09,7.37-7.37,7.37s-7.37-3-7.37-7.37c0-4.27,3.09-7.28,7.37-7.28S188.98,48.54,188.98,52.81z"/>
+<path fill="#FAF8F3" d="M175.66,66.09h11.91v42.74h-11.91V66.09z"/>
+<path fill="#DCC6FF" d="M75.24,87.39c0-12.93,8.73-20.55,14.05-23.48H67.48c-12.96,0-23.46,10.5-23.46,23.46v0c0,12.96,10.5,23.46,23.46,23.46h21.45C85.93,109.21,75.24,102.71,75.24,87.39z"/>
+</svg>
+<p class="small">Talk with us in LINE. That entry point is itself an Ezily LINE Mini App.</p>
+<div class="socials"><a href="https://www.linkedin.com/company/ezily" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM10 9h3.8v1.7h.05c.53-1 1.83-2.05 3.76-2.05C21 8.65 22 11 22 14.3V21h-4v-6c0-1.5-.5-2.6-1.9-2.6-1.1 0-1.7.75-2 1.5-.1.25-.1.6-.1.95V21h-4z" fill="currentColor"/></svg></a><a href="https://www.instagram.com/ezily.io/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.2" y="3.2" width="17.6" height="17.6" rx="5" fill="none" stroke="currentColor" stroke-width="1.9"/><circle cx="12" cy="12" r="4.1" fill="none" stroke="currentColor" stroke-width="1.9"/><circle cx="17.3" cy="6.7" r="1.25" fill="currentColor"/></svg></a><a href="https://www.threads.com/@ezily.io" target="_blank" rel="noopener" aria-label="Threads"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.2 21c-5.1 0-8.2-3.5-8.2-9s3.1-9 8.2-9c3.6 0 6 1.7 7 4.4" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><path d="M8.7 14.4c.6 1.5 2 2.3 3.6 2.3 2 0 3.4-1 3.4-2.4 0-1.7-1.7-2.3-3.7-2.3-2.6 0-4.3 1.1-4.3 3 0 2.3 2 3.7 4.8 3.7 3.6 0 6.3-2.5 6.3-6.6" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg></a></div></div>
+<div class="foot-col"><h2>Product</h2><nav><a href="/touchpoints">Touchpoints</a><a href="/line-mini-app">LINE Mini App</a><a href="/engagement-best-practices">Engagement</a><a href="/conversion-best-practices">Conversion</a><a href="/orchestrate">Ezily Orchestrate</a></nav></div><div class="foot-col"><h2>Resources</h2><nav><a href="/blog">Blog</a><a href="/careers">Careers</a></nav></div>
+<div class="foot-col"><h2>Contact</h2>
+<!-- Ink, not yellow: DESIGN.md §5 allows one Celebrate Yellow CTA per page and
+     the closing demo CTA is it. This matches the header pill instead. -->
+<a class="btn btn-brand btn-sm" href="https://miniapp.line.me/2009655149-RnfKkD5d/touchpoint/c6e658bf-82a4-4840-b374-ed4ada2a9bbb" data-contact target="_blank" rel="noopener">Talk with us</a>
+<!-- The LINE route is the product demonstration, but it cannot be the only one:
+     a desktop evaluator without a phone in hand was previously stranded.
+     corporate@ezily.io is the general contact address already on record in the
+     privacy policy; nothing new is claimed here. -->
+<nav aria-label="Other contact"><a href="mailto:corporate@ezily.io">corporate@ezily.io</a></nav></div>
+</div>
+<div class="foot-bar">
+<p>&copy; 2026 Ezily. Quiet canvas. Loud moments.</p>
+<nav aria-label="Legal"><a href="/legal">Legal &amp; Compliance</a><a href="/legal/privacy-policy">Privacy Policy</a><a href="/legal/dpa">DPA</a><a href="/legal/aup">AUP</a></nav>
+</div>
+</div></footer>
+<dialog class="qrm" id="contact-modal" tabindex="-1" aria-label="Talk with us inside the Mini App">
+<div class="qrm-bar"><button type="button" class="qrm-x" data-close aria-label="Close">
+<svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.5 3.5l9 9M12.5 3.5l-9 9" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></button></div>
+<div class="qrm-in">
+<p class="qrm-copy body">If you are a brand working on the experience your customers get, scan the code and talk to us inside the Mini App.</p>
+<figure class="qrm-code"><img src="/assets/contact-qr.svg" width="200" height="200" alt="QR code for the Ezily Mini App"></figure>
+</div>
+</dialog>
+<script>
+/* Staggered scroll reveal. Finite, once per element, transform and opacity only.
+   Reduced motion is handled in CSS; the observer is skipped outright. */
+(function(){
+  var rv = document.querySelectorAll("[data-rv]");
+  if (!rv.length) return;
+  var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion:reduce)").matches;
+  if (!("IntersectionObserver" in window) || reduce) {
+    Array.prototype.forEach.call(rv, function(e){ e.classList.add("rv-in"); });
+    return;
+  }
+  var io = new IntersectionObserver(function(rows, obs){
+    rows.forEach(function(r){
+      if (r.isIntersecting) { r.target.classList.add("rv-in"); obs.unobserve(r.target); }
+    });
+  }, { rootMargin: "0px 0px -10% 0px", threshold: 0.08 });
+  Array.prototype.forEach.call(rv, function(e){ io.observe(e); });
+  requestAnimationFrame(function(){
+    Array.prototype.forEach.call(rv, function(e){
+      if (e.getBoundingClientRect().top < innerHeight * 0.9) e.classList.add("rv-in");
+    });
+  });
+})();
+</script><script>
+(function(){
+  var bar = document.querySelector(".bar"), btn = document.querySelector(".navtoggle");
+  if(!bar || !btn) return;
+  function set(open){
+    bar.setAttribute("data-nav", open ? "open" : "closed");
+    btn.setAttribute("aria-expanded", open ? "true" : "false");
+  }
+  set(false);
+  btn.addEventListener("click", function(){
+    set(bar.getAttribute("data-nav") !== "open");
+  });
+  document.addEventListener("keydown", function(e){
+    if(e.key === "Escape" && bar.getAttribute("data-nav") === "open"){ set(false); btn.focus(); }
+  });
+  // A resize past the breakpoint must not leave the desktop nav in a closed state.
+  addEventListener("resize", function(){ if(innerWidth > 768) set(false); });
+})();
+</script><script>
+/* The hairline under the sticky bar, only once content is under it. §7 bans any
+   listener on the raw scroll event, so this watches a one-pixel sentinel at the
+   top of the document with the same observer the reveal uses. The sentinel is
+   created here rather than emitted into every page: with no JS there is no
+   sentinel, no attribute, and the rule simply stays drawn. */
+(function(){
+  var bar = document.querySelector(".bar");
+  if (!bar || !("IntersectionObserver" in window)) return;
+  var s = document.createElement("div");
+  s.setAttribute("aria-hidden", "true");
+  s.style.cssText = "position:absolute;top:0;left:0;width:1px;height:1px;pointer-events:none";
+  document.body.prepend(s);
+  /* Seed the state from the scroll position rather than from the observer. The
+     first callback can arrive before the sentinel has been laid out, and it
+     then reports a zero rect as "not intersecting" - the rule was drawn on a
+     page sitting at the top until the reader's first scroll. Reading scrollY
+     once at startup is not a scroll listener. */
+  function set(atTop){ bar.setAttribute("data-scrolled", atTop ? "false" : "true"); }
+  set((window.pageYOffset || document.documentElement.scrollTop || 0) === 0);
+  var io = new IntersectionObserver(function(r){ set(r[0].isIntersecting); }, { threshold: 0 });
+  /* One frame later, so the observer's own first callback measures a laid-out
+     element instead of an empty rect. */
+  requestAnimationFrame(function(){ io.observe(s); });
+})();
+</script>
+<script>
+/* The Talk-with-us buttons open the code rather than the Mini App link.
+   If <dialog> is unsupported the handler never binds and the anchors navigate. */
+(function(){
+  var d = document.getElementById("contact-modal");
+  if (!d || typeof d.showModal !== "function") return;
+  var opener = null;
+  document.addEventListener("click", function(e){
+    var t = e.target;
+    if (!t || !t.closest) return;
+    var a = t.closest("a[data-contact]");
+    if (a) {
+      /* A phone cannot scan a QR code on its own screen, and the href is a
+         working miniapp.line.me deep link that opens LINE natively. So coarse
+         pointers follow the link and only pointer devices get the code.
+         Tested at click rather than at bind: an input mode can change under a
+         tab, and the modal was a dead end on the product's primary device. */
+      if (window.matchMedia && window.matchMedia("(pointer:coarse)").matches) return;
+      e.preventDefault();
+      opener = a;
+      d.showModal();
+      /* Focus the dialog rather than the close button, so opening does not
+         land a focus ring on the X. Tab from here still reaches it. */
+      d.focus();
+    }
+  });
+  /* Focusing the dialog above opts out of the UA's own focus restore, so put
+     the caret back on the button that opened it. */
+  d.addEventListener("close", function(){
+    if (opener && opener.focus) opener.focus();
+    opener = null;
+  });
+  d.addEventListener("click", function(e){
+    /* e.target is the dialog itself only for clicks on the backdrop. */
+    if (e.target === d || (e.target.closest && e.target.closest("[data-close]"))) d.close();
+  });
+  /* Escape is the UA's job on a modal dialog, but it does not fire everywhere.
+     A modal has to be dismissable from the keyboard, so this does not assume. */
+  document.addEventListener("keydown", function(e){
+    if (d.open && (e.key === "Escape" || e.key === "Esc")) { e.preventDefault(); d.close(); }
+  });
+})();
+</script>
+</body>
+</html>

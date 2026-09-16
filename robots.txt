@@ -1,0 +1,4 @@
+# Staging mirror of the Ezily marketing site. The live site is https://ezily.io
+# and this host must not be indexed or compete with it in search results.
+User-agent: *
+Disallow: /

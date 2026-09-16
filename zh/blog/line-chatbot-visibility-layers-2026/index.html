@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LINE chatbot 已經不夠聰明了嗎？用「能見度三層級」診斷你卡在哪一層</title>
+<meta name="description" content="你的 LINE chatbot 答不出「我在 Shopee 買的到貨了嗎」？問題不在選錯廠商，是卡在 data boundary。用 Ezily 的「Chatbot 能見度三層級」5 題自我診斷，看清下一步該升級工具還是 data architecture。">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1">
+<link rel="canonical" href="https://ezily.io/zh/blog/line-chatbot-visibility-layers-2026">
+<link rel="alternate" hreflang="zh-TW" href="https://ezily.io/zh/blog/line-chatbot-visibility-layers-2026">
+<link rel="alternate" hreflang="en-US" href="https://ezily.io/blog/line-chatbot-visibility-layers-2026">
+<link rel="alternate" hreflang="x-default" href="https://ezily.io/blog/line-chatbot-visibility-layers-2026">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Ezily">
+<meta property="og:title" content="LINE chatbot 已經不夠聰明了嗎？用「能見度三層級」診斷你卡在哪一層">
+<meta property="og:description" content="你的 LINE chatbot 答不出「我在 Shopee 買的到貨了嗎」？問題不在選錯廠商，是卡在 data boundary。用 Ezily 的「Chatbot 能見度三層級」5 題自我診斷，看清下一步該升級工具還是 data architecture。">
+<meta property="og:url" content="https://ezily.io/zh/blog/line-chatbot-visibility-layers-2026">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="LINE chatbot 已經不夠聰明了嗎？用「能見度三層級」診斷你卡在哪一層">
+<meta name="twitter:description" content="你的 LINE chatbot 答不出「我在 Shopee 買的到貨了嗎」？問題不在選錯廠商，是卡在 data boundary。用 Ezily 的「Chatbot 能見度三層級」5 題自我診斷，看清下一步該升級工具還是 data architecture。">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&amp;family=DM+Sans:wght@400;500;600;700&amp;family=Noto+Sans+TC:wght@400;500;700&amp;family=Noto+Serif+TC:wght@600;700&amp;display=swap">
+<link rel="stylesheet" href="/assets/site.css?v=1947117b6a">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://ezily.io/#organization","name":"Ezily","url":"https://ezily.io/","logo":{"@type":"ImageObject","@id":"https://ezily.io/#logo","url":"https://ezily.io/assets/ezily-logo.svg"},"sameAs":["https://www.linkedin.com/company/ezily","https://www.instagram.com/ezily.io/","https://www.threads.com/@ezily.io"],"areaServed":{"@type":"Country","name":"Taiwan"}},{"@type":"WebSite","@id":"https://ezily.io/#website","url":"https://ezily.io/","name":"Ezily","publisher":{"@id":"https://ezily.io/#organization"},"inLanguage":["zh-TW","en-US"]},{"@type":"BlogPosting","@id":"https://ezily.io/zh/blog/line-chatbot-visibility-layers-2026#page","url":"https://ezily.io/zh/blog/line-chatbot-visibility-layers-2026","name":"LINE chatbot 已經不夠聰明了嗎？用「能見度三層級」診斷你卡在哪一層","isPartOf":{"@id":"https://ezily.io/#website"},"inLanguage":"zh-TW","description":"你的 LINE chatbot 答不出「我在 Shopee 買的到貨了嗎」？問題不在選錯廠商，是卡在 data boundary。用 Ezily 的「Chatbot 能見度三層級」5 題自我診斷，看清下一步該升級工具還是 data architecture。","headline":"LINE chatbot 已經不夠聰明了嗎？用「能見度三層級」診斷你卡在哪一層","mainEntityOfPage":{"@id":"https://ezily.io/zh/blog/line-chatbot-visibility-layers-2026#page"},"publisher":{"@id":"https://ezily.io/#organization"},"author":{"@id":"https://ezily.io/#organization"},"breadcrumb":{"@id":"https://ezily.io/zh/blog/line-chatbot-visibility-layers-2026#breadcrumb"}},{"@type":"BreadcrumbList","@id":"https://ezily.io/zh/blog/line-chatbot-visibility-layers-2026#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Ezily","item":"https://ezily.io/zh"},{"@type":"ListItem","position":2,"name":"部落格","item":"https://ezily.io/zh/blog"},{"@type":"ListItem","position":3,"name":"LINE chatbot 已經不夠聰明了嗎？用「能見度三層級」診斷你卡在哪一層","item":"https://ezily.io/zh/blog/line-chatbot-visibility-layers-2026"}]}]}</script>
+<script>document.documentElement.classList.add("js")</script>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要內容</a>
+<header class="bar"><div class="bar-in">
+<a href="/zh" aria-label="Ezily"><svg class="logo" viewBox="40 38 228 96" role="img" aria-label="Ezily" focusable="false">
+<path fill="#1C0B2E" d="M113.4,67.95c-3.28-1.92-7.08-3.03-11.14-3.07c-0.09,0-0.17,0-0.25,0c-12.43,0.02-22.5,10.1-22.5,22.54c0,14.5,11.32,22.61,22.7,22.53c3.98-0.03,7.72-1.09,10.96-2.93c3.43-2.27,6.22-5.41,8.07-9.11v-3.52c0-0.13-0.05-0.23-0.16-0.23c-0.09,0-0.19,0.13-0.3,0.23c-3.5,3.41-8.85,5.26-15.12,5.26c-7.47,0-12.82-3.23-14.11-9.13h31.96c0.13-1.02,0.2-2.05,0.2-3.11v0C123.71,79.32,119.62,72.18,113.4,67.95z M91.55,83.23c1.2-5.07,5.62-7.93,10.79-7.93c5.72,0,9.77,2.67,10.6,7.93H91.55z"/>
+<path fill="#1C0B2E" d="M128.92,99.28l21.55-23.1h-20.19V66.09h35.92v9.55l-21.55,23.1h22.01v10.09h-37.74V99.28z"/>
+<path fill="#1C0B2E" d="M197.96,45.17h11.91v63.66h-11.91V45.17z"/>
+<path fill="#1C0B2E" d="M224.06,126.11l8.09-18.64L215.7,66.09h12.73l10,28.19h0.18l9.91-28.19h12.28l-24.46,60.02H224.06z"/>
+<path fill="#1C0B2E" d="M188.98,52.81c0,4.37-3.09,7.37-7.37,7.37s-7.37-3-7.37-7.37c0-4.27,3.09-7.28,7.37-7.28S188.98,48.54,188.98,52.81z"/>
+<path fill="#1C0B2E" d="M175.66,66.09h11.91v42.74h-11.91V66.09z"/>
+<path fill="#7C3AED" d="M75.24,87.39c0-12.93,8.73-20.55,14.05-23.48H67.48c-12.96,0-23.46,10.5-23.46,23.46v0c0,12.96,10.5,23.46,23.46,23.46h21.45C85.93,109.21,75.24,102.71,75.24,87.39z"/>
+</svg></a>
+<button class="navtoggle" type="button" aria-expanded="false" aria-controls="sitenav" aria-label="選單">
+<svg viewBox="0 0 20 20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+<path class="nt-a" d="M3 6h14"/><path class="nt-b" d="M3 13h14"/></svg></button>
+<nav id="sitenav" aria-label="頁面"><div class="navgroup"><a class="navtop" href="/zh/touchpoints">Touchpoints<svg class="caret" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4.5 6 8.5l4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></a><div class="navmenu"><a href="/zh/line-mini-app">電商品牌的 LINE Mini App<span class="d">它是什麼、和 LIFF 差在哪</span></a><a href="/zh/engagement-best-practices">互動經營<span class="d">把接觸變成用得到的顧客資料</span></a><a href="/zh/conversion-best-practices">轉換優化<span class="d">每個入口一個落地頁</span></a></div></div><div class="navgroup"><a class="navtop" href="/zh/orchestrate">Ezily Orchestrate</a></div><div class="navgroup"><span class="navtop" tabindex="0">資源<svg class="caret" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4.5 6 8.5l4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span><div class="navmenu"><a href="/zh/blog">部落格<span class="d">電商經營筆記</span></a><a href="/zh/careers">人才招募<span class="d">目前的職缺</span></a></div></div></nav>
+<a class="langlink" href="/blog/line-chatbot-visibility-layers-2026" hreflang="en-US">EN</a>
+<a class="btn btn-brand btn-sm" href="https://miniapp.line.me/2009655149-RnfKkD5d/touchpoint/c6e658bf-82a4-4840-b374-ed4ada2a9bbb" data-contact target="_blank" rel="noopener">跟我們聊聊</a>
+</div></header>
+<main id="main"><article class="prose wrap"><h1>LINE chatbot 已經不夠聰明了嗎？用「能見度三層級」診斷你卡在哪一層</h1><p>你的 LINE chatbot 答不出「我在 Shopee 買的到貨了嗎」？問題不在選錯廠商，是卡在 data boundary。用 Ezily 的「Chatbot 能見度三層級」5 題自我診斷，看清下一步該升級工具還是 data architecture。</p>
+<p>你的 LINE 好友昨天在 Shopee 買了一雙運動鞋。今天她在 LINE 問你：「這雙還有 US9 嗎？我想多買一雙送人，能一起出貨嗎？」</p>
+<p>你的 LINE chatbot 答她：「請至門市查詢庫存」。或是更慘：「這不在我能回答的範圍內」。</p>
+<p>這不是 chatbot 不夠聰明，是它根本看不到你的 Shopee 訂單、也看不到你官網的即時庫存（real-time inventory）。</p>
+<p>2026 年台灣電商 chatbot 的真正戰場已經不是「自動回覆 FAQ」。LINE 於 2025 年 11 月已經把 FAQ 自動回覆做進官方功能。真正的問題是：你的 chatbot 看得到哪些資料？ 接下來用「Chatbot 能見度三層級」（Chatbot Visibility Layers）這個框架，幫你判斷目前卡在哪一層，以及下一步該升級的是工具還是 data architecture。</p>
+<p>重點摘要（3 項 takeaway）</p>
+<ol>
+<li>LINE 官方於 2025 年 11 月推出「AI 聊天機器人（β）」後，FAQ 自動回覆已變成聊天進階方案（月費 NT$100）內建功能，不再是第三方 chatbot 廠商的差異化理由。</li>
+</ol>
+<ol>
+<li>Chatbot 能見度三層級（Chatbot Visibility Layers，Ezily 提出的框架）：Layer 1 只看得到品牌上傳的 FAQ 文件；Layer 2 看得到單一通路的訂單／會員資料；Layer 3 看得到跨通路即時資料（訂單、庫存、廣告互動、會員 360）。</li>
+</ol>
+<ol>
+<li>多數台灣電商品牌的 LINE chatbot 卡在 Layer 2，答不出「我在 Shopee 買的到貨了嗎」這類跨通路問題。真正的升級不是換 chatbot 廠商，是在既有 chatbot 前端後面加上一層 cross-channel data infrastructure（跨通路資料基礎設施）。</li>
+</ol>
+<h2>為什麼 2026 年要重新看待 LINE chatbot？</h2>
+<p>因為整個賽道的起跑線被 LINE 官方自己往前推了。</p>
+<p>2025 年 11 月，LINE 官方帳號正式推出「AI 聊天機器人（β）」，綁定 聊天進階方案（LINE 於 2025 年 3 月推出的加值服務，月費 NT$100，解鎖聊天紀錄延長、tag 上限提升、記事本備份等功能）使用（來源：LINE Biz-Solutions 官方說明）。品牌只要上傳 PDF、網址或圖片，AI 會自動分析並產生 FAQ，直接在聊天室自動回覆顧客，不需再額外付第三方廠商月費。</p>
+<p>也就是說，「有 AI 自動回覆 FAQ」從 2026 起已經是預設配置，不是競爭優勢。過去幾年很多品牌付第三方 chatbot 廠商月費，只為了做 FAQ 自動回覆。這條路現在是送分題。</p>
+<p>會拉開差距的，是 chatbot 能 query 到的 data visibility（資料視野）。</p>
+<h2>Chatbot 能見度三層級：你卡在哪一層？</h2>
+<p>Chatbot 能見度三層級（Chatbot Visibility Layers） 是 Ezily 提出的診斷框架，依據「chatbot 能存取到的資料範圍」把台灣電商目前能用的 LINE chatbot 方案分為三層。層級不是「越高階越好」，而是「你的生意邏輯需要哪一層」。</p>
+<p>層級</p>
+<p>Data Visibility</p>
+<p>典型方案</p>
+<p>月費錨點</p>
+<p>Layer 1</p>
+<p>看得到品牌自己上傳的 FAQ 文件</p>
+<p>LINE 官方 AI 聊天機器人（β）</p>
+<p>NT$100 起（聊天進階方案）</p>
+<p>Layer 2</p>
+<p>看得到單一通路的訂單／會員資料</p>
+<p>漸強實驗室、Omnichat、Super 8、BotBonnie、Chatisfy 等</p>
+<p>依廠商與模組而定</p>
+<p>Layer 3</p>
+<p>看得到跨通路即時資料（訂單、庫存、廣告互動、會員 360）</p>
+<p>Cross-channel data layer + 任一 chatbot 前端</p>
+<p>依架構規模</p>
+<h3>Layer 1：LINE 原生 AI 聊天機器人（β）能做什麼、不能做什麼？</h3>
+<p>它能答什麼？ 你事先上傳給它的 FAQ 內容。你把營業時間、退貨政策、產品規格文件丟進後台，它會用 AI 自動建立問答，並在聊天室自動回覆相關問題。LINE 官方還會根據用戶互動回饋，主動建議 FAQ 修改方向（來源：LINE 官方支援中心）。</p>
+<p>它不能答什麼？</p>
+<ol>
+<li>任何會動的資料（real-time inventory、order status、會員點數）</li>
+</ol>
+<ol>
+<li>跨通路的顧客脈絡（Shopee 的訂單、官網的購物車）</li>
+</ol>
+<ol>
+<li>需要 query database 才能回答的問題</li>
+</ol>
+<p>適合誰： 單價高、SKU 少、客服問題以政策／規格為主的品牌（例如課程、服務預約、少量 SKU 的精品品牌）。適合你的訊號：客服訊息中 80% 以上是重複的 FAQ 類問題。</p>
+<p>不適合誰： 多 SKU 電商、有 real-time inventory 壓力的品牌、需要 order status 查詢的顧客。</p>
+<h3>Layer 2：廠商 chatbot 的真實限制是什麼？</h3>
+<p>Layer 2 是目前多數台灣品牌所在的位置。漸強實驗室、Omnichat、Super 8、BotBonnie、Chatisfy 這類 LINE 技術夥伴，提供 segmentation、tag management、gamification 模組、customer journey design，功能比 Layer 1 多很多。它們真正的價值是把 conversational traffic 轉成訂單：Omnichat 2022 零售對話商務報告指出，透過 chatbot 觸發的購物車再行銷 conversion rate 可達 11.35%、OMO（Online-Merge-Offline，線上線下整合）對話銷售 7.14%、客製化 LINE 歡迎訊息 7.21%（來源：Omnichat 零售對話商務報告）。</p>
+<p>但 Layer 2 有一個共同限制：它的 data visibility 通常只及於「自己串接的那個通路」。</p>
+<p>舉個每天都在發生的場景：你的品牌同時經營 Shopee 旗艦店、官網（Shopline）、LINE 官方帳號。顧客昨天在 Shopee 下了單，今天在 LINE 問你「我的訂單到哪了？」。你的 Layer 2 chatbot 廠商通常串接的是官網訂單系統，而不是 Shopee，所以它回不出來。</p>
+<p>這不是廠商不努力，是各家 Layer 2 廠商的預設整合，多半鎖在「LINE + 官網（單一開店平台）」的組合裡。你的顧客並不在乎這個技術邊界，他只知道「我在 LINE 問你，你應該要查得到」。</p>
+<h3>Layer 3：Cross-channel data layer，為什麼 chatbot 真正需要它？</h3>
+<p>Cross-channel data layer（跨通路資料層） 指的是把品牌分散在不同系統的銷售、庫存、顧客、廣告資料即時整合在一起的 data infrastructure。它不是又一個 chatbot 廠商，而是讓 chatbot 答得出真正問題的 data plumbing（資料水電工程）。</p>
+<p>這一層把品牌散落在不同系統的資料整合起來：</p>
+<ol>
+<li>Shopline / Shopee / MOMO 的訂單與商品</li>
+</ol>
+<ol>
+<li>Real-time inventory（官網 + 門市 + 倉庫）</li>
+</ol>
+<ol>
+<li>Meta Ads / LINE LAP（LINE Ads Platform，LINE 官方廣告投放系統）的投放互動紀錄</li>
+</ol>
+<ol>
+<li>POS 的線下購買</li>
+</ol>
+<ol>
+<li>Customer 360 view（將同一位顧客在所有通路的互動、交易、偏好資料整合成單一檔案）</li>
+</ol>
+<p>有了這層，接回來的 chatbot（無論是 LINE 原生、Omnichat、或其他工具）才答得出以下這類問題：</p>
+<ol>
+<li>「我昨天在 Shopee 買的那筆到貨了嗎？」 → chatbot 直接 query Shopee 訂單 API</li>
+</ol>
+<ol>
+<li>「這雙鞋我的尺寸還有嗎？」 → chatbot 查 real-time inventory，不限通路</li>
+</ol>
+<ol>
+<li>「我在官網下的那筆和 Shopee 的能一起出貨嗎？」 → chatbot 交叉比對顧客兩邊 order status</li>
+</ol>
+<p>這就是 Ezily 做的事。Ezily 不是另一個 LINE chatbot 廠商，而是把 Shopline、Shopee、Meta Ads、POS、會員歷史整合成一層 data layer，讓任何 chatbot 前端都能即時查得到。顧客在 LINE 問「我昨天在 Shopee 買的運動鞋到貨了嗎」時，bot 是真的去 query database，而不是回一句「請洽客服」。</p>
+<p>適合誰： 跨平台經營的品牌（官網 + 至少一個平台）、有實體門市的 OMO 品牌、單一顧客 LTV 高到讓「答不出跨通路問題」會造成實際營收損失的品牌。</p>
+<h2>自我診斷：你的 chatbot 卡在哪一層？</h2>
+<p>用這 5 題快速判斷：</p>
+<ol>
+<li>顧客在 LINE 問「我上週的訂單到貨了嗎？」你的 chatbot 能直接答嗎？</li>
+</ol>
+<ol>
+<li>顧客問「這雙鞋 US9 還有幾雙？」chatbot 是即時查 inventory，還是給固定答覆？</li>
+</ol>
+<ol>
+<li>顧客在 Shopee 買過的品項，在你的 LINE chatbot 裡查得到嗎？</li>
+</ol>
+<ol>
+<li>你的 chatbot 能根據顧客在 Meta 廣告的互動紀錄，推薦不同訊息嗎？</li>
+</ol>
+<ol>
+<li>顧客的 LINE 互動資料，能即時回寫到你的會員中心嗎？</li>
+</ol>
+<ol>
+<li>5 題都不能 → 你在 Layer 1 或還沒開始用 chatbot</li>
+</ol>
+<ol>
+<li>2 到 3 題可以 → 你在 Layer 2，卡在單通路 data boundary</li>
+</ol>
+<ol>
+<li>4 到 5 題都可以 → 你已經在 Layer 3，恭喜</li>
+</ol>
+<h2>LINE chatbot 不好用，要換廠商還是換架構？</h2>
+<p>如果你已經在 Layer 2、卻覺得 chatbot 還是不夠好用，問題不在「選錯廠商」，在於整個市場都卡在同一個 data boundary。</p>
+<p>換另一家 Layer 2 廠商，你會換到功能組合略有不同、月費可能更便宜的 chatbot。但顧客問「Shopee 訂單到貨了嗎」時，它一樣答不出來。</p>
+<p>真正的升級路徑，是在你既有的 chatbot 前端（可能是 LINE 原生、可能是漸強、可能是 Omnichat）後面加上一層 cross-channel data infrastructure。Omnichat 執行長在 2026 年初的專欄中指出，產業正從「會聊天的 chatbot」轉型為「會做事的 AI Agent」，而後者的前提是能存取到執行任務所需的資料（來源：Omnichat AI Chatbot 完整攻略）。LINE 也在 2025 年 12 月的 LINE BIZ CONVERGE 預告，LAP AI Agent 將於 2026 Q1 分階段上線（來源：LINE BIZ CONVERGE 2025）。AI Agent 會逐漸成為常態，但沒有 cross-channel data layer 的 Agent，仍然只是更漂亮的 Layer 1 或 Layer 2。</p>
+<p>Ezily 就是那一層 data infrastructure。</p>
+<h2>常見問題（FAQ）</h2>
+<p>Q1：LINE 原生 AI 聊天機器人（β）和第三方 chatbot 廠商差在哪？</p>
+<p>Layer 1（LINE 原生）只能回答你事先上傳的 FAQ 文件，月費 NT$100（聊天進階方案）。Layer 2（第三方廠商如漸強、Omnichat、Super 8、BotBonnie、Chatisfy）加上了 segmentation、tag、gamification 模組、customer journey 等行銷功能，但 data visibility 通常只及於自己串接的單一通路。兩者解決的問題層級不同。</p>
+<p>Q2：為什麼我的 chatbot 廠商答不出跨通路的訂單問題？</p>
+<p>因為 Layer 2 廠商的預設整合多半綁定「LINE + 單一開店平台」。你的 Shopee 訂單、MOMO 訂單、POS 銷售資料在它的 data visibility 之外。這是各家廠商共通的整合範圍，不是單一廠商的問題。要判斷的是這個範圍涵不涵蓋你實際在賣的通路。</p>
+<p>Q3：換一家 LINE chatbot 廠商就能解決 data boundary 問題嗎？</p>
+<p>通常不會。你會換到功能組合略有不同的 Layer 2 工具，但 data boundary 問題依然存在。真正的升級是在 chatbot 前端後面加上 cross-channel data layer（Layer 3），讓任何 chatbot 前端都能即時 query 到 Shopline、Shopee、POS、inventory、customer 360 資料。</p>
+<p>Q4：小品牌也需要 Layer 3 嗎？</p>
+<p>不一定。如果你只在一個平台經營、SKU 不多、客服問題 80% 以上是 FAQ，Layer 1（LINE 原生 AI 聊天機器人 β，NT$100/月）加上小幅度 Layer 2 就足夠。Cross-channel data layer 的投資報酬在「多平台 + 有 real-time inventory 壓力 + OMO」的品牌身上最明顯。</p>
+<p>Q5：LINE 之後要推的 LAP AI Agent 會改變這個架構嗎？</p>
+<p>會讓 chatbot 前端變更聰明，但不會憑空解決 data visibility 問題。AI Agent 要「做事」（查訂單、發優惠、處理退換）的前提，仍然是能存取到那些資料。這一層的戰場只會因為 AI Agent 更白熱化，不會消失。LAP AI Agent 預計於 2026 Q1 分階段上線（Campaign / Creative / Report 三個 Agent）。</p>
+<p>Q6：Chatbot 能見度三層級和現有的「LINE Chatbot 工具比較」文章有什麼不同？</p>
+<p>市面上多數比較文是以「選哪一家廠商」為前提，預設你的問題是選擇錯誤。Chatbot 能見度三層級是以「你能 query 到哪些資料」為切分。Layer 2 各家廠商在這個維度上是類似的，差異在於月費與功能組合，不在於 data visibility 邊界。換廠商解不了 cross-channel data 問題。</p></article></main>
+<footer class="foot"><div class="foot-in">
+<div class="foot-cols">
+<div class="foot-col foot-brand"><svg class="logo" viewBox="40 38 228 96" role="img" aria-label="Ezily" focusable="false">
+<path fill="#FAF8F3" d="M113.4,67.95c-3.28-1.92-7.08-3.03-11.14-3.07c-0.09,0-0.17,0-0.25,0c-12.43,0.02-22.5,10.1-22.5,22.54c0,14.5,11.32,22.61,22.7,22.53c3.98-0.03,7.72-1.09,10.96-2.93c3.43-2.27,6.22-5.41,8.07-9.11v-3.52c0-0.13-0.05-0.23-0.16-0.23c-0.09,0-0.19,0.13-0.3,0.23c-3.5,3.41-8.85,5.26-15.12,5.26c-7.47,0-12.82-3.23-14.11-9.13h31.96c0.13-1.02,0.2-2.05,0.2-3.11v0C123.71,79.32,119.62,72.18,113.4,67.95z M91.55,83.23c1.2-5.07,5.62-7.93,10.79-7.93c5.72,0,9.77,2.67,10.6,7.93H91.55z"/>
+<path fill="#FAF8F3" d="M128.92,99.28l21.55-23.1h-20.19V66.09h35.92v9.55l-21.55,23.1h22.01v10.09h-37.74V99.28z"/>
+<path fill="#FAF8F3" d="M197.96,45.17h11.91v63.66h-11.91V45.17z"/>
+<path fill="#FAF8F3" d="M224.06,126.11l8.09-18.64L215.7,66.09h12.73l10,28.19h0.18l9.91-28.19h12.28l-24.46,60.02H224.06z"/>
+<path fill="#FAF8F3" d="M188.98,52.81c0,4.37-3.09,7.37-7.37,7.37s-7.37-3-7.37-7.37c0-4.27,3.09-7.28,7.37-7.28S188.98,48.54,188.98,52.81z"/>
+<path fill="#FAF8F3" d="M175.66,66.09h11.91v42.74h-11.91V66.09z"/>
+<path fill="#DCC6FF" d="M75.24,87.39c0-12.93,8.73-20.55,14.05-23.48H67.48c-12.96,0-23.46,10.5-23.46,23.46v0c0,12.96,10.5,23.46,23.46,23.46h21.45C85.93,109.21,75.24,102.71,75.24,87.39z"/>
+</svg>
+<p class="small">在 LINE 裡跟我們聊聊。這個入口本身就是一個 Ezily 做的 LINE Mini App。</p>
+<div class="socials"><a href="https://www.linkedin.com/company/ezily" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM10 9h3.8v1.7h.05c.53-1 1.83-2.05 3.76-2.05C21 8.65 22 11 22 14.3V21h-4v-6c0-1.5-.5-2.6-1.9-2.6-1.1 0-1.7.75-2 1.5-.1.25-.1.6-.1.95V21h-4z" fill="currentColor"/></svg></a><a href="https://www.instagram.com/ezily.io/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.2" y="3.2" width="17.6" height="17.6" rx="5" fill="none" stroke="currentColor" stroke-width="1.9"/><circle cx="12" cy="12" r="4.1" fill="none" stroke="currentColor" stroke-width="1.9"/><circle cx="17.3" cy="6.7" r="1.25" fill="currentColor"/></svg></a><a href="https://www.threads.com/@ezily.io" target="_blank" rel="noopener" aria-label="Threads"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.2 21c-5.1 0-8.2-3.5-8.2-9s3.1-9 8.2-9c3.6 0 6 1.7 7 4.4" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><path d="M8.7 14.4c.6 1.5 2 2.3 3.6 2.3 2 0 3.4-1 3.4-2.4 0-1.7-1.7-2.3-3.7-2.3-2.6 0-4.3 1.1-4.3 3 0 2.3 2 3.7 4.8 3.7 3.6 0 6.3-2.5 6.3-6.6" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg></a></div></div>
+<div class="foot-col"><h2>產品</h2><nav><a href="/zh/touchpoints">Touchpoints</a><a href="/zh/line-mini-app">LINE Mini App</a><a href="/zh/engagement-best-practices">互動經營</a><a href="/zh/conversion-best-practices">轉換優化</a><a href="/zh/orchestrate">Ezily Orchestrate</a></nav></div><div class="foot-col"><h2>資源</h2><nav><a href="/zh/blog">部落格</a><a href="/zh/careers">人才招募</a></nav></div>
+<div class="foot-col"><h2>聯絡我們</h2>
+<!-- Ink, not yellow: DESIGN.md §5 allows one Celebrate Yellow CTA per page and
+     the closing demo CTA is it. This matches the header pill instead. -->
+<a class="btn btn-brand btn-sm" href="https://miniapp.line.me/2009655149-RnfKkD5d/touchpoint/c6e658bf-82a4-4840-b374-ed4ada2a9bbb" data-contact target="_blank" rel="noopener">跟我們聊聊</a>
+<!-- The LINE route is the product demonstration, but it cannot be the only one:
+     a desktop evaluator without a phone in hand was previously stranded.
+     corporate@ezily.io is the general contact address already on record in the
+     privacy policy; nothing new is claimed here. -->
+<nav aria-label="其他聯絡方式"><a href="mailto:corporate@ezily.io">corporate@ezily.io</a></nav></div>
+</div>
+<div class="foot-bar">
+<p>&copy; 2026 Ezily. Quiet canvas. Loud moments.</p>
+<nav aria-label="法律"><a href="/zh/legal">法律與法規遵循</a><a href="/zh/legal/privacy-policy">隱私權政策</a><a href="/zh/legal/dpa">資料處理協議</a><a href="/zh/legal/aup">允許使用政策</a></nav>
+</div>
+</div></footer>
+<dialog class="qrm" id="contact-modal" tabindex="-1" aria-label="用 Mini App 跟我們聊聊">
+<div class="qrm-bar"><button type="button" class="qrm-x" data-close aria-label="關閉">
+<svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.5 3.5l9 9M12.5 3.5l-9 9" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></button></div>
+<div class="qrm-in">
+<p class="qrm-copy body">如果你也是想把品牌體驗做好的電商品牌，掃描這張 QR code，在 Mini App 裡跟我們聊聊。</p>
+<figure class="qrm-code"><img src="/assets/contact-qr.svg" width="200" height="200" alt="Ezily Mini App 的 QR code"></figure>
+</div>
+</dialog>
+<script>
+/* Staggered scroll reveal. Finite, once per element, transform and opacity only.
+   Reduced motion is handled in CSS; the observer is skipped outright. */
+(function(){
+  var rv = document.querySelectorAll("[data-rv]");
+  if (!rv.length) return;
+  var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion:reduce)").matches;
+  if (!("IntersectionObserver" in window) || reduce) {
+    Array.prototype.forEach.call(rv, function(e){ e.classList.add("rv-in"); });
+    return;
+  }
+  var io = new IntersectionObserver(function(rows, obs){
+    rows.forEach(function(r){
+      if (r.isIntersecting) { r.target.classList.add("rv-in"); obs.unobserve(r.target); }
+    });
+  }, { rootMargin: "0px 0px -10% 0px", threshold: 0.08 });
+  Array.prototype.forEach.call(rv, function(e){ io.observe(e); });
+  requestAnimationFrame(function(){
+    Array.prototype.forEach.call(rv, function(e){
+      if (e.getBoundingClientRect().top < innerHeight * 0.9) e.classList.add("rv-in");
+    });
+  });
+})();
+</script><script>
+(function(){
+  var bar = document.querySelector(".bar"), btn = document.querySelector(".navtoggle");
+  if(!bar || !btn) return;
+  function set(open){
+    bar.setAttribute("data-nav", open ? "open" : "closed");
+    btn.setAttribute("aria-expanded", open ? "true" : "false");
+  }
+  set(false);
+  btn.addEventListener("click", function(){
+    set(bar.getAttribute("data-nav") !== "open");
+  });
+  document.addEventListener("keydown", function(e){
+    if(e.key === "Escape" && bar.getAttribute("data-nav") === "open"){ set(false); btn.focus(); }
+  });
+  // A resize past the breakpoint must not leave the desktop nav in a closed state.
+  addEventListener("resize", function(){ if(innerWidth > 768) set(false); });
+})();
+</script><script>
+/* The hairline under the sticky bar, only once content is under it. §7 bans any
+   listener on the raw scroll event, so this watches a one-pixel sentinel at the
+   top of the document with the same observer the reveal uses. The sentinel is
+   created here rather than emitted into every page: with no JS there is no
+   sentinel, no attribute, and the rule simply stays drawn. */
+(function(){
+  var bar = document.querySelector(".bar");
+  if (!bar || !("IntersectionObserver" in window)) return;
+  var s = document.createElement("div");
+  s.setAttribute("aria-hidden", "true");
+  s.style.cssText = "position:absolute;top:0;left:0;width:1px;height:1px;pointer-events:none";
+  document.body.prepend(s);
+  /* Seed the state from the scroll position rather than from the observer. The
+     first callback can arrive before the sentinel has been laid out, and it
+     then reports a zero rect as "not intersecting" - the rule was drawn on a
+     page sitting at the top until the reader's first scroll. Reading scrollY
+     once at startup is not a scroll listener. */
+  function set(atTop){ bar.setAttribute("data-scrolled", atTop ? "false" : "true"); }
+  set((window.pageYOffset || document.documentElement.scrollTop || 0) === 0);
+  var io = new IntersectionObserver(function(r){ set(r[0].isIntersecting); }, { threshold: 0 });
+  /* One frame later, so the observer's own first callback measures a laid-out
+     element instead of an empty rect. */
+  requestAnimationFrame(function(){ io.observe(s); });
+})();
+</script>
+<script>
+/* The Talk-with-us buttons open the code rather than the Mini App link.
+   If <dialog> is unsupported the handler never binds and the anchors navigate. */
+(function(){
+  var d = document.getElementById("contact-modal");
+  if (!d || typeof d.showModal !== "function") return;
+  var opener = null;
+  document.addEventListener("click", function(e){
+    var t = e.target;
+    if (!t || !t.closest) return;
+    var a = t.closest("a[data-contact]");
+    if (a) {
+      /* A phone cannot scan a QR code on its own screen, and the href is a
+         working miniapp.line.me deep link that opens LINE natively. So coarse
+         pointers follow the link and only pointer devices get the code.
+         Tested at click rather than at bind: an input mode can change under a
+         tab, and the modal was a dead end on the product's primary device. */
+      if (window.matchMedia && window.matchMedia("(pointer:coarse)").matches) return;
+      e.preventDefault();
+      opener = a;
+      d.showModal();
+      /* Focus the dialog rather than the close button, so opening does not
+         land a focus ring on the X. Tab from here still reaches it. */
+      d.focus();
+    }
+  });
+  /* Focusing the dialog above opts out of the UA's own focus restore, so put
+     the caret back on the button that opened it. */
+  d.addEventListener("close", function(){
+    if (opener && opener.focus) opener.focus();
+    opener = null;
+  });
+  d.addEventListener("click", function(e){
+    /* e.target is the dialog itself only for clicks on the backdrop. */
+    if (e.target === d || (e.target.closest && e.target.closest("[data-close]"))) d.close();
+  });
+  /* Escape is the UA's job on a modal dialog, but it does not fire everywhere.
+     A modal has to be dismissable from the keyboard, so this does not assume. */
+  document.addEventListener("keydown", function(e){
+    if (d.open && (e.key === "Escape" || e.key === "Esc")) { e.preventDefault(); d.close(); }
+  });
+})();
+</script>
+</body>
+</html>
