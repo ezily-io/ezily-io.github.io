@@ -277,9 +277,17 @@ html[lang^="en"] .mark{background-size:100% .95em;padding:.02em .18em}
 .bar nav{display:flex;gap:4px;margin-inline-start:auto;flex-wrap:wrap}
 /* Link styling lives on .navtop and .navmenu a further down. A generic
    `.bar nav a` rule here outranks both and breaks the dropdown. */
-.langlink{font-size:var(--fs-label);font-weight:600;color:var(--muted);text-decoration:none;
-  padding:12px 16px;border-radius:var(--r-pill);background:var(--paper-deep);
-  min-height:44px;display:inline-flex;align-items:center;white-space:nowrap}
+/* This used to carry a --paper-deep fill at the same --r-pill radius as the CTA,
+   so the header ended in two filled pills of the same shape 16px apart and the
+   eye read two buttons. §1 gives the view one loud thing; a locale toggle is not
+   it. Stripped to a text control, the CTA is the only painted object in the bar,
+   which is what makes --purple land there without touching --purple. Weight drops
+   to 500 to sit a tier under .navtop's destinations, and the 44px target and the
+   pinned leading above both stay. */
+.langlink{font-size:var(--fs-label);font-weight:500;color:var(--subtle);text-decoration:none;
+  padding:12px 4px;border-radius:var(--r-pill);
+  min-height:44px;display:inline-flex;align-items:center;white-space:nowrap;
+  margin-inline-start:12px}
 
 /* ── Mobile menu disclosure ──
    Hidden on desktop. Below 768 the flattened nav used to render as an always-open
@@ -309,6 +317,10 @@ html[lang^="en"] .mark{background-size:100% .95em;padding:.02em .18em}
 .btn-ink{background:var(--ink);color:var(--paper)}       /* 16.49:1 */
 .btn-outline{background:transparent;color:var(--ink);border-color:var(--border-strong)}
 .btn-yellow{background:var(--yellow);color:var(--ink)}   /* 13.46:1 — demo CTA only */
+/* §5: Ezily Purple fill, white label, flat. Darkening this to --purple-deep was
+   tried on 2026-09-17 and reverted — §2 reserves Purple Deep for hover and press,
+   and the resting bar's problem was never the hex. The CTA read weakly because a
+   second filled pill sat beside it; see .langlink. */
 .btn-brand{background:var(--purple);color:#FFFFFF}       /* 5.70:1 */
 .btn-sm{padding:8px 24px 7px;font-size:.9375rem}
 .inline-cta{display:inline-flex;align-items:center;min-height:44px;font-weight:600;
@@ -418,7 +430,11 @@ section{padding-block:var(--rhythm)}
    with a 10.03:1 border. */
 .ink a:not(.btn){color:var(--lilac)}
 .ink .btn-outline{color:var(--paper);border-color:var(--border-strong)}
-.ink .btn-brand{background:var(--lilac);color:var(--ink)}   /* 11.93:1 */
+/* The footer is an ink ground but carries .foot rather than .ink, so it never
+   picked this up: its CTA was drawn in --purple at 3.24:1 against the footer,
+   barely clearing the 3:1 a control boundary owes, and --purple-deep would have
+   taken it to 2.18:1. Both reversed grounds now name themselves here. */
+.ink .btn-brand,.foot .btn-brand{background:var(--lilac);color:var(--ink)}   /* 11.93:1 */
 .panel{border-radius:var(--r-panel);padding:clamp(32px,5vw,72px)}
 /* The mesh reads as jewel light on the Ink plate, which is what the incoming
    system describes it as. Alpha runs higher here than on paper because a halo
@@ -671,7 +687,11 @@ tbody td{color:var(--muted)}
 
 /* ── Entry points: a stem, then the set it applies to, on hairline rows ── */
 .entry .stem{max-width:24em}
-.hl-items{margin-top:var(--s7);display:flex;flex-wrap:wrap;gap:10px}
+/* --s7 was a typo for a token that does not exist, so this declaration was
+   invalid and dropped, and the ul fell back to the `ul{margin:0}` reset: the
+   h2's bottom edge and the first chip's top edge measured the same pixel.
+   --gap-body is the token every other section body takes from its head. */
+.hl-items{margin-top:var(--gap-body);display:flex;flex-wrap:wrap;gap:10px}
 .hl-items li{background:var(--paper-raised);border:1px solid var(--rule);
   border-radius:var(--r-pill);padding:10px 20px;font-size:1rem;
   line-height:var(--lh-ui);display:inline-flex;align-items:center;gap:10px}
@@ -861,6 +881,9 @@ tbody td{color:var(--muted)}
   .btn:hover{transform:translateY(-1px)}
   .btn-outline:hover{border-color:var(--ink)}
   .btn-brand:hover{background:var(--purple-deep)}   /* 7.65:1 */
+  /* Reversed, the fill is already the light one, so hover goes lighter still
+     rather than flipping back to a purple the ground never had. */
+  .ink .btn-brand:hover,.foot .btn-brand:hover{background:#FFFFFF}  /* 18.47:1 */
   .navtop:hover{color:var(--ink)}
   .navmenu a:hover{background:var(--paper-deep)}
   .langlink:hover{color:var(--ink)}
