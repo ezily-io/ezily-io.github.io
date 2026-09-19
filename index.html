@@ -21,7 +21,7 @@
 <meta name="twitter:title" content="Ezily">
 <meta name="twitter:description" content="Know your customer, close the sale, run every channel. It starts on LINE and isn&#x27;t bound to LINE.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&amp;family=DM+Sans:wght@400;500;600;700&amp;family=Noto+Sans+TC:wght@400;500;700&amp;family=Noto+Serif+TC:wght@600;700&amp;display=swap">
-<link rel="stylesheet" href="/assets/site.css?v=c68dc26b6a">
+<link rel="stylesheet" href="/assets/site.css?v=d39099a69a">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://ezily.io/#organization","name":"Ezily","url":"https://ezily.io/","logo":{"@type":"ImageObject","@id":"https://ezily.io/#logo","url":"https://ezily.io/assets/ezily-logo.svg"},"sameAs":["https://www.linkedin.com/company/ezily","https://www.instagram.com/ezily.io/","https://www.threads.com/@ezily.io"],"areaServed":{"@type":"Country","name":"Taiwan"}},{"@type":"WebSite","@id":"https://ezily.io/#website","url":"https://ezily.io/","name":"Ezily","publisher":{"@id":"https://ezily.io/#organization"},"inLanguage":["zh-TW","en-US"]},{"@type":"WebPage","@id":"https://ezily.io/#page","url":"https://ezily.io/","name":"Ezily","isPartOf":{"@id":"https://ezily.io/#website"},"inLanguage":"en-US","description":"Know your customer, close the sale, run every channel. It starts on LINE and isn't bound to LINE."}]}</script>
 <script>document.documentElement.classList.add("js")</script>
 </head>
@@ -41,7 +41,7 @@
 <svg viewBox="0 0 20 20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
 <path class="nt-a" d="M3 6h14"/><path class="nt-b" d="M3 13h14"/></svg></button>
 <nav id="sitenav" aria-label="Pages"><div class="navgroup"><a class="navtop" href="/touchpoints">Touchpoints<svg class="caret" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4.5 6 8.5l4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></a><div class="navmenu"><a href="/line-mini-app">LINE Mini App for E-commerce<span class="d">What it is, and how it differs from LIFF</span></a><a href="/engagement-best-practices">Engagement Best Practices<span class="d">Turning contact into data you can act on</span></a><a href="/conversion-best-practices">Conversion Best Practices<span class="d">One destination per entry point</span></a></div></div><div class="navgroup"><a class="navtop" href="/orchestrate">Orchestrate</a></div><div class="navgroup"><span class="navtop" tabindex="0">Resources<svg class="caret" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4.5 6 8.5l4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span><div class="navmenu"><a href="/blog">Blog<span class="d">Notes on running an e-commerce business</span></a><a href="/careers">Careers<span class="d">Open roles</span></a></div></div></nav>
-<a class="langlink" href="/zh" hreflang="zh-TW">繁中</a>
+<details class="langpick"><summary class="langlink" aria-label="EN, change language"><svg class="globe" viewBox="0 0 20 20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="10" cy="10" r="7.25"/><path d="M2.75 10h14.5"/><path d="M10 2.75c1.9 2 2.9 4.5 2.9 7.25s-1 5.25-2.9 7.25c-1.9-2-2.9-4.5-2.9-7.25S8.1 4.75 10 2.75Z"/></svg><span>EN</span></summary><div class="langmenu"><a lang="zh-TW" hreflang="zh-TW" href="/zh">繁體中文</a><a lang="en-US" hreflang="en-US" href="/" aria-current="true">English</a></div></details>
 <a class="btn btn-brand btn-sm" href="https://miniapp.line.me/2009655149-RnfKkD5d/touchpoint/c6e658bf-82a4-4840-b374-ed4ada2a9bbb" data-contact target="_blank" rel="noopener">Talk with us</a>
 </div></header>
 <main id="main"><section class="hero"><div class="wrap"><div class="hero-grid">
@@ -140,6 +140,26 @@
   });
   // A resize past the breakpoint must not leave the desktop nav in a closed state.
   addEventListener("resize", function(){ if(innerWidth > 768) set(false); });
+
+  /* Language picker. <details> already gives the open state, the keyboard and
+     the accessibility tree, so this only adds the two behaviours a native
+     disclosure has no opinion about: a click outside closes it, and Escape
+     closes it and returns focus to the trigger. With no JS it still opens,
+     still switches language, and simply stays open until it is clicked again --
+     which is why it is a <details> and not a scripted menu. */
+  var lp = document.querySelector(".langpick");
+  if(lp){
+    document.addEventListener("click", function(e){
+      if(lp.open && !lp.contains(e.target)) lp.open = false;
+    });
+    lp.addEventListener("keydown", function(e){
+      if(e.key === "Escape" && lp.open){
+        lp.open = false;
+        var sm = lp.querySelector("summary");
+        if(sm) sm.focus();
+      }
+    });
+  }
 })();
 </script><script>
 /* The hairline under the sticky bar, only once content is under it. §7 bans any

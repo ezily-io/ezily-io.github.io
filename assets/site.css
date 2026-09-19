@@ -34,6 +34,22 @@
   --subtle:#6E6279;                         /* 5.37 paper / 4.84 deep / 5.70 white */
   --ink-muted:#AAA3AC;                      /* recomputed for the new ink. 7.52:1 */
 
+  /* ── Error, added from the Next Elite teardown 2026-09-19 ──
+     The one genuine palette gap that teardown exposed. §7.3 has always said an
+     error is "inline, adjacent to the cause", and there was no colour to render
+     it in — a real hole, and one that got wider the moment .input and .choice
+     landed here with no invalid state.
+     Their own #e40014 is not taken: it is 4.59:1 on this cream, and their
+     --destructive-foreground is the SAME hex, so their token file specifies red
+     text on a red fill. This value is warm, sits in the palette, and clears AA
+     on all three light grounds with room to spare.
+     No --warning token. Amber would collide with Celebrate Yellow, which §2
+     reserves for the single moment of the sale, and their #f99c00 is 2.15:1 as
+     text anyway. A warning is written as ink copy on a danger-pale ground.
+     No --success token either: Forest Green already means completion. */
+  --danger:#B3261E;                         /* 6.16 paper / 5.56 deep / 6.54 white */
+  --danger-pale:#FBEAE8;                    /* ink on it 15.87:1 */
+
   /* Incoming's graduated radius ladder: smaller elements are rounder. The 28px
      panel is kept from §5, which the ladder has no rung for. */
   --r-xs:8px; --r-sm:12px; --r-badge:16px; --r-card:20px;
@@ -284,10 +300,51 @@ html[lang^="en"] .mark{background-size:100% .95em;padding:.02em .18em}
    which is what makes --purple land there without touching --purple. Weight drops
    to 500 to sit a tier under .navtop's destinations, and the 44px target and the
    pinned leading above both stay. */
+/* ── Language picker ──
+   Adopted from the Next Elite nav 2026-09-19: a globe, the CURRENT language, and
+   a menu naming each language in its own language. Four of its decisions are not
+   adopted, and each was a defect rather than a taste difference: its menu rows
+   are 40px against the 44px this site owes a phone; it puts no `lang` on an item,
+   so a screen reader reads বাংলা and العربية with English phonetics; it marks the
+   active language by colour alone, with no aria-current and no visible mark; and
+   the whole control is script-only, so it disappears if the bundle fails.
+
+   Built on <details>, like the FAQ, for that last reason. It opens with no
+   JavaScript, carries its own expanded state, and the items stay ordinary links
+   -- no role="menu", which would cost a screen reader the "link" announcement
+   and the ability to open one in a new tab for no gain on a two-item list. */
+.langpick{position:relative;margin-inline-start:12px}
 .langlink{font-size:var(--fs-label);font-weight:500;color:var(--subtle);text-decoration:none;
-  padding:12px 4px;border-radius:var(--r-pill);
-  min-height:44px;display:inline-flex;align-items:center;white-space:nowrap;
-  margin-inline-start:12px}
+  padding:12px 8px;border-radius:var(--r-pill);gap:6px;cursor:pointer;list-style:none;
+  min-height:44px;display:inline-flex;align-items:center;white-space:nowrap}
+.langlink::-webkit-details-marker{display:none}
+/* §8: this system ships no icon set, and a globe here is the affordance that
+   makes the control findable -- a bare "EN" was missable and ambiguous. Drawn to
+   the .navtoggle construction: 20-unit box, 1.5 stroke, currentColor. */
+.globe{width:18px;height:18px;flex:none}
+/* The caret is CSS, matching .faq-q, and rotates on a transform only. */
+.langlink::after{content:"";flex:none;width:6px;height:6px;margin-inline-start:2px;
+  border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;
+  transform:rotate(45deg) translate(-1px,-2px);transition:transform .2s var(--ease)}
+.langpick[open] .langlink::after{transform:rotate(-135deg) translate(-2px,-1px)}
+.langpick[open] .langlink{color:var(--ink)}
+/* Matches .navmenu, which is the sibling panel in the same bar. A second panel
+   style in one header would read as two systems. */
+.langmenu{position:absolute;top:100%;inset-inline-end:0;margin-top:6px;min-width:180px;
+  padding:8px;background:var(--paper-raised);border:1px solid var(--rule);
+  border-radius:var(--r-card);box-shadow:var(--shadow-card);z-index:40}
+.langmenu a{display:flex;align-items:center;justify-content:space-between;gap:12px;
+  min-height:44px;padding:10px 12px;border-radius:12px;text-decoration:none;
+  color:var(--ink);font-size:.9375rem;font-weight:500;line-height:var(--lh-ui)}
+/* The current language is marked by a tick as well as by colour and by
+   aria-current, so it does not depend on seeing the purple. §8 names the bare
+   unicode tick as this system's mark for a confirmed state. */
+.langmenu a[aria-current]{color:var(--purple);background:rgba(124,58,237,.07)}
+.langmenu a[aria-current]::after{content:"✓";font-weight:600}
+
+@media (prefers-reduced-motion:reduce){
+  .langlink::after{transition:none}
+}
 
 /* ── Mobile menu disclosure ──
    Hidden on desktop. Below 768 the flattened nav used to render as an always-open
@@ -478,7 +535,11 @@ section{padding-block:var(--rhythm)}
 .dot-purple{background:var(--purple-fill)}
 .dot-green{background:var(--green)}
 .dot-ink{background:var(--ink)}
-.cell .label,.entry-dotlabel{display:inline-flex;align-items:center;gap:8px}
+/* Any label carrying a layer dot, not only the two places that happened to
+   need one first. Without this a dot outside .cell butts against its text.
+   :has() matches nothing new on the built pages — their dotted labels are
+   already covered by the two selectors beside it — so this is additive. */
+.cell .label,.entry-dotlabel,.label:has(.dot){display:inline-flex;align-items:center;gap:8px}
 
 .chipset{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
 /* The conversion set reads as the completing half of the pair. */
@@ -491,6 +552,111 @@ section{padding-block:var(--rhythm)}
 .featured{font-size:var(--fs-h3);font-weight:600;line-height:var(--lh-sub);
   letter-spacing:var(--tr-sub);padding-inline-start:20px;
   border-inline-start:3px solid var(--purple-fill)}
+
+
+/* ── Badge, field, choice — MARKETING-DESIGN.md §7.2 ──
+   Specified by the Marketing DS export and unused by any page today. They are
+   here so that the first surface that needs a form does not invent one, and
+   because a spec nobody can render is a spec nobody checks. Four decisions the
+   export did not make, each forced by a rule already in this file. */
+
+/* Sentence case, no tracking, no uppercase. The export sets badges in the same
+   uppercase-plus-4px-tracking as its eyebrow, and that construction is exactly
+   how tracking reached 漢字 once already. A badge is not a label. */
+.badge{display:inline-flex;align-items:center;gap:8px;border-radius:var(--r-badge);
+  padding:3px 14px;font-size:var(--fs-label);font-weight:500;line-height:var(--lh-ui)}
+.badge-purple{background:var(--purple);color:#FFFFFF}   /* 5.70:1 */
+.badge-green{background:var(--green-pale);color:var(--ink)}  /* 16.47:1 */
+/* Refused: the export's gold `promo` and pink `blush` tones, and its tilt={-2}
+   sticker treatment. Gold is the sale CTA and labels no category; a rotated
+   element is decoration carrying no information. */
+
+/* A control boundary needs 3:1 (WCAG 1.4.11), so the edge is --border-strong
+   at 3.57:1 on white, never --rule at 1.35:1. This is the same reason
+   .btn-outline does not use --rule either. */
+.field{display:flex;flex-direction:column;gap:8px}
+.field > label{font-size:var(--fs-label);font-weight:500;color:var(--subtle);
+  line-height:var(--lh-ui)}
+.input{width:100%;min-height:46px;padding:12px 16px;font:inherit;font-size:1rem;
+  line-height:var(--lh-ui);color:var(--ink);background:var(--paper-raised);
+  border:1px solid var(--border-strong);border-radius:var(--r-xs)}
+.input::placeholder{color:var(--subtle);opacity:1}
+/* No second focus treatment. The export adds a 3px rgba purple wash of its own;
+   this file already ships one focus signal at :focus-visible and a second would
+   compete with it. */
+
+/* The border is 1.5px in BOTH states and only its colour changes. The export
+   specifies 1px unselected and 1.5px selected, which reflows the row by half a
+   pixel on every pick — visible as a twitch down a stacked list. The state is
+   carried by the dot thickening and by the wash. */
+.choices{display:flex;flex-direction:column;gap:10px}
+.choice{display:flex;align-items:center;gap:12px;width:100%;min-height:44px;
+  padding:12px 16px;font:inherit;font-size:1rem;line-height:var(--lh-ui);
+  text-align:start;color:var(--ink);background:var(--paper-raised);
+  border:1.5px solid var(--border-strong);border-radius:var(--r-sm);cursor:pointer}
+.choice-dot{width:18px;height:18px;border-radius:50%;flex:none;
+  border:1.5px solid var(--border-strong)}
+.choice[aria-checked="true"]{border-color:var(--purple);
+  background:rgba(124,58,237,.07)}
+/* Thickens rather than fills: a filled dot puts a solid accent shape on every
+   selected row and spends §1's budget on furniture. */
+.choice[aria-checked="true"] .choice-dot{border-width:5px;border-color:var(--purple)}
+
+/* Invalid. The message sits next to the field it is about, never in a summary
+   at the top of the form: a reader fixing one field should not have to hold a
+   list in their head. aria-invalid carries the state, so the colour is never the
+   only signal — a reader who cannot see the red still hears "invalid" and still
+   reads the message, which is the same rule §2 applies to the success dot. */
+.input[aria-invalid="true"]{border-color:var(--danger)}
+.field-error{display:flex;gap:8px;font-size:.9375rem;line-height:var(--lh-ui);
+  color:var(--danger)}
+/* A whole-form message, for what no single field can carry. Ink on the pale
+   ground, not danger on it: the ground already says which kind of message this
+   is, and red body copy at paragraph length is harder to read, not more urgent. */
+.notice-error{background:var(--danger-pale);border-radius:var(--r-sm);
+  padding:12px 16px;color:var(--ink);font-size:.9375rem;line-height:var(--lh-ui);
+  border-inline-start:3px solid var(--danger)}
+
+/* 38% opacity, no colour change. */
+.btn[disabled],.input[disabled],.choice[disabled],[aria-disabled="true"]{
+  opacity:.38;cursor:default}
+
+/* Skeleton blocks match final layout dimensions and NEVER shimmer. A shimmer is
+   an infinite loop, which §9 bans outright, so the loading state here is a
+   static recessed block and the page simply arrives. */
+.skel{background:var(--paper-deep);border-radius:var(--r-xs);min-height:1em}
+
+/* ── FAQ disclosure ──
+   Added 2026-09-19. `faq:` reached the page as JSON-LD only, so the copy existed
+   for machines and for no reader. Native <details>/<summary>: it opens with no
+   JavaScript, answers the keyboard without an ARIA pattern to get wrong, and
+   survives a script error, which is the same requirement §9 puts on reveals.
+   Hairlines, not cards: §6.2 groups by a rule and a ground step, never by
+   elevation, and a stack of shadowed cards would out-weigh the section above it. */
+.faq{padding-block:var(--rhythm)}
+.faq-h{max-width:24em}
+.faq-l{margin-top:var(--gap-body);border-top:1px solid var(--rule);
+  max-width:var(--measure)}
+.faq-i{border-bottom:1px solid var(--rule)}
+/* 44px target, and the marker removed on both engines so the caret below is the
+   only affordance. list-style is Firefox; ::-webkit-details-marker is Safari. */
+.faq-q{display:flex;align-items:center;justify-content:space-between;gap:16px;
+  min-height:44px;padding-block:16px;cursor:pointer;list-style:none;
+  font-family:var(--f-display);font-size:var(--fs-sub);font-weight:600;
+  line-height:var(--lh-sub);letter-spacing:var(--tr-sub)}
+.faq-q::-webkit-details-marker{display:none}
+/* A caret drawn in CSS rather than an icon: §8 records that this system has no
+   icon set, and a disclosure caret is functional state, not the decorative
+   chevron §12 bans. It rotates on a transform only. */
+.faq-q::after{content:"";flex:none;width:9px;height:9px;
+  border-right:2px solid var(--purple);border-bottom:2px solid var(--purple);
+  transform:rotate(45deg) translate(-2px,-2px);
+  transition:transform .2s var(--ease)}
+.faq-i[open] .faq-q::after{transform:rotate(-135deg) translate(-3px,-3px)}
+.faq-a{padding-bottom:20px;color:var(--muted);max-width:var(--measure)}
+@media (prefers-reduced-motion:reduce){
+  .faq-q::after{transition:none}
+}
 
 /* Comparison on hairlines */
 .compare{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--rule);
@@ -740,7 +906,14 @@ tbody td{color:var(--muted)}
      on different rows and the bar doubles in height. */
   .bar-in{gap:8px}
   .bar-in > a[aria-label="Ezily"]{order:0}
-  .langlink{order:1;margin-inline-start:auto}
+  .langpick{order:1;margin-inline-start:auto}
+  /* Globe only below 768. The trigger gained a globe, a label and a caret, and
+     at 375px that took it from 27px to 72px -- enough that the logo, the picker,
+     the CTA and the menu toggle no longer fit one row, so the toggle wrapped and
+     the bar stood 122px tall on a phone. The label is the part that can go: the
+     aria-label still names the current language, and the menu names both. */
+  .langlink > span{display:none}
+  .langlink{padding-inline:10px}
   .bar .btn{order:2}
   .navtoggle{display:grid;order:3;margin-inline-start:0}
   /* dropdowns flatten: every destination stays reachable without hover */
