@@ -268,10 +268,13 @@ html[lang^="en"] .mark{background-size:100% .95em;padding:.02em .18em}
 .ink .mark{color:var(--ink)}
 
 /* ── Chrome ── */
-/* No transition here. It carried `transition:padding-top .2s ease`, which is a
-   layout property and so against §9, but it was also dead: nothing in this file,
-   in any media query or in the scroll state ever changes .bar's padding-top, and
-   the scroll state animates box-shadow on .bar-in instead. Removed 2026-09-21. */
+/* No transition here, deliberately. This rule used to animate its own top
+   padding over .2s, which §9 forbids because padding is a layout property, and
+   which was dead besides: nothing in this file, in any media query or in the
+   scroll state ever changes that value, and the scroll state animates the
+   box-shadow on .bar-in instead. Removed 2026-09-21.
+   Worded without a literal declaration on purpose — spelling one out here trips
+   the layout-property detector on the very comment saying it is gone. */
 .bar{position:sticky;top:0;z-index:30;padding-top:12px}
 /* The pill carries a ground once content runs underneath it, and none at all
    before that. Above the fold it is the only painted box on the screen, and a
