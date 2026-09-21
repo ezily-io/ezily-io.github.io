@@ -10,7 +10,20 @@
   --paper:#FAF8F3;                          /* incoming cream, was #F7F3EC */
   --paper-deep:#F1ECE4;                     /* derived: incoming has no recessed tier */
   --paper-raised:#FFFFFF;                   /* incoming: cards are pure white on cream */
-  --ink:#1C0B2E;                            /* incoming 紫黑, was #1A1410. 17.41:1 */
+  /* ── The neutral spine, de-purpled 2026-09-21 ──
+     Measured across five built pages: the purple family was 13–26% of painted
+     area while §1 budgets the accent at roughly 1%. The accent was never the
+     overspend — links, marker and dots together measure ~0.3%. The neutrals
+     were. Ink at #1C0B2E is hue 269 at saturation 0.61, which is not a
+     near-black but a violet, and it paints 9–22% of a page as the dark
+     sections, the footer plate, the primary buttons and every line of type.
+     Muted, subtle, rule and border-strong all sat at hue 264–286 while --paper
+     sits at hue 42, so the entire spine was breaking §2's own rule that the
+     neutrals are warm and a cool grey anywhere reads as a mistake.
+     Saturation is cut; hue and lightness are held within a point or two. The
+     dark plate keeps a violet cast, every ratio is recomputed below, and no
+     box in any layout moves. ── */
+  --ink:#241E2B;                            /* was #1C0B2E, sat .61 → .18. 15.27:1 */
   --purple:#7C3AED;                         /* text, links, focus. 5.37:1 on paper */
   /* Incoming's brand purple. DECORATIVE ONLY — mesh halos, dots, rules. It
      carries no text at any size: 4.15:1 on paper outright fails, and white on
@@ -23,16 +36,22 @@
   /* Incoming's #EAE5F0 is 1.17:1 on the new cream, weaker than the #E3DACB it
      replaces. Hairlines are this site's whole separation device, so it is
      darkened to hold the 1.25:1 the outgoing rule had. */
-  --rule:#E2DBEA;                           /* 1.27:1 paper / 1.35:1 white */
+  --rule:#E1DCE1;                           /* was #E2DBEA, sat .26 → .08.
+                                               1.27:1 paper / 1.35:1 white,
+                                               a hair stronger than it replaces */
   /* Derived: incoming has no outlined-control tier, and a control boundary
      needs 3:1 (WCAG 1.4.11). Its #CFC5DB-class neutrals sit near 1.5:1. */
-  --border-strong:#8F82A2;                  /* 3.36:1 paper / 3.57:1 white */
-  --muted:#4A3B5C;                          /* incoming text-secondary. 9.55:1 */
+  --border-strong:#8C8492;                  /* was #8F82A2, sat .15 → .06.
+                                               3.39 paper / 3.06 deep / 3.60 white */
+  --muted:#494150;                          /* was #4A3B5C, sat .22 → .10.
+                                               9.18 paper / 8.29 deep / 9.74 white */
   /* Incoming's #7A6D8A is 4.08:1 on --paper-deep, where .then and .slot put
      labels. Darkened to clear AA on all three light grounds. This also retires
      the ⚠️ in §2: the outgoing #8A8072 was 3.51:1 and failed outright. */
-  --subtle:#6E6279;                         /* 5.37 paper / 4.84 deep / 5.70 white */
-  --ink-muted:#AAA3AC;                      /* recomputed for the new ink. 7.52:1 */
+  --subtle:#6C656F;                         /* was #6E6279, sat .11 → .05.
+                                               5.31 paper / 4.79 deep / 5.63 white */
+  --ink-muted:#AAA3AC;                      /* already near-achromatic at sat .05,
+                                               so it is held. 6.59:1 on the new ink */
 
   /* ── Error, added from the Next Elite teardown 2026-09-19 ──
      The one genuine palette gap that teardown exposed. §7.3 has always said an
@@ -59,13 +78,18 @@
   /* Depth. §5 keeps dividers as the default grouping device; the merge admits
      exactly one elevation tier, for the floating bar and the standalone card.
      Coloured CTA glows are refused — they blow §1's accent budget. */
-  --shadow-nav:0 10px 30px rgba(28,11,46,.06),0 1px 0 rgba(28,11,46,.03);
-  --shadow-card:0 12px 34px rgba(28,11,46,.06);
-  --shadow-card-hover:0 18px 40px rgba(28,11,46,.10);
+  --shadow-nav:0 10px 30px rgba(36,30,43,.06),0 1px 0 rgba(36,30,43,.03);
+  --shadow-card:0 12px 34px rgba(36,30,43,.06);
+  --shadow-card-hover:0 18px 40px rgba(36,30,43,.10);
 
   /* Incoming's three mesh halos at roughly half its stated alpha, so the hero
-     stays inside the §1 accent budget. Hero and the closing panel only. */
-  --mesh:radial-gradient(circle at 16% 8%,rgba(150,69,254,.13),transparent 56%),
+     stays inside the §1 accent budget. Hero and the closing panel only.
+     2026-09-21: the purple halo alone measured 3.4–3.8% of painted area on the
+     sections pages, the second largest purple field on the page after the ink
+     plate, so its alpha is halved again. Green and yellow are untouched — they
+     were never the overspend, and dropping them too would just re-tint the
+     halo purple by leaving it unbalanced. */
+  --mesh:radial-gradient(circle at 16% 8%,rgba(150,69,254,.07),transparent 56%),
          radial-gradient(circle at 86% 26%,rgba(46,107,79,.10),transparent 58%),
          radial-gradient(circle at 62% 112%,rgba(255,216,111,.15),transparent 58%);
   --gap-body:var(--space-8);                /* section head to section body, 36 → 48 */
@@ -244,8 +268,11 @@ html[lang^="en"] .mark{background-size:100% .95em;padding:.02em .18em}
 .ink .mark{color:var(--ink)}
 
 /* ── Chrome ── */
-.bar{position:sticky;top:0;z-index:30;padding-top:12px;
-  transition:padding-top .2s ease}
+/* No transition here. It carried `transition:padding-top .2s ease`, which is a
+   layout property and so against §9, but it was also dead: nothing in this file,
+   in any media query or in the scroll state ever changes .bar's padding-top, and
+   the scroll state animates box-shadow on .bar-in instead. Removed 2026-09-21. */
+.bar{position:sticky;top:0;z-index:30;padding-top:12px}
 /* The pill carries a ground once content runs underneath it, and none at all
    before that. Above the fold it is the only painted box on the screen, and a
    reader measuring the header against the headline reads its border, not the
@@ -257,8 +284,8 @@ html[lang^="en"] .mark{background-size:100% .95em;padding:.02em .18em}
 
    The shadow still deepens once content is actually under the pill, which is
    the only thing the scroll state used to say. */
-.js .bar[data-scrolled="true"] .bar-in{box-shadow:0 14px 38px rgba(28,11,46,.10),
-  0 1px 0 rgba(28,11,46,.04)}
+.js .bar[data-scrolled="true"] .bar-in{box-shadow:0 14px 38px rgba(36,30,43,.10),
+  0 1px 0 rgba(36,30,43,.04)}
 /* Written as the exception rather than as the default: with no JS there is no
    data-scrolled, the resting pill below stands, and the bar is never a set of
    unbacked links over a hero. Same reasoning the shadow swap above uses.
@@ -495,7 +522,8 @@ section{padding-block:var(--rhythm)}
 .panel{border-radius:var(--r-panel);padding:clamp(32px,5vw,72px)}
 /* The mesh reads as jewel light on the Ink plate, which is what the incoming
    system describes it as. Alpha runs higher here than on paper because a halo
-   at .13 is invisible against 17:1 of ink. */
+   at the paper value is invisible against 15:1 of ink. The purple leg tracks
+   the paper mesh down, .30 → .18, for the same reason it was cut there. */
 .cta-panel{position:relative;overflow:hidden;background:var(--paper-raised);
   border:1px solid var(--rule)}
 .cta-panel::before{content:"";position:absolute;inset:0;pointer-events:none;
@@ -503,7 +531,7 @@ section{padding-block:var(--rhythm)}
 .cta-panel > *{position:relative}
 .ink.panel{position:relative;overflow:hidden}
 .ink.panel::before{content:"";position:absolute;inset:0;pointer-events:none;
-  background-image:radial-gradient(circle at 12% 0%,rgba(150,69,254,.30),transparent 55%),
+  background-image:radial-gradient(circle at 12% 0%,rgba(150,69,254,.18),transparent 55%),
     radial-gradient(circle at 92% 22%,rgba(46,107,79,.22),transparent 58%),
     radial-gradient(circle at 60% 116%,rgba(255,216,111,.18),transparent 56%)}
 .ink.panel > *{position:relative}
@@ -1128,8 +1156,8 @@ tbody td{color:var(--muted)}
 .qrm{padding:0;border:1px solid var(--rule);border-radius:var(--r-panel);
   background:var(--paper-raised);color:var(--ink);
   max-width:660px;width:calc(100% - 2 * var(--pad));
-  box-shadow:0 24px 60px rgba(28,11,46,.18)}
-.qrm::backdrop{background:rgba(28,11,46,.55)}
+  box-shadow:0 24px 60px rgba(36,30,43,.18)}
+.qrm::backdrop{background:rgba(36,30,43,.55)}
 .qrm-bar{display:flex;justify-content:flex-end;padding:12px 12px 0}
 .qrm-x{width:44px;height:44px;flex:none;display:grid;place-items:center;
   border:1px solid transparent;border-radius:var(--r-pill);background:transparent;
