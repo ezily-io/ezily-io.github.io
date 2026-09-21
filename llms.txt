@@ -19,7 +19,7 @@ Every page is published in American English at https://ezily.io/ and in Traditio
 
 ### Orchestrate
 
-- [Ezily Orchestrate](https://ezily.io/orchestrate): Products, inventory, pricing, and orders managed in one place. Adding a channel is a setting, not a hiring plan.
+- [Ezily Orchestrate](https://ezily.io/orchestrate): Momo, Shopee, and the channels you own. Products, inventory, pricing, and orders in one place. Open a channel without staffing one.
 
 ### Notes
 
@@ -65,7 +65,7 @@ Every page is published in American English at https://ezily.io/ and in Traditio
 
 ### Orchestrate
 
-- [Ezily Orchestrate](https://ezily.io/zh/orchestrate): 商品、庫存、價格、訂單在一個地方管完。上一個新通路是設定，不是招人。
+- [Ezily Orchestrate](https://ezily.io/zh/orchestrate): Momo、Shopee 和你自己的通路，商品、庫存、價格、訂單在一個地方管完。多開一個通路是設定，不是招人。
 
 ### Notes
 

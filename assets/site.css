@@ -521,8 +521,17 @@ section{padding-block:var(--rhythm)}
 .group-ink{background:rgba(250,248,243,.16);gap:2px;
   border-radius:var(--r-group);overflow:hidden}
 /* Needs .ink in the selector to outrank `.ink .body`, which would otherwise
-   mute these rows. They carry the section's argument, not support copy. */
-.ink .group-ink li{color:var(--paper)}
+   mute these rows. They carry the section's argument, not support copy.
+   ⚠️ The rows also have to carry a ground of their own. Without one the 2px
+   gaps had nothing to show through, so the washed field rendered as a single
+   flat block and every row sat flush against its left edge with no inset at
+   all — the construction described above was only half built. The rows take
+   the Ink ground the way .cell takes Paper Raised, and the field returns to
+   being what shows between them. Row padding, not card padding: these sit
+   inside a panel that already spends 52px, so var(--pad-surface) on top of it
+   pushed the copy 92px off the edge while the heading stayed at 52px. */
+.ink .group-ink li{color:var(--paper);background:var(--ink);
+  padding:18px clamp(20px,2.4vw,28px)}
 
 /* Editorial split — inverted proportions so it is not the classic */
 .split{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(28px,5vw,64px);align-items:start;margin-top:var(--gap-body)}
