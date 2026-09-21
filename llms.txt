@@ -46,9 +46,9 @@ Every page is published in American English at https://ezily.io/ and in Traditio
 
 ### Legal
 
-- [Ezily Acceptable Use Policy (AUP)](https://ezily.io/legal/aup)
-- [Ezily Data Processing Agreement (DPA)](https://ezily.io/legal/dpa)
-- [Ezily Privacy Policy](https://ezily.io/legal/privacy-policy)
+- [Ezily Acceptable Use Policy (AUP)](https://ezily.io/legal/aup): What is not allowed on Ezily: spam, security violations, intellectual property infringement, impersonation, and the LINE platform rules that apply throughout.
+- [Ezily Data Processing Agreement (DPA)](https://ezily.io/legal/dpa): The terms Ezily processes customer data under as a data processor: scope, subprocessors, security measures, and breach notification within 72 hours.
+- [Ezily Privacy Policy](https://ezily.io/legal/privacy-policy): How Ezily collects, processes, and protects personal data under Taiwan's PDPA and GDPR principles, and where Ezily acts as processor rather than controller.
 
 ## 繁體中文
 
@@ -92,7 +92,7 @@ Every page is published in American English at https://ezily.io/ and in Traditio
 
 ### Legal
 
-- [Ezily 允許使用政策](https://ezily.io/zh/legal/aup)
-- [Ezily 資料處理協議](https://ezily.io/zh/legal/dpa)
-- [Ezily 隱私權政策](https://ezily.io/zh/legal/privacy-policy)
+- [Ezily 允許使用政策](https://ezily.io/zh/legal/aup): 使用 Ezily 服務的行為規範：禁止垃圾訊息、安全性違反、智慧財產權侵害與冒充，以及必須遵守的 LINE 平台規範。
+- [Ezily 資料處理協議](https://ezily.io/zh/legal/dpa): Ezily 以資料處理者身分處理客戶資料的條款：處理範圍、次處理者、安全措施，以及個資外洩後 72 小時內通知的義務。
+- [Ezily 隱私權政策](https://ezily.io/zh/legal/privacy-policy): Ezily 依個人資料保護法與 GDPR 原則蒐集、處理與保護個人資料的說明，以及在 Mini App 使用者資料與平台帳號資料上各自擔任的角色。
 
