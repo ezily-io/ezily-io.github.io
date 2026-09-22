@@ -213,7 +213,20 @@ html[lang^="en"]{
      the rank comes from size and weight rather than from a second face. */
   --f:'Poppins',sans-serif;
   --f-display:'Poppins',sans-serif;
-  --fs-h1:clamp(2.5rem,1.8rem + 3vw,4.5rem);        /* display-xl  40 → 72 */
+  /* ⚠️ display-xl floors at 36px on Latin, not at the ladder's 40, and the
+     ceiling is untouched. Measured 2026-09-22: at 375px the hero column is
+     327px, and 40px Poppins 700 at -.028em fits about 15 characters — 14 on a
+     line carrying the marker, which adds .38em of padding. CLAUDE.md sets a
+     hero line at roughly 12 to 18 characters and caps the headline at two
+     lines, and CLAUDE.md outranks the ladder. At 40px "The product ships."
+     measures 358px and wrapped, so BOTH EN heroes ran four lines on every
+     phone while reading correctly at 1440. Holding 40 would have meant cutting
+     Latin headlines to 13 characters, which is a fragment rather than a
+     headline. The ramp is re-solved through (375,36) and (1440,72) instead:
+     23.32px + 3.3803vw. 繁中 keeps its 40px floor, because that one exists for
+     漢字 legibility rather than for fit, and 8 characters at 40px already
+     lands two lines. */
+  --fs-h1:clamp(2.25rem,1.4578rem + 3.3803vw,4.5rem); /* display-xl  36 → 72 */
   --fs-h2:clamp(2rem,1.56rem + 1.88vw,3.25rem);     /* display-l   32 → 52 */
   --lh-h1:1.05; --lh-h2:1.08; --lh-dm:1.1;  /* §11.2 band is 1.0–1.08, and h1 sits
                                                tighter than h2 so leading stays
