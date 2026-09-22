@@ -170,14 +170,14 @@
    Sizes are §11.1 clamps: floor at 375px, ceiling at 1440px. The old scale hit
    32.8px on a phone for --fs-h1, which is under §11.1's 40px Chinese floor. */
 html{
-  /* §14: one face per language, per the existing pattern — Noto Sans TC already
-     covered Latin inside 繁中, so Poppins never rendered a glyph there.
-     Fraunces is Latin-only, so 繁中 display routes to Noto Serif TC rather than
-     silently falling back to the body sans on every headline. That is the same
-     failure §3 caught with Newsreader, and it would have hit the primary
-     language on every page. */
-  --f:'Noto Sans TC','DM Sans',sans-serif;
-  --f-display:'Noto Serif TC',serif;
+  /* One face per language, each carrying display and body. Noto Sans TC covers
+     Latin too, so it renders the Latin words inside a 繁中 line and Poppins only
+     stands behind it. Poppins is Latin-only, which is why 繁中 display must name
+     a CJK face rather than inherit: left to fall back it would hit whatever the
+     system offers, on the primary language, on every page. That is the failure
+     §3 caught with Newsreader. */
+  --f:'Noto Sans TC','Poppins',sans-serif;
+  --f-display:'Noto Sans TC','Poppins',sans-serif;
   --fs-h1:clamp(2.5rem,2.06rem + 1.88vw,3.75rem);   /* display-xl  40 → 60 */
   --fs-h2:clamp(2rem,1.65rem + 1.5vw,3rem);         /* display-l   32 → 48 */
   --fs-dm:clamp(1.75rem,1.49rem + 1.13vw,2.5rem);   /* display-m   28 → 40 */
@@ -209,8 +209,10 @@ html{
   --measure:36rem;                          /* 576px ≈ 34 漢字 at 17px */
 }
 html[lang^="en"]{
-  --f:'DM Sans',sans-serif;
-  --f-display:'Fraunces',Georgia,serif;
+  /* Latin runs one family in both roles: Poppins carries display and body, and
+     the rank comes from size and weight rather than from a second face. */
+  --f:'Poppins',sans-serif;
+  --f-display:'Poppins',sans-serif;
   --fs-h1:clamp(2.5rem,1.8rem + 3vw,4.5rem);        /* display-xl  40 → 72 */
   --fs-h2:clamp(2rem,1.56rem + 1.88vw,3.25rem);     /* display-l   32 → 52 */
   --lh-h1:1.05; --lh-h2:1.08; --lh-dm:1.1;  /* §11.2 band is 1.0–1.08, and h1 sits
@@ -226,8 +228,10 @@ html[lang^="en"]{
   --lh-edit:1.35;
   --fs-label:.8125rem;                      /* 13px is fine for Latin caps */
   /* Tracking is assigned per weight, never shared across two weights that
-     happen to share a size. h1/h2 are Fraunces 700; --tr-sub is the 600 tier,
-     tightened harder because the lighter face needs less air. */
+     happen to share a size. h1/h2 are Poppins 700; --tr-sub is the 600 tier.
+     Poppins is a geometric sans drawn wide, so it needs at least as much
+     correcting at display size as the serif it replaced: these values sit
+     inside §11.3's -1.8px to -2.6px Latin display band at the h1 ceiling. */
   --tr-h1:-.028em; --tr-h2:-.018em; --tr-sub:-.022em;
   --tr-label:4px; --tr-caps:3px; --tr-meta:1px;
   --measure:41rem;                          /* 656px ≈ 70ch at 17px */
@@ -263,19 +267,28 @@ a{color:var(--purple)}
    display size. Checked rendered in a four-column flow and a listing row. */
 .h1{font-family:var(--f-display);font-size:var(--fs-h1);font-weight:700;line-height:var(--lh-h1);letter-spacing:var(--tr-h1);text-wrap:balance}
 .h2{font-family:var(--f-display);font-size:var(--fs-h2);font-weight:700;line-height:var(--lh-h2);letter-spacing:var(--tr-h2);text-wrap:balance}
-.h3{font-family:var(--f-display);font-size:var(--fs-h3);font-weight:600;line-height:var(--lh-sub);letter-spacing:var(--tr-sub)}
+/* ⚠️ text-wrap on both rungs below, and it is not a nicety on this site.
+   繁中 breaks between any two 漢字, so a heading or a paragraph whose last line
+   is one character is the DEFAULT outcome rather than an edge case, and there
+   is no hyphenation or word boundary to absorb it. `balance` on the heading
+   evens the two lines instead of leaving an orphan (measured on careers:
+   「你做的東西很快就會上線」set 10 + 1 before this rule); `pretty` on body copy
+   pulls the last line back to a readable length. Both degrade to normal
+   wrapping where unsupported, so nothing here is load-bearing for legibility. */
+.h3{font-family:var(--f-display);font-size:var(--fs-h3);font-weight:600;line-height:var(--lh-sub);letter-spacing:var(--tr-sub);text-wrap:balance}
 .lead{font-size:var(--fs-sub);line-height:var(--lh-sub);letter-spacing:var(--tr-sub);
   color:var(--muted);text-wrap:balance}
-.body{font-size:1.0625rem;color:var(--muted)}
-.small{font-size:.9375rem;color:var(--muted)}
+.body{font-size:1.0625rem;color:var(--muted);text-wrap:pretty}
+.small{font-size:.9375rem;color:var(--muted);text-wrap:pretty}
 .label{font-size:var(--fs-label);font-weight:500;letter-spacing:var(--tr-label);
   line-height:var(--lh-ui);text-transform:uppercase;color:var(--muted)}
 .measure{max-width:var(--measure)}
 /* Editorial. §14 retires Newsreader: it was Latin-only, so 繁中 fell back to the
    body sans and the editorial voice simply did not exist on the primary
-   language. The display face now carries it in both — Fraunces italic on Latin,
-   Noto Serif TC upright on 繁中. Upright is not a compromise: CJK has no true
-   italic, and a slanted 明體 is a synthetic distortion of the face. */
+   language. Poppins italic carries it on Latin. On 繁中 it is Noto Sans TC 600,
+   upright, which is the same face as the body and separates on weight and size
+   alone. Upright is not a compromise: CJK has no true italic, and a slanted
+   繁中 face is a synthetic distortion. */
 .edit{font-family:var(--f-display);font-size:var(--fs-edit);
   line-height:var(--lh-edit);font-weight:600}
 html[lang^="en"] .edit{font-style:italic}
@@ -283,10 +296,12 @@ html[lang^="en"] .edit{font-style:italic}
 /* ── Signature move: the marker. One per view. ── */
 /* ⚠️ background-size is doing real work here, not tidiness. Painted at its
    natural size the stroke fills the inline box, whose height comes from the
-   FONT's ascent and descent — and Fraunces' metrics are far taller than the
-   Poppins they replaced. Measured on the EN hero at 375px: a 75px stroke in a
-   62px line, 12.9px of it overhanging the line above, which is precisely the
-   collision §11.2 says display leading has to clear. Sizing the stroke in em
+   FONT's ascent and descent, which differ by face: Fraunces measured a 75px
+   stroke inside a 62px line on the EN hero at 375px, 12.9px of it overhanging
+   the line above, which is precisely the collision §11.2 says display leading
+   has to clear. Poppins runs shorter, and the em sizing is why neither the
+   swap back to it nor the 繁中 move off Noto Serif TC needed a new number
+   here. Sizing the stroke in em
    and centring it makes the mark depend on the type size instead of on one
    face's vertical metrics, so it survives a face change. */
 .mark{background-image:linear-gradient(104deg,transparent .4%,var(--lilac) 1.4%,var(--lilac) 98.6%,transparent 99.4%);
@@ -295,7 +310,8 @@ html[lang^="en"] .edit{font-style:italic}
   white-space:nowrap;
   -webkit-box-decoration-break:clone;box-decoration-break:clone}
 /* Latin sits on a tighter leading tier (1.05 against 1.28), so its stroke is
-   shorter. 0.95em still spans cap height to descender for Fraunces. */
+   shorter. 0.95em still spans cap height to descender for Poppins, whose ink
+   runs about 0.91em from cap top to descender bottom. */
 html[lang^="en"] .mark{background-size:100% .95em;padding:.02em .18em}
 .ink .mark{color:var(--ink)}
 
@@ -508,8 +524,10 @@ section{padding-block:var(--rhythm)}
 
 /* ══ .hero--stage: the centred composition, 2026-09-22 ══════════════════════
    Adapted from KokonutUI's Shape Hero. §6's "no centred hero" is overridden
-   here by an explicit instruction, and this is the one page that carries it —
-   the offset stack above stays the default for every other hero.
+   here by an explicit instruction. Two pages carry it now, home and careers
+   (2026-09-22) — the offset stack above stays the default for the rest, and it
+   is still opted into per page by `stage: shapes` rather than being the new
+   default for a hero.
    The mesh is switched off rather than layered under: the shapes ARE this
    hero's atmosphere, and running both put the field past the §1 budget the
    2026-09-21 halo cut had just brought it back inside. The grid ::after stays,
@@ -599,71 +617,6 @@ section{padding-block:var(--rhythm)}
    centred - the kind of half-centred hero that reads as a mistake rather than a
    choice. The row has to centre its own contents. */
 .hero-grid--center .cta-row{justify-content:center}
-/* The schematic takes the five columns the headline gave up and spans both
-   rows, so the hero is still asymmetric by width rather than by an empty cell:
-   650px of copy against 386px of diagram. aria-hidden in the markup, because it
-   restates the section below it and a screen reader would hear the entry points
-   twice.
-
-   It ships in two cuts, one per regime, because one drawing cannot serve both.
-   `.hv-wide` is the 360-unit vertical fan and `.hv-tall` is a 327-unit
-   compressed one; each is hidden in the regime it does not belong to, so the
-   reader downloads about 1KB of unused path data and never sees two diagrams.
-   Rotating or merely rescaling a single viewBox was measured and refused: at
-   375px the desktop art scales its 1.5 stroke to 0.43px and its capsules to
-   30px, which is a grey smear rather than five objects. */
-.hero-vis svg{display:block;width:100%;height:auto}
-/* Desktop regime, 901px and up. The schematic used to be `align-self:center`
-   at `max-width:360px`, which centred it on the grid's own midline rather than
-   on any typographic line and parked it 122px clear of the copy column's right
-   edge with nothing stating the boundary. It read as a sticker on cream. The
-   hairline on the column-8 boundary is what the composition was missing: §6.2
-   groups by hairline and ground step rather than by elevation, and this is the
-   hairline doing exactly that job. 417px is the 5-column span less the
-   space-7 inset and the border, so the field runs rule to right margin and
-   closes the gap instead of hanging in it. */
-@media (min-width:901px){
-  .hero-vis{grid-column:8 / 13;grid-row:1 / 3;
-    align-self:stretch;justify-self:stretch;width:auto;max-width:none;
-    border-inline-start:1px solid var(--rule);
-    padding-inline-start:var(--space-7);
-    display:grid;align-content:center}
-  .hero-vis svg{max-width:417px}
-  /* ⚠️ Scoped to .hero-vis, not bare `.hv-tall`. The base rule above is
-     `.hero-vis svg{display:block}` at (0,1,1), which outranks a lone class at
-     (0,1,0) whatever the media query says, so the bare selector left BOTH cuts
-     painted: the hero measured 903px instead of 674 and the phone fan hung
-     under the desktop one. Invisible in the CSS, obvious in a measurement. */
-  .hero-vis .hv-tall{display:none}
-}
-/* Phone and tablet regime, 900px and down. ⚠️ This replaces a plain
-   `.hero-vis{display:none}` that was declared twice, at 900 and again at 768.
-   Hiding it was the right call for the art that existed: the desktop fan
-   stacked full-width pushed the CTAs off the first screen on a 390px device.
-   But §1 makes mechanism specificity the whole credibility strategy on a site
-   with no numbers and no customer names, and hiding the diagram left the hero
-   carrying none of it on the device most of this site is read on. The
-   compressed cut answers both: it sits BELOW the CTAs rather than between them
-   and the headline, so the first screen is unchanged, and it costs 205px at
-   the bottom of a section the reader has already decided to scroll past.
-   `1 / -1` rather than `1 / 13`, because it has to be correct in the 12-track
-   grid at 769-900 and in the 1-track grid below 768. */
-@media (max-width:900px){
-  .hero-vis{grid-column:1 / -1;grid-row:auto;width:100%;max-width:none;
-    margin-top:var(--space-6);
-    border-top:1px solid var(--rule);padding-top:var(--space-7)}
-  .hero-vis .hv-wide{display:none}
-}
-/* The capsules take Border Strong and the lines that carry them take Rule.
-   Both at Rule the diagram measured 1.27:1 against Paper and disappeared into
-   the hero's mesh at its rendered 360px; the entry points have to read as
-   objects while the flow between them stays quiet. Border Strong is 3.36:1,
-   the same hairline .btn-outline is drawn with. */
-.hv-i rect{stroke:var(--border-strong);stroke-width:1.5}
-.hv-i path{stroke:var(--rule);stroke-width:1.5}
-.hv-node circle:first-child{stroke:var(--lilac);stroke-width:1.5}
-.hv-node circle:last-child{fill:var(--purple)}
-
 /* Dividers over shadows: 2px gaps on a Rule field become hairlines */
 .group{display:grid;margin-top:var(--gap-body)}
 .group:not(.group-ink){gap:20px}
@@ -736,6 +689,54 @@ section{padding-block:var(--rhythm)}
    pushed the copy 92px off the edge while the heading stayed at 52px. */
 .ink .group-ink li{color:var(--paper);background:var(--ink);
   padding:18px clamp(20px,2.4vw,28px)}
+
+/* ══ .mf: the manifesto with its drawing, 2026-09-22 ═════════════════════════
+   Copy on 6 columns, drawing on 5, with column 7 left as the gap. §5.3's
+   layout law is satisfied by the width step rather than by an empty cell, the
+   same way the hero's is: the copy column is wider, the drawing hangs off the
+   right margin, and nothing is centred.
+   align-items:center, not start. The figure is two stacked states reading top
+   to bottom, so it has no first line to align a baseline to; centring it against
+   the paragraph block is what puts the two states either side of the argument
+   they illustrate. */
+.mf{display:grid;grid-template-columns:repeat(12,1fr);
+  column-gap:var(--gutter);row-gap:var(--space-8);align-items:center}
+/* 7 + 4, with column 8 left as the gap. The copy takes 7 because --measure is
+   576px and 6 columns is 554: the paragraphs were being set 22px narrower than
+   the measure they are written against, which cost a full 繁中 character per
+   line and left the first paragraph with a three-character last line. The
+   drawing takes what is left, and 4 columns is 361px against a 360-unit
+   viewBox, so it renders at almost exactly 1:1. */
+.mf > .stack{grid-column:1 / 8}
+.mf-vis{grid-column:9 / 13}
+.mf-vis svg{display:block;width:100%;height:auto;max-width:417px}
+/* Colour is routed off the GROUND, not hard-coded, so one drawing serves both.
+   --lilac is 11.93:1 on Ink and unreadably pale on Paper; --purple is 5.37:1
+   on Paper and 3.20:1 on Ink, which §2 allows for a mark and refuses for text.
+   Neither value works on both grounds, so the ground names its own pair and
+   the geometry below never mentions a colour. */
+.mf-vis{--mv-line:var(--border-strong);--mv-live:var(--purple);--mv-dot:var(--purple)}
+.ink .mf-vis{--mv-line:var(--ink-muted);--mv-live:var(--lilac);--mv-dot:var(--lilac)}
+/* The spent state is drawn a third down from the kept one. It is the paragraph
+   the copy is arguing against, so it reads as the quieter of the two without a
+   second colour being introduced to say so — §13.3 refuses a fourth colour and
+   this is the kind of place one gets proposed. */
+.mv-was{opacity:.5}
+.mv-ring,.mv-line,.mv-tip,.mv-back{stroke:var(--mv-line);stroke-width:1.5}
+.mv-tip{stroke-linecap:round;stroke-linejoin:round}
+.mv-back{stroke-dasharray:4 5}
+.mv-seed{fill:var(--mv-line)}
+.mv-ring-live{stroke:var(--mv-live)}
+.mv-seed-live{fill:var(--mv-live)}
+.mv-held circle{fill:var(--mv-dot)}
+@media (max-width:900px){
+  /* One column. The drawing follows the argument rather than sitting beside it,
+     and it caps well under the column: at full width the two rings inflate to
+     the size of a headline and the figure stops reading as support. */
+  .mf{grid-template-columns:1fr}
+  .mf > .stack,.mf-vis{grid-column:auto}
+  .mf-vis svg{max-width:320px}
+}
 
 /* Editorial split — inverted proportions so it is not the classic */
 .split{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(28px,5vw,64px);align-items:start;margin-top:var(--gap-body)}
@@ -968,7 +969,7 @@ tbody td{color:var(--muted)}
   align-items:baseline;
   padding-block:26px;border-bottom:1px solid var(--rule);text-decoration:none;color:inherit}
 .row-t{font-family:var(--f-display);font-size:var(--fs-sub);font-weight:600;line-height:var(--lh-sub)}
-.row-d{color:var(--muted);font-size:1rem;margin-top:8px;max-width:var(--measure)}
+.row-d{color:var(--muted);font-size:1rem;margin-top:8px;max-width:var(--measure);text-wrap:pretty}
 .row-m{font-size:var(--fs-label);line-height:var(--lh-ui);color:var(--subtle);
   letter-spacing:var(--tr-meta);white-space:nowrap;
   min-width:0;overflow:hidden;text-overflow:ellipsis}
@@ -1001,9 +1002,6 @@ tbody td{color:var(--muted)}
      difference against .hero-head and the space it opens on the right, which
      is the same reading the base rule records. */
   .hero-foot{grid-column:1 / 10}
-  /* `.hero-vis{display:none}` was here. It now takes the compressed cut in its
-     own max-width:900 block above; a second declaration here would win on
-     source order and put the hiding back. */
   /* .group.c3 stays three across down to 768. Two columns would leave the
      third cell alone beside an empty half, and §6 rules the cell count exact. */
   .flow{grid-template-columns:repeat(2,1fr)}
@@ -1238,15 +1236,6 @@ tbody td{color:var(--muted)}
    last, and the hero is a still image from that moment on.
    Opacity carries the capsules rather than a transform, because a transform on
    an SVG group resolves against user units and drifts with the viewBox scale. */
-.js .hero-vis .hv-i{animation:ez-fade .5s var(--ease) both}
-.js .hero-vis .hv-i:nth-of-type(1){animation-delay:.18s}
-.js .hero-vis .hv-i:nth-of-type(2){animation-delay:calc(.18s + var(--stagger))}
-.js .hero-vis .hv-i:nth-of-type(3){animation-delay:calc(.18s + var(--stagger) * 2)}
-.js .hero-vis .hv-i:nth-of-type(4){animation-delay:calc(.18s + var(--stagger) * 3)}
-.js .hero-vis .hv-i:nth-of-type(5){animation-delay:calc(.18s + var(--stagger) * 4)}
-.js .hero-vis .hv-node{animation:ez-settle .5s var(--ease) both;
-  animation-delay:calc(.18s + var(--stagger) * 5);
-  transform-box:fill-box;transform-origin:center}
 
 /* ── Interaction: named properties, never `all` ── */
 /* Three rules govern this section.
@@ -1322,7 +1311,6 @@ tbody td{color:var(--muted)}
   .js [data-rv],.js [data-rv] *{opacity:1!important;transform:none!important;
     transition:none!important;animation:none!important}
   .js .hero .h1,.js .hero .lead,.js .hero .cta-row{animation:none;opacity:1;transform:none}
-  .js .hero-vis .hv-i,.js .hero-vis .hv-node{animation:none;opacity:1;transform:none}
   .js .hero-shapes .hs{animation:none;opacity:1;transform:rotate(var(--rot))}
   /* Fewer and gentler, not none: colour and background still transition, so a
      hover or a press still reads as an answer. Only movement is dropped. */
