@@ -723,52 +723,70 @@ section{padding-block:var(--rhythm)}
 .ink .group-ink li{color:var(--paper);background:var(--ink);
   padding:18px clamp(20px,2.4vw,28px)}
 
-/* ══ .mf: the manifesto with its drawing, 2026-09-22 ═════════════════════════
-   Copy on 6 columns, drawing on 5, with column 7 left as the gap. §5.3's
-   layout law is satisfied by the width step rather than by an empty cell, the
-   same way the hero's is: the copy column is wider, the drawing hangs off the
-   right margin, and nothing is centred.
-   align-items:center, not start. The figure is two stacked states reading top
-   to bottom, so it has no first line to align a baseline to; centring it against
-   the paragraph block is what puts the two states either side of the argument
-   they illustrate. */
-.mf{display:grid;grid-template-columns:repeat(12,1fr);
-  column-gap:var(--gutter);row-gap:var(--space-8);align-items:center}
-/* 7 + 4, with column 8 left as the gap. The copy takes 7 because --measure is
-   576px and 6 columns is 554: the paragraphs were being set 22px narrower than
-   the measure they are written against, which cost a full 繁中 character per
-   line and left the first paragraph with a three-character last line. The
-   drawing takes what is left, and 4 columns is 361px against a 360-unit
-   viewBox, so it renders at almost exactly 1:1. */
+/* ══ .mf-sec: the manifesto with its photograph, 2026-09-22 ══════════════════
+   ⚠️ §10 bans a decorative image. This one ships by instruction, and the job of
+   the rules below is to make it behave like the section's ground rather than
+   like art pasted into a slot — which is the failure mode §10 was written
+   against after twelve stock headers were deleted for it.
+   Three moves do that work, and none of them is decoration for its own sake:
+
+   1. It BLEEDS off the right edge instead of sitting in a box. §5.3 lets only
+      an Ink section exceed the container, and this is one, so the photo is a
+      sibling of .wrap pinned to the section rather than a grid cell inside it.
+      A framed rectangle on a dark band always reads as pasted; an edge that
+      never resolves does not.
+   2. Its left edge DISSOLVES into the Ink with a mask, so there is no seam to
+      see. The vertical fade is a separate ::after painted in --ink rather than
+      a second mask layer, because compositing two masks needs mask-composite
+      and its unsupported fallback is `add`, which would make the whole layer
+      opaque and put a hard line across the band — the exact defect this is
+      removing. A gradient in the ground colour cannot fail that way.
+   3. It is knocked back in CSS. The source is a bright midday landscape and the
+      plate is 15.27:1 ink; at full strength it reads as a lightbox on the page
+      and spends far more of the frame than §1 budgets. Saturation and
+      brightness come down until it sits under the copy. */
+.mf-sec{position:relative;overflow:hidden}
+.mf-sec > .wrap{position:relative;z-index:1}
+.mf{display:grid;grid-template-columns:repeat(12,1fr);column-gap:var(--gutter)}
+/* 7 columns, the same measure the drawing's copy column used. --measure is
+   576px and 6 columns is 554, which cost a full 繁中 character per line. */
 .mf > .stack{grid-column:1 / 8}
-.mf-vis{grid-column:9 / 13}
-.mf-vis svg{display:block;width:100%;height:auto;max-width:417px}
-/* Colour is routed off the GROUND, not hard-coded, so one drawing serves both.
-   --lilac is 11.93:1 on Ink and unreadably pale on Paper; --purple is 5.37:1
-   on Paper and 3.20:1 on Ink, which §2 allows for a mark and refuses for text.
-   Neither value works on both grounds, so the ground names its own pair and
-   the geometry below never mentions a colour. */
-.mf-vis{--mv-line:var(--border-strong);--mv-live:var(--purple);--mv-dot:var(--purple)}
-.ink .mf-vis{--mv-line:var(--ink-muted);--mv-live:var(--lilac);--mv-dot:var(--lilac)}
-/* The spent state is drawn a third down from the kept one. It is the paragraph
-   the copy is arguing against, so it reads as the quieter of the two without a
-   second colour being introduced to say so — §13.3 refuses a fourth colour and
-   this is the kind of place one gets proposed. */
-.mv-was{opacity:.5}
-.mv-ring,.mv-line,.mv-tip,.mv-back{stroke:var(--mv-line);stroke-width:1.5}
-.mv-tip{stroke-linecap:round;stroke-linejoin:round}
-.mv-back{stroke-dasharray:4 5}
-.mv-seed{fill:var(--mv-line)}
-.mv-ring-live{stroke:var(--mv-live)}
-.mv-seed-live{fill:var(--mv-live)}
-.mv-held circle{fill:var(--mv-dot)}
+/* ⚠️ The ramp HOLDS at transparent for its first quarter, and that stop is a
+   contrast requirement rather than a taste call. A plain 0%→62% fade put the
+   photo at 28% alpha under the right-hand end of the body copy at 1000px,
+   which measured 3.83:1 against --ink-muted — under the 4.5:1 AA owes 17px
+   text, and invisible in a screenshot. Holding the mask fully transparent to
+   26% keeps the copy column on flat Ink at every width: the column is 7 of 12,
+   so it ends 18% into this box at 1440 and 22% at 1000, and 26% clears both
+   with margin. Measured after the change at 6.59:1, which is the bare-Ink
+   number — the photograph reaches no text at all.
+   Re-run that measurement if the copy column, this width, or these stops move;
+   the three are a set. */
+.mf-photo{position:absolute;top:0;bottom:0;right:0;width:min(54%,780px);
+  pointer-events:none;
+  -webkit-mask-image:linear-gradient(to right,transparent 0,transparent 26%,#000 72%);
+  mask-image:linear-gradient(to right,transparent 0,transparent 26%,#000 72%)}
+.mf-photo img{display:block;width:100%;height:100%;object-fit:cover;
+  filter:saturate(.72) brightness(.76)}
+/* Painted over the photo, in the ground colour, so the top and bottom edges
+   resolve into the band instead of butting against the paper above and below
+   it. Inherits the parent's mask, so it fades out to the left with the photo. */
+.mf-photo::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(to bottom,var(--ink) 0,transparent 26%,
+    transparent 74%,var(--ink) 100%)}
 @media (max-width:900px){
-  /* One column. The drawing follows the argument rather than sitting beside it,
-     and it caps well under the column: at full width the two rings inflate to
-     the size of a headline and the figure stops reading as support. */
+  /* One column. The photo stops bleeding sideways and becomes a full-width band
+     under the argument, still edge to edge because it sits outside .wrap, and
+     still dissolving — downward now, since the seam that shows on a phone is
+     the one where the copy ends and the picture starts. */
   .mf{grid-template-columns:1fr}
-  .mf > .stack,.mf-vis{grid-column:auto}
-  .mf-vis svg{max-width:320px}
+  .mf > .stack{grid-column:auto}
+  .mf-photo{position:static;width:auto;margin-top:var(--space-8);
+    -webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 34%);
+    mask-image:linear-gradient(to bottom,transparent 0,#000 34%)}
+  .mf-photo img{height:auto;aspect-ratio:16 / 10}
+  .mf-photo::after{background:linear-gradient(to bottom,var(--ink) 0,
+    transparent 38%,transparent 82%,var(--ink) 100%)}
 }
 
 /* Editorial split — inverted proportions so it is not the classic */
