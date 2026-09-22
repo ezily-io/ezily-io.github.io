@@ -200,6 +200,12 @@ html{
      runs 0 on every sign. These three used to be hard-coded px values that
      reached 漢字 — .label at 4px (0.31em) and the footer heads at 3px. */
   --tr-label:0; --tr-caps:0; --tr-meta:0;
+  /* Display weight, one token for h1 and h2 in both roles (.h1/.h2 and the
+     prose rungs). 繁中 holds Noto Sans TC 700: 漢字 carry far more strokes per
+     em than a Latin glyph, so a display line set lighter loses the counters
+     that separate one character from the next at a glance. Latin drops to 500
+     below. */
+  --w-display:700;
   /* rem, deliberately: em/ch resolve against the ELEMENT's own font-size, which
      is why .lead at 22px and .edit at 26px used to blow past the text column.
      A column-derived px value fails the other way — the 12-column formula
@@ -225,7 +231,11 @@ html[lang^="en"]{
      headline. The ramp is re-solved through (375,36) and (1440,72) instead:
      23.32px + 3.3803vw. 繁中 keeps its 40px floor, because that one exists for
      漢字 legibility rather than for fit, and 8 characters at 40px already
-     lands two lines. */
+     lands two lines.
+     ⚠️ That 15-character measurement was taken at Poppins 700, which --w-display
+     retired for Latin on 2026-09-22. Medium sets a little narrower, so the ramp
+     is now conservative rather than tight. It is left alone: it was solved to
+     land two lines at 375, and a lighter cut can only land them sooner. */
   --fs-h1:clamp(2.25rem,1.4578rem + 3.3803vw,4.5rem); /* display-xl  36 → 72 */
   --fs-h2:clamp(2rem,1.56rem + 1.88vw,3.25rem);     /* display-l   32 → 52 */
   --lh-h1:1.05; --lh-h2:1.08; --lh-dm:1.1;  /* §11.2 band is 1.0–1.08, and h1 sits
@@ -241,11 +251,21 @@ html[lang^="en"]{
   --lh-edit:1.35;
   --fs-label:.8125rem;                      /* 13px is fine for Latin caps */
   /* Tracking is assigned per weight, never shared across two weights that
-     happen to share a size. h1/h2 are Poppins 700; --tr-sub is the 600 tier.
+     happen to share a size. h1/h2 are Poppins 500 (see --w-display below);
+     --tr-sub is the 600 tier.
      Poppins is a geometric sans drawn wide, so it needs at least as much
      correcting at display size as the serif it replaced: these values sit
      inside §11.3's -1.8px to -2.6px Latin display band at the h1 ceiling. */
   --tr-h1:-.028em; --tr-h2:-.018em; --tr-sub:-.022em;
+  /* Latin display runs Poppins 500, not 700. Set 2026-09-22. Poppins is drawn
+     geometric and wide, and at the 72px h1 ceiling the Bold cut closes its
+     counters and reads as a shout rather than as a headline; Medium keeps the
+     circular o and the open a legible at display size and lets the size do the
+     ranking, which is what §11.1's ladder is for. The tracking above is held:
+     it was solved at the h1 ceiling against Poppins' width, which does not
+     change with weight, and Medium at -.028em still measures inside §11.3's
+     -1.8px to -2.6px Latin display band. */
+  --w-display:500;
   --tr-label:4px; --tr-caps:3px; --tr-meta:1px;
   --measure:41rem;                          /* 656px ≈ 70ch at 17px */
 }
@@ -278,8 +298,8 @@ a{color:var(--purple)}
    19.2px, and .row-t / .prose h1+p at 19px — are on the sub-s rung now. All four
    do the same job: a label or title that outranks body copy without reaching a
    display size. Checked rendered in a four-column flow and a listing row. */
-.h1{font-family:var(--f-display);font-size:var(--fs-h1);font-weight:700;line-height:var(--lh-h1);letter-spacing:var(--tr-h1);text-wrap:balance}
-.h2{font-family:var(--f-display);font-size:var(--fs-h2);font-weight:700;line-height:var(--lh-h2);letter-spacing:var(--tr-h2);text-wrap:balance}
+.h1{font-family:var(--f-display);font-size:var(--fs-h1);font-weight:var(--w-display);line-height:var(--lh-h1);letter-spacing:var(--tr-h1);text-wrap:balance}
+.h2{font-family:var(--f-display);font-size:var(--fs-h2);font-weight:var(--w-display);line-height:var(--lh-h2);letter-spacing:var(--tr-h2);text-wrap:balance}
 /* ⚠️ text-wrap on both rungs below, and it is not a nicety on this site.
    繁中 breaks between any two 漢字, so a heading or a paragraph whose last line
    is one character is the DEFAULT outcome rather than an edge case, and there
@@ -928,8 +948,8 @@ section{padding-block:var(--rhythm)}
    heading against 17.6px below it, which is the craft rule holding at 4.8:1. */
 .prose{padding-block:clamp(56px,8vw,88px);overflow-wrap:break-word}
 .prose p,.prose ul,.prose ol,.prose h4,.prose hr{max-width:var(--measure)}
-.prose h1{font-family:var(--f-display);font-size:var(--fs-h1);font-weight:700;line-height:var(--lh-h1);letter-spacing:var(--tr-h1);text-wrap:balance;max-width:16em}
-.prose h2{font-family:var(--f-display);font-size:var(--fs-dm);font-weight:700;line-height:var(--lh-dm);
+.prose h1{font-family:var(--f-display);font-size:var(--fs-h1);font-weight:var(--w-display);line-height:var(--lh-h1);letter-spacing:var(--tr-h1);text-wrap:balance;max-width:16em}
+.prose h2{font-family:var(--f-display);font-size:var(--fs-dm);font-weight:var(--w-display);line-height:var(--lh-dm);
   letter-spacing:var(--tr-h2);margin-top:2.75em;text-wrap:balance;max-width:22em}
 .prose h3{font-family:var(--f-display);font-size:var(--fs-sub);font-weight:600;line-height:var(--lh-sub);margin-top:1.9em;max-width:26em}
 .prose p{margin-top:1.1em;color:var(--muted)}

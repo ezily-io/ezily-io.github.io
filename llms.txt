@@ -15,7 +15,7 @@ Every page is published in American English at https://ezily.io/ and in Traditio
 - [Conversion Best Practices](https://ezily.io/conversion-best-practices): Customers arrive with a specific reason and land on a page built for everyone. Here is how e-commerce brands actually lift conversion on LINE.
 - [Engagement Best Practices](https://ezily.io/engagement-best-practices): Customers looked, asked, joined the activation, and your list still shows a blank. Here is how e-commerce brands actually run engagement on LINE.
 - [LINE Mini App for E-commerce Businesses](https://ezily.io/line-mini-app): A LINE Mini App lets customers complete a whole purchase inside LINE with no download and no signup. Here is how it differs from LIFF, what e-commerce brands use it for, and what building one actually involves.
-- [Ezily Touchpoints](https://ezily.io/touchpoints): Meet customers where they already are, tag them, and close the sale. LINE is the first surface.
+- [Ezily Touchpoints](https://ezily.io/touchpoints): You paid for that traffic once. Recognize those people inside LINE, tag them, and close the sale.
 
 ### Orchestrate
 
@@ -61,7 +61,7 @@ Every page is published in American English at https://ezily.io/ and in Traditio
 - [轉換優化最佳實務](https://ezily.io/zh/conversion-best-practices): 客人帶著具體的理由點進來，卻看到一個為所有人準備的頁面。這篇整理電商品牌在 LINE 上提高轉換的實際做法。
 - [互動經營最佳實務](https://ezily.io/zh/engagement-best-practices): 客人看了、問了、參加了活動，然後在你的名單上還是一片空白。這篇整理電商品牌在 LINE 上經營互動的實際做法。
 - [LINE Mini App 是什麼，電商品牌為什麼要用](https://ezily.io/zh/line-mini-app): 免下載、免註冊，客人在 LINE 裡完成整段購物流程。這篇說明它和 LIFF 的差別、電商能用它做什麼，以及實際要處理的事。
-- [Ezily Touchpoints](https://ezily.io/zh/touchpoints): 在客人已經在的地方認識他、留下標籤、完成成交。第一個場是 LINE。
+- [Ezily Touchpoints](https://ezily.io/zh/touchpoints): 廣告和活動帶來的流量，你已經買過一次。在 LINE 裡把人認出來、留下標籤、直接成交。
 
 ### Orchestrate
 
