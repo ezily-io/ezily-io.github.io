@@ -477,10 +477,57 @@ section{padding-block:var(--rhythm)}
    rows, so the hero is still asymmetric by width rather than by an empty cell:
    650px of copy against 386px of diagram. aria-hidden in the markup, because it
    restates the section below it and a screen reader would hear the entry points
-   twice. */
-.hero-vis{grid-column:8 / 13;grid-row:1 / 3;align-self:center;justify-self:end;
-  width:100%;max-width:360px}
+   twice.
+
+   It ships in two cuts, one per regime, because one drawing cannot serve both.
+   `.hv-wide` is the 360-unit vertical fan and `.hv-tall` is a 327-unit
+   compressed one; each is hidden in the regime it does not belong to, so the
+   reader downloads about 1KB of unused path data and never sees two diagrams.
+   Rotating or merely rescaling a single viewBox was measured and refused: at
+   375px the desktop art scales its 1.5 stroke to 0.43px and its capsules to
+   30px, which is a grey smear rather than five objects. */
 .hero-vis svg{display:block;width:100%;height:auto}
+/* Desktop regime, 901px and up. The schematic used to be `align-self:center`
+   at `max-width:360px`, which centred it on the grid's own midline rather than
+   on any typographic line and parked it 122px clear of the copy column's right
+   edge with nothing stating the boundary. It read as a sticker on cream. The
+   hairline on the column-8 boundary is what the composition was missing: §6.2
+   groups by hairline and ground step rather than by elevation, and this is the
+   hairline doing exactly that job. 417px is the 5-column span less the
+   space-7 inset and the border, so the field runs rule to right margin and
+   closes the gap instead of hanging in it. */
+@media (min-width:901px){
+  .hero-vis{grid-column:8 / 13;grid-row:1 / 3;
+    align-self:stretch;justify-self:stretch;width:auto;max-width:none;
+    border-inline-start:1px solid var(--rule);
+    padding-inline-start:var(--space-7);
+    display:grid;align-content:center}
+  .hero-vis svg{max-width:417px}
+  /* ⚠️ Scoped to .hero-vis, not bare `.hv-tall`. The base rule above is
+     `.hero-vis svg{display:block}` at (0,1,1), which outranks a lone class at
+     (0,1,0) whatever the media query says, so the bare selector left BOTH cuts
+     painted: the hero measured 903px instead of 674 and the phone fan hung
+     under the desktop one. Invisible in the CSS, obvious in a measurement. */
+  .hero-vis .hv-tall{display:none}
+}
+/* Phone and tablet regime, 900px and down. ⚠️ This replaces a plain
+   `.hero-vis{display:none}` that was declared twice, at 900 and again at 768.
+   Hiding it was the right call for the art that existed: the desktop fan
+   stacked full-width pushed the CTAs off the first screen on a 390px device.
+   But §1 makes mechanism specificity the whole credibility strategy on a site
+   with no numbers and no customer names, and hiding the diagram left the hero
+   carrying none of it on the device most of this site is read on. The
+   compressed cut answers both: it sits BELOW the CTAs rather than between them
+   and the headline, so the first screen is unchanged, and it costs 205px at
+   the bottom of a section the reader has already decided to scroll past.
+   `1 / -1` rather than `1 / 13`, because it has to be correct in the 12-track
+   grid at 769-900 and in the 1-track grid below 768. */
+@media (max-width:900px){
+  .hero-vis{grid-column:1 / -1;grid-row:auto;width:100%;max-width:none;
+    margin-top:var(--space-6);
+    border-top:1px solid var(--rule);padding-top:var(--space-7)}
+  .hero-vis .hv-wide{display:none}
+}
 /* The capsules take Border Strong and the lines that carry them take Rule.
    Both at Rule the diagram measured 1.27:1 against Paper and disappeared into
    the hero's mesh at its rendered 360px; the entry points have to read as
@@ -828,7 +875,9 @@ tbody td{color:var(--muted)}
      difference against .hero-head and the space it opens on the right, which
      is the same reading the base rule records. */
   .hero-foot{grid-column:1 / 10}
-  .hero-vis{display:none}
+  /* `.hero-vis{display:none}` was here. It now takes the compressed cut in its
+     own max-width:900 block above; a second declaration here would win on
+     source order and put the hiding back. */
   /* .group.c3 stays three across down to 768. Two columns would leave the
      third cell alone beside an empty half, and §6 rules the cell count exact. */
   .flow{grid-template-columns:repeat(2,1fr)}
@@ -839,10 +888,12 @@ tbody td{color:var(--muted)}
   .group.c2,.group.c3,.group.c4,.compare,.slots,.flow{grid-template-columns:1fr}
   .hero-grid{grid-template-columns:1fr}
   .hero-head,.hero-foot{grid-column:auto}
-  /* The schematic is decorative and the single-column hero is already the
-     tallest thing on a phone. Stacked, it pushed the CTAs off the first screen
-     on a 390px device, which costs more than the diagram is worth there. */
-  .hero-vis{display:none}
+  /* The schematic used to be hidden here too, on the ground that stacking it
+     pushed the CTAs off the first screen on a 390px device. That reading was
+     correct about the art it was made against and is now handled by placing
+     the compressed cut after the CTAs instead of before them, so the first
+     screen keeps the headline, the lead and both buttons. Measured at 375:
+     CTA bottom at 468px into the hero, well inside an 812px fold. */
   .btn{padding-inline:28px}
   .row{grid-template-columns:1fr}
   .row-m{max-width:100%}
