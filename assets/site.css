@@ -92,6 +92,38 @@
   --mesh:radial-gradient(circle at 16% 8%,rgba(150,69,254,.07),transparent 56%),
          radial-gradient(circle at 86% 26%,rgba(46,107,79,.10),transparent 58%),
          radial-gradient(circle at 62% 112%,rgba(255,216,111,.15),transparent 58%);
+  /* ── Stage shape fills, 2026-09-22 ──
+     The hero--stage forms, at the same alpha band as the mesh halos above and
+     built the same way: rgba of an existing anchor, declared once here so no
+     colour escapes the palette. Three fills, not eight: --purple-fill is the
+     decorative purple §2 already licenses for halos and dots, --green is the
+     second anchor, and --lilac is the marker. Yellow is deliberately absent,
+     because it is the sale CTA and nothing else.
+     These replace --mesh on a stage hero rather than stacking on it. Stacked,
+     the two fields together measured past the §1 budget the 2026-09-21 halo cut
+     was fixing, so .hero--stage turns the mesh off and spends the same paint on
+     the shapes instead. Net painted area is a wash; only its shape changes.
+
+     These first shipped at .07/.07/.22, held down by a control boundary: the
+     outline CTA sat on a shape between roughly 900px and 1180px, and
+     --border-strong is only 3.39:1 on bare paper, so green at .10 put that
+     border at 2.952:1 against the 3:1 WCAG 1.4.11 requires. The fix was to move
+     the shapes rather than to keep the paint thin. They are now anchored off the
+     centre line and clear every button by about 49px at every width, and the
+     layer is masked where it would otherwise pass behind the unscrolled nav.
+     With no shape under any control, the binding constraint is no longer a
+     boundary ratio, and these doubled.
+     ⚠️ What constrains them NOW is body text and the paint budget, in that
+     order. Worst case at these values is 12.54:1 for the headline and 7.54:1
+     for the lead, both far above AA, so contrast has real headroom; §1's accent
+     budget does not, and 2026-09-21 cut the hero halo for exactly that reason.
+     Raising these further is a paint-budget decision and wants the same
+     measurement that commit ran, not a nudge.
+     ⚠️ And if a shape is ever moved back under a button, the OLD ceiling
+     returns and these values fail it. Geometry is load-bearing here. */
+  --shape-purple:rgba(150,69,254,.14);
+  --shape-green:rgba(46,107,79,.14);
+  --shape-lilac:rgba(220,198,255,.30);
   --gap-body:var(--space-8);                /* section head to section body, 36 → 48 */
   --pad-surface:var(--space-7);             /* inset shared by cell, card, compare, 32 → 40 */
 
@@ -473,6 +505,100 @@ section{padding-block:var(--rhythm)}
    through the width step (9 columns against 7) and the negative space it opens
    on the right, which is what §6 asks for — it was never asking for the indent. */
 .hero-foot{grid-column:1 / 8;display:flex;flex-direction:column;gap:24px;align-items:flex-start}
+
+/* ══ .hero--stage: the centred composition, 2026-09-22 ══════════════════════
+   Adapted from KokonutUI's Shape Hero. §6's "no centred hero" is overridden
+   here by an explicit instruction, and this is the one page that carries it —
+   the offset stack above stays the default for every other hero.
+   The mesh is switched off rather than layered under: the shapes ARE this
+   hero's atmosphere, and running both put the field past the §1 budget the
+   2026-09-21 halo cut had just brought it back inside. The grid ::after stays,
+   because it is ink at .05 and carries the ground rather than the accent. */
+.hero--stage::before{background-image:none}
+/* (0,2,0) on purpose. `.hero > *{position:relative}` above is (0,1,0) and so is
+   a lone `.hero-shapes`; equal specificity would leave this to source order,
+   which is exactly the kind of thing that silently breaks on a later splice. */
+/* --bar-cover is the floating nav's full height plus its top offset, and it is
+   the SAME 160px the ::before/::after atmosphere layers already use to run up
+   behind the bar. Measured 2026-09-22: the hero starts at page y=82, the bar's
+   bottom edge is page y=82, so the bar occupies exactly the first 160px of this
+   layer and nothing else does.
+   The mask is why the number has to be shared rather than repeated. .bar-in has
+   NO background until it is scrolled, so anything painted up there sits raw
+   behind the logo, the language pill and the menu toggle - the same 3:1 control
+   boundary problem the CTA had, just moved to the nav. Masking exactly the
+   inset region removes the paint that lands behind the bar and nothing else,
+   and the 72px ramp below it means the forms fade in rather than meeting the
+   bar at a cut line. The shapes still enter from above; they now dissolve on
+   the way rather than sliding under the navigation. */
+.hero > .hero-shapes{--bar-cover:160px;
+  position:absolute;inset:calc(var(--bar-cover) * -1) 0 0 0;pointer-events:none;
+  overflow:hidden;
+  -webkit-mask-image:linear-gradient(180deg,transparent 0,
+    transparent var(--bar-cover),#000 calc(var(--bar-cover) + 72px));
+  mask-image:linear-gradient(180deg,transparent 0,
+    transparent var(--bar-cover),#000 calc(var(--bar-cover) + 72px))}
+/* overflow:hidden on the layer is what lets the forms sit at negative offsets
+   and bleed off both edges without putting horizontal scroll on the page. It is
+   the same guard the 375px overflow check looks for, moved up one level. */
+.hs{position:absolute;display:block;--rot:0deg;transform:rotate(var(--rot))}
+/* ⚠️ Anchored from the CENTRE, not from the viewport edges, and that is the
+   whole point of this block. Edge percentages made the clearance a function of
+   viewport width: at 1440 the forms sat well clear of the buttons and at 1000
+   the same percentages walked them straight underneath, which is how the outline
+   CTA ended up on a green field at 2.95:1. The copy column is centred and its
+   width barely moves, so measuring from the centre makes the gap constant.
+   Each offset below is the shape's near edge in px from the centre line, chosen
+   against a CTA row that measures about 410px wide (205px each side) plus the
+   width a rotation adds to the bounding box - a 280px square at 24deg is 370px
+   across, so it reaches 45px further than its width suggests. Verified at 375,
+   768, 1000, 1180 and 1440 in both languages: zero shape intersects any button.
+   Change an offset and re-run that check; it is not a spacing preference. */
+.hs-1{right:calc(50% + 200px);top:-14%;width:300px;height:400px;--rot:-8deg;
+  background:var(--shape-purple);border-radius:var(--r-group)}
+.hs-2{left:calc(50% + 270px);bottom:-8%;width:520px;height:190px;--rot:15deg;
+  background:var(--shape-green);border-radius:var(--r-card)}
+.hs-3{right:calc(50% + 300px);top:44%;width:280px;height:280px;--rot:24deg;
+  background:var(--shape-lilac);border-radius:var(--r-panel)}
+.hs-4{left:calc(50% + 220px);top:2%;width:240px;height:100px;--rot:-20deg;
+  background:var(--shape-green);border-radius:var(--r-sm)}
+.hs-5{right:calc(50% + 290px);bottom:4%;width:200px;height:190px;--rot:-25deg;
+  background:var(--shape-purple);border-radius:var(--r-panel)}
+/* Below 901px the CTA row is nearly the full column and there is no "outside"
+   left to put a low shape in - centre-anchored, hs-2 and hs-5 simply leave the
+   screen and the hero goes bare. So the phone gets a different arrangement
+   rather than a degraded one: the forms move to the top half, behind the
+   headline, where type sits at 12:1 and over and no control ever reaches them.
+   The two lowest drop out, because three shapes read as composition at this
+   width and five read as clutter. */
+@media (max-width:900px){
+  .hs-1{right:auto;left:-30%;top:-8%;width:260px;height:300px}
+  .hs-3{right:auto;left:auto;inset-inline-end:-22%;top:16%;width:220px;height:220px}
+  .hs-4{left:6%;top:-5%;width:180px;height:80px}
+  .hs-2,.hs-5{display:none}
+}
+/* One column, and the head and foot both take the whole of it.
+   ⚠️ NO max-width here, and the reason is worth keeping. `--span-8` was the
+   obvious cap and it is wrong below the full container: the --span-N tokens are
+   12-column arithmetic over --content, and --content shrinks with the viewport
+   while the 24px gutters inside it do not. At 375px --span-8 resolves to 210px,
+   not 747px, which squeezed the headline from two lines to five and was
+   invisible at desktop. Measured, not guessed.
+   The headline does not need a cap in any case: its two lines are explicit <br>
+   in the markup, so width only ever removes wraps, never adds them. The lead
+   keeps its own cap through .measure, which is an em measure and scales. */
+.hero-grid--center{grid-template-columns:1fr;justify-items:center;
+  text-align:center;row-gap:var(--space-7)}
+.hero-grid--center .hero-head,
+.hero-grid--center .hero-foot{grid-column:1 / -1;width:100%}
+.hero-grid--center .hero-foot{align-items:center}
+.hero-grid--center .measure{margin-inline:auto}
+/* The foot's align-items:center cannot reach the buttons on its own. .cta-row
+   is itself a flex row that takes the full column below 901px, so centring the
+   foot's children still left the pair flush left while the copy above them was
+   centred - the kind of half-centred hero that reads as a mistake rather than a
+   choice. The row has to centre its own contents. */
+.hero-grid--center .cta-row{justify-content:center}
 /* The schematic takes the five columns the headline gave up and spans both
    rows, so the hero is still asymmetric by width rather than by an empty cell:
    650px of copy against 386px of diagram. aria-hidden in the markup, because it
@@ -1081,6 +1207,30 @@ tbody td{color:var(--muted)}
 .js .hero .h1,.js .hero .lead,.js .hero .cta-row{animation:ez-rise .6s var(--ease) both}
 .js .hero .lead{animation-delay:.06s}
 .js .hero .cta-row{animation-delay:.14s}
+
+/* ── Stage shape entrance, 2026-09-22 ──
+   The one move that survived the Shape Hero port. Each form drops from 150px
+   above its resting place with its rotation 15deg short, and --ease
+   (cubic-bezier(.16,1,.3,1)) settles both in the same gesture — the house ease
+   was already within a rounding error of the one that component ships, which is
+   why nothing had to be added to the token block for it.
+   1.4s against the copy's .6s on purpose: the forms are ground, so they arrive
+   under the reading rather than competing with it, and they are still settling
+   as the headline lands.
+   Then it STOPS. The source loops a 12s float forever; §9 bans that and the
+   ship gate greps the declaration. A single damped drift was tried in its place
+   and refused - motion that breathes once and dies reads as a dropped frame,
+   where a still hero reads as a decision. To put the float back, this is the
+   one rule that would change, and the gate would have to change with it.
+   --rot is per shape and never animated itself, so the keyframe can read it. */
+@keyframes ez-shape-in{
+  from{opacity:0;transform:translateY(-150px) rotate(calc(var(--rot) - 15deg))}
+  to{opacity:1;transform:translateY(0) rotate(var(--rot))}}
+.js .hero-shapes .hs{animation:ez-shape-in 1.4s var(--ease) both}
+.js .hero-shapes .hs-2{animation-delay:calc(var(--stagger)*2)}
+.js .hero-shapes .hs-3{animation-delay:calc(var(--stagger)*4)}
+.js .hero-shapes .hs-4{animation-delay:calc(var(--stagger)*6)}
+.js .hero-shapes .hs-5{animation-delay:calc(var(--stagger)*8)}
 /* The schematic enters on the same finite entrance as the copy beside it and
    then stops. §7 bans infinite loops outright, and §14.4 already refused a
    floating phone mock on exactly that ground, so nothing here breathes, pulses
@@ -1173,6 +1323,7 @@ tbody td{color:var(--muted)}
     transition:none!important;animation:none!important}
   .js .hero .h1,.js .hero .lead,.js .hero .cta-row{animation:none;opacity:1;transform:none}
   .js .hero-vis .hv-i,.js .hero-vis .hv-node{animation:none;opacity:1;transform:none}
+  .js .hero-shapes .hs{animation:none;opacity:1;transform:rotate(var(--rot))}
   /* Fewer and gentler, not none: colour and background still transition, so a
      hover or a press still reads as an answer. Only movement is dropped. */
   .btn,.row,.cell,.card,.navtoggle .nt-a,.navtoggle .nt-b,.navtop .caret,
