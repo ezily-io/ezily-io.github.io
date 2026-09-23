@@ -557,10 +557,16 @@ section{padding-block:var(--rhythm)}
 
 /* ══ .hero--stage: the centred composition, 2026-09-22 ══════════════════════
    Adapted from KokonutUI's Shape Hero. §6's "no centred hero" is overridden
-   here by an explicit instruction. Two pages carry it now, home and careers
-   (2026-09-22) — the offset stack above stays the default for the rest, and it
-   is still opted into per page by `stage: shapes` rather than being the new
-   default for a hero.
+   here by an explicit instruction. Three pages carry it now: home, careers
+   (2026-09-22) and Touchpoints (2026-09-23) — the offset stack above stays the
+   default for the rest, and it is still opted into per page by `stage: shapes`
+   rather than being the new default for a hero.
+   Touchpoints came here to fix a defect rather than for the composition. Its
+   headline needed 960px and 1007px per line against the offset head's 650px, so
+   it ran four lines in BOTH languages; widening the head does not reach it
+   either, measured 4 lines still at 939px. The centred head is the full 1132px
+   content box, which lands both languages on two lines with no copy change. The
+   empty right columns that prompted the look went with it.
    The mesh is switched off rather than layered under: the shapes ARE this
    hero's atmosphere, and running both put the field past the §1 budget the
    2026-09-21 halo cut had just brought it back inside. The grid ::after stays,
@@ -781,12 +787,24 @@ section{padding-block:var(--rhythm)}
      the one where the copy ends and the picture starts. */
   .mf{grid-template-columns:1fr}
   .mf > .stack{grid-column:auto}
+  /* ⚠️ The negative bottom margin is the point of this block, not a nudge.
+     Stacked, the photo used to be followed by the section's own 56px of bottom
+     padding AND its own fade-to-ink, which put about 98px of empty plate under
+     the picture and read as a band with a tail rather than as a band that ends.
+     Pulling it down by one --rhythm cancels that padding exactly, so the image
+     finishes the section: copy, then picture, then the paper below.
+     The bottom fade goes with it for the same reason, and ::after is switched
+     off entirely here because the mask already does the one dissolve this
+     layout needs. Two mechanisms fading the same edge was redundant on desktop
+     and wrong once the bottom edge became the section's own boundary.
+     4/3 rather than 16/10: the top third is spent dissolving out of the copy,
+     so a 16/10 band left only ~145px of legible picture on a 375px screen. */
   .mf-photo{position:static;width:auto;margin-top:var(--space-8);
+    margin-bottom:calc(var(--rhythm) * -1);
     -webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 34%);
     mask-image:linear-gradient(to bottom,transparent 0,#000 34%)}
-  .mf-photo img{height:auto;aspect-ratio:16 / 10}
-  .mf-photo::after{background:linear-gradient(to bottom,var(--ink) 0,
-    transparent 38%,transparent 82%,var(--ink) 100%)}
+  .mf-photo img{height:auto;aspect-ratio:4 / 3}
+  .mf-photo::after{background:none}
 }
 
 /* Editorial split — inverted proportions so it is not the classic */
