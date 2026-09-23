@@ -664,6 +664,112 @@ section{padding-block:var(--rhythm)}
    centred - the kind of half-centred hero that reads as a mistake rather than a
    choice. The row has to centre its own contents. */
 .hero-grid--center .cta-row{justify-content:center}
+/* ══ .hero--sync: the Orchestrate diagram, 2026-09-23 ══════════════════════
+   Ported from design/orchestrate-hero.html by instruction. The source's own
+   palette mapped one to one onto tokens that already exist here (its bg,
+   surface, fg, muted, border, accent and success are --paper, --paper-raised,
+   --ink, --muted, --rule, --purple and --green), so nothing was added to the
+   token block. Three things did not come across:
+     its colour-mix tints and blurred purple halo, because §1's accent budget
+     and §11.8's single elevation tier both refuse them - the board and the
+     cards take --shadow-card and nothing deeper;
+     its own grid and radial wash, because .hero already paints both;
+     its 10 to 13px labels, because 漢字 under 14px is below §11.1's floor.
+   Copy and diagram split 6 + 6. The headline was measured at 6 columns in both
+   languages before the split was taken; see the EN cap below. */
+.hero-grid--sync{align-items:center}
+.hero-copy{grid-column:1 / 7;display:flex;flex-direction:column;gap:var(--space-9);min-width:0}
+.hero-grid--sync .hero-foot{grid-column:auto}
+/* ⚠️ At 554px "One back office." does not fit the Latin ramp's 72px ceiling
+   and ran three lines. CLAUDE.md's two-line cap outranks the ladder, so the
+   ceiling drops to 56px in this composition only, and only for Latin; 繁中
+   lands 8 漢字 at 60px inside the same column with room to spare. */
+html[lang^="en"] .hero--sync{--fs-h1:clamp(2.25rem,1.4578rem + 3.3803vw,3.5rem)}
+.sync{grid-column:7 / -1;min-width:0}
+.sync-stage{display:grid;grid-template-columns:minmax(0,1fr) 44px minmax(0,208px);
+  align-items:center;row-gap:16px}
+.sync-board{grid-column:1;grid-row:1;background:var(--paper-raised);border:1px solid var(--rule);
+  border-radius:var(--r-panel);box-shadow:var(--shadow-card);padding:24px;min-width:0}
+.sync-top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-start;gap:12px}
+/* The title never shares its line with the pill: in a 300px board the pill
+   wraps under it rather than squeezing the title onto two lines. */
+.sync-top > div{flex:1 0 auto}
+.sync-kicker{color:var(--purple);font-size:var(--fs-label);font-weight:600;line-height:var(--lh-ui);
+  letter-spacing:var(--tr-meta)}
+.sync-title{margin-top:4px;font-family:var(--f-display);font-size:var(--fs-sub);font-weight:600;
+  line-height:var(--lh-sub);letter-spacing:var(--tr-sub)}
+/* The state pill takes --green on --green-pale, 5.62:1, and drops to muted on
+   the recessed ground while the channels are catching up. */
+.sync-state{flex:0 0 auto;display:inline-flex;align-items:center;gap:8px;min-height:32px;
+  padding:4px 12px;border:1px solid var(--green);border-radius:var(--r-pill);
+  background:var(--green-pale);color:var(--green);font-size:var(--fs-label);font-weight:600;
+  line-height:1;white-space:nowrap}
+.sync-state::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor}
+.sync-stage[data-state="busy"] .sync-state{border-color:var(--border-strong);
+  background:var(--paper-deep);color:var(--muted)}
+.sync-res{display:grid;gap:8px;margin-top:20px}
+/* 52px, over the 44px floor. A control boundary needs 3:1, so the resting
+   edge is --border-strong (3.60:1 on white), never --rule; the pressed row
+   takes --purple at 5.70:1. */
+.sync-btn{width:100%;min-height:52px;display:grid;grid-template-columns:40px minmax(0,1fr) auto;
+  gap:12px;align-items:center;padding:8px 16px 8px 8px;border:1px solid var(--border-strong);
+  border-radius:var(--r-badge);background:var(--paper-raised);color:var(--ink);
+  font:inherit;text-align:start;cursor:pointer}
+.sync-btn[aria-pressed="true"]{border-color:var(--purple);background:var(--paper)}
+.sync-btn:focus-visible{outline-offset:2px;border-radius:var(--r-badge)}
+.sync-ic{width:40px;height:40px;display:grid;place-items:center;border-radius:var(--r-sm);
+  background:var(--paper-deep);color:var(--muted)}
+.sync-ic svg{display:block;width:20px;height:20px}
+.sync-btn[aria-pressed="true"] .sync-ic{background:var(--paper-raised);color:var(--purple)}
+.sync-tx{min-width:0;display:grid;gap:2px;line-height:var(--lh-ui)}
+.sync-tx strong{font-size:.9375rem;font-weight:600}
+.sync-tx > span{color:var(--muted);font-size:var(--fs-label)}
+.sync-go{color:var(--muted);font-size:1.25rem;line-height:1}
+.sync-map{grid-column:2;grid-row:1;align-self:stretch;width:100%;height:100%;overflow:visible}
+.sync-map path{fill:none;stroke:var(--green);stroke-width:1.5;stroke-linecap:round;
+  vector-effect:non-scaling-stroke}
+.sync-stage[data-state="busy"] .sync-map path{stroke:var(--rule)}
+/* Three equal rows with no gap between them, so the card centres fall on the
+   1/6, 1/2 and 5/6 lines the connectors are drawn to. The spacing is the row's
+   own padding instead. */
+.sync-ch{grid-column:3;grid-row:1;align-self:stretch;display:grid;grid-auto-rows:1fr}
+.sync-row{display:flex;align-items:center;padding-block:8px}
+.sync-card{width:100%;min-height:72px;display:grid;grid-template-columns:40px minmax(0,1fr);gap:12px;
+  align-items:center;padding:12px;border:1px solid var(--green);border-radius:var(--r-card);
+  background:var(--paper-raised);box-shadow:var(--shadow-card)}
+.sync-stage[data-state="busy"] .sync-card{border-color:var(--rule)}
+.sync-card .sync-ic{border:1px solid var(--rule)}
+.sync-st{display:flex;align-items:center;gap:8px}
+.sync-st::before{content:"";flex:0 0 auto;width:6px;height:6px;border-radius:50%;background:var(--green)}
+.sync-stage[data-state="busy"] .sync-st::before{background:var(--border-strong)}
+.sync-note{grid-column:1 / -1;grid-row:2;justify-self:start;display:flex;align-items:center;gap:12px;
+  margin-inline-start:24px;max-width:26rem;padding:12px 16px;border:1px solid var(--rule);
+  border-radius:var(--r-badge);background:var(--paper-raised);box-shadow:var(--shadow-card);
+  font-size:.9375rem;line-height:var(--lh-ui)}
+.sync-note svg{flex:0 0 auto;width:20px;height:20px;color:var(--green)}
+.sync-note strong{font-weight:600}
+/* Tablet: stacked, copy first. The diagram keeps its three columns - the
+   connectors are the point of it - and holds the left edge rather than
+   centring, per §6. 1040 is where the 6-column head stops holding the Latin
+   headline to two lines. */
+@media (max-width:1040px){
+  .hero-grid--sync{grid-template-columns:1fr}
+  .hero-copy,.sync{grid-column:1 / -1}
+  .sync{width:100%;max-width:40rem}
+}
+/* Phone: one column. The connectors go, because with the channels under the
+   board rather than beside it there is nothing for them to point at, and the
+   cards drop their shadow so the stack reads as one list. */
+@media (max-width:640px){
+  .sync-stage{grid-template-columns:minmax(0,1fr);row-gap:12px}
+  .sync-board,.sync-ch,.sync-note{grid-column:1;grid-row:auto}
+  .sync-map{display:none}
+  .sync-board{padding:20px;border-radius:var(--r-group)}
+  .sync-ch{grid-auto-rows:auto;gap:8px}
+  .sync-row{padding-block:0}
+  .sync-card{min-height:64px;box-shadow:none}
+  .sync-note{margin-inline-start:0;max-width:none;box-shadow:none}
+}
 /* Dividers over shadows: 2px gaps on a Rule field become hairlines */
 .group{display:grid;margin-top:var(--gap-body)}
 .group:not(.group-ink){gap:20px}
@@ -687,14 +793,22 @@ a.cell{text-decoration:none;color:inherit}
    The 3:2 ratio is every migrated file's actual shape (checked at build time,
    not assumed), so it never letterboxes or crops a face out of frame. */
 .cell-media{padding:0;gap:0}
-.cell-media > img{display:block;width:100%;aspect-ratio:3/2;object-fit:cover;
+/* ⚠️ height:auto is load-bearing. The markup carries width="1200" height="800"
+   so the browser can reserve the box before the bytes arrive, and those two
+   attributes are PRESENTATIONAL HINTS for the CSS width/height properties. The
+   author rule here sets width, so width wins - but nothing set height, so the
+   hint stood, both axes resolved definite, and `aspect-ratio` was ignored
+   entirely. Every card image rendered exactly 800px tall at every width: 325 x
+   800 on a phone, a 0.41 ratio where 1.5 was intended. height:auto drops the
+   hint and hands the second axis back to aspect-ratio. */
+.cell-media > img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;
   border-radius:var(--r-card) var(--r-card) 0 0}
 .cell-media .cell-body{padding:var(--pad-surface);display:flex;flex-direction:column;gap:12px}
 /* Same image, above the H1's own text column rather than inside a card - the
    posting itself. .prose's own children are measure-capped but the container
    is not, so this runs the article's full wrap width. */
 .post-hero{margin-top:var(--gap-body);border-radius:var(--r-card);overflow:hidden}
-.post-hero img{display:block;width:100%;aspect-ratio:3/2;object-fit:cover}
+.post-hero img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover}
 
 /* The Ink plate — roughly one per two light sections */
 .ink{background:var(--ink);color:var(--paper)}
@@ -1418,6 +1532,17 @@ tbody td{color:var(--muted)}
    Opacity carries the capsules rather than a transform, because a transform on
    an SVG group resolves against user units and drifts with the viewBox scale. */
 
+/* The sync diagram arrives on the copy's own settle, a beat after the CTAs,
+   and then it is still. Its only other motion is the 3px step a channel card
+   takes back into place when it finishes syncing. */
+.js .hero .sync{animation:ez-settle .6s var(--ease) .2s both}
+.sync-card{transition:transform .18s var(--ease),border-color .18s ease}
+.sync-stage[data-state="busy"] .sync-card{transform:translateX(3px)}
+.sync-btn{transition:transform .16s var(--ease),border-color .18s ease,background-color .18s ease}
+.sync-btn:active{transform:scale(.985)}
+.sync-map path{transition:stroke .18s ease}
+.sync-state,.sync-ic{transition:color .18s ease,background-color .18s ease,border-color .18s ease}
+
 /* ── Interaction: named properties, never `all` ── */
 /* Three rules govern this section.
    1. Press feedback is ungated. A tap and a click both deserve the answer, so
@@ -1482,6 +1607,8 @@ tbody td{color:var(--muted)}
      border-bottom - an abrupt slab rather than a highlight. */
   .row:hover{background:var(--paper-deep)}
   .row:hover .row-t{color:var(--purple)}
+  .sync-btn:hover{border-color:var(--ink)}
+  .sync-btn[aria-pressed="true"]:hover{border-color:var(--purple)}
   /* §7.3: cards and cells lift 1 to 2px. */
   .cell,.card{transition:transform .22s var(--ease),border-color .22s ease}
   .cell:hover,.card:hover{transform:translateY(-2px)}
@@ -1498,6 +1625,9 @@ tbody td{color:var(--muted)}
     transition:none!important;animation:none!important}
   .js .hero .h1,.js .hero .lead,.js .hero .cta-row{animation:none;opacity:1;transform:none}
   .js .hero-shapes .hs{animation:none;opacity:1;transform:rotate(var(--rot))}
+  .js .hero .sync{animation:none;opacity:1;transform:none}
+  .sync-card,.sync-btn{transition:border-color .18s ease,background-color .18s ease}
+  .sync-stage[data-state="busy"] .sync-card,.sync-btn:active{transform:none}
   /* Fewer and gentler, not none: colour and background still transition, so a
      hover or a press still reads as an answer. Only movement is dropped. */
   .btn,.row,.cell,.card,.navtoggle .nt-a,.navtoggle .nt-b,.navtop .caret,
