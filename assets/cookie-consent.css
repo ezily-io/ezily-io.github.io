@@ -1,0 +1,197 @@
+/* ═══════════════════════════════════════════════════════════════════
+   Cookie consent — first-visit card, footer control, settings dialog.
+   Self-contained component: every rule is scoped to a .cc- class so this
+   file can be dropped or swapped without touching site.css. Colors and
+   type are the brand given for this component, not the site's own tokens
+   in site.css — namespaced as --cc-* so they cannot collide with either.
+   ═══════════════════════════════════════════════════════════════════ */
+
+:root{
+  --cc-ink:#252A42;
+  --cc-heading:#171A2B;
+  --cc-muted:#5E6274;
+  --cc-cream:#FFFDF9;
+  --cc-focus:#536EDB;
+  --cc-rule-pink:#CF668F;
+  --cc-border:rgba(37,42,66,0.14);
+}
+
+.cc-card,.cc-modal{
+  box-sizing:border-box;
+  font-size:16px;
+  font-family:"Nunito","Noto Sans TC",system-ui,sans-serif;
+  color:var(--cc-ink);
+}
+.cc-card *,.cc-modal *{box-sizing:border-box}
+
+/* ── first-visit card ── */
+.cc-card{
+  position:fixed;
+  right:20px;
+  bottom:20px;
+  z-index:900;
+  width:min(calc(100% - 40px),620px);
+  padding:28px;
+  border:1px solid rgba(37,42,66,0.16);
+  border-radius:24px;
+  background:rgba(255,253,249,0.97);
+  box-shadow:0 20px 55px rgba(16,18,34,0.2);
+  text-align:left;
+}
+.cc-card[hidden]{display:none}
+.cc-card-in{display:flex;flex-direction:column;gap:22px}
+
+.cc-kicker{margin:0;font-size:0.94rem;font-weight:700;letter-spacing:0.14em;color:var(--cc-muted);line-height:1.7}
+.cc-title{
+  margin:6px 0 10px;
+  font-family:"Lora","Noto Serif TC",Georgia,serif;
+  font-weight:500;
+  font-size:clamp(1.45rem,3.5vw,1.9rem);
+  line-height:1.35;
+  letter-spacing:-0.035em;
+  color:var(--cc-heading);
+}
+.cc-desc{margin:0;font-size:0.94rem;line-height:1.7;color:var(--cc-muted)}
+.cc-link{
+  display:inline-flex;
+  margin-top:12px;
+  font-size:0.9rem;
+  font-weight:700;
+  color:var(--cc-ink);
+  text-decoration:underline;
+  text-decoration-color:var(--cc-rule-pink);
+  text-decoration-thickness:2px;
+  text-underline-offset:4px;
+}
+
+.cc-actions{display:flex;flex-wrap:wrap;gap:10px}
+.cc-btn{
+  flex:1 1 190px;
+  min-height:48px;
+  padding:12px 22px;
+  border-radius:999px;
+  border:1px solid transparent;
+  font-family:inherit;
+  font-size:16px;
+  font-weight:700;
+  line-height:1.35;
+  text-align:center;
+  cursor:pointer;
+  transition:background-color 200ms ease,border-color 200ms ease,color 200ms ease,
+             box-shadow 200ms ease,transform 200ms ease;
+}
+.cc-btn-ghost{background:rgba(255,255,255,0.7);color:var(--cc-ink);border-color:rgba(37,42,66,0.22)}
+.cc-btn-ghost:hover{background:#FFFFFF;border-color:var(--cc-ink)}
+.cc-btn-solid{background:var(--cc-ink);color:#FFFFFF;box-shadow:0 8px 22px rgba(37,42,66,0.18)}
+.cc-btn-solid:hover{background:var(--cc-heading);box-shadow:0 12px 28px rgba(37,42,66,0.24)}
+@media (hover:hover){
+  .cc-btn:hover{transform:translateY(-2px)}
+}
+@media (prefers-reduced-motion:reduce){
+  .cc-btn{transition:none}
+  .cc-btn:hover{transform:none}
+}
+
+@media (max-width:680px){
+  .cc-card{
+    right:16px;
+    bottom:max(16px,env(safe-area-inset-bottom));
+    width:calc(100% - 32px);
+    padding:24px;
+    max-height:calc(100vh - 32px);
+    overflow-y:auto;
+    -webkit-overflow-scrolling:touch;
+  }
+  .cc-card-in{gap:18px}
+  .cc-actions{flex-direction:column}
+  .cc-btn{flex:1 1 auto;width:100%}
+}
+
+/* ── footer trigger ──
+   Sits inside the dark footer plate (site.css .foot, background: var(--ink)),
+   not on the card's own cream background, so it takes the footer's own muted
+   / paper text pair instead of the component's ink-on-cream palette — those
+   values would be near-invisible on a dark plate. The pink underline and the
+   size/weight treatment stay as specified; only the two text colors are the
+   footer's own tokens. */
+.cc-footlink{
+  background:transparent;
+  border:none;
+  min-height:44px;
+  padding:8px 0;
+  font:inherit;
+  font-size:0.8rem;
+  font-weight:600;
+  color:var(--ink-muted,#5E6274);
+  text-decoration:underline;
+  text-decoration-color:var(--cc-rule-pink);
+  text-decoration-thickness:2px;
+  text-underline-offset:4px;
+  cursor:pointer;
+}
+.cc-footlink:hover{color:var(--paper,#252A42)}
+
+/* ── settings dialog ── */
+.cc-modal{
+  position:relative;
+  width:min(calc(100% - 32px),560px);
+  padding:0;
+  border:0;
+  border-radius:24px;
+  background:var(--cc-cream);
+  box-shadow:0 28px 90px rgba(16,18,34,0.32);
+}
+.cc-modal::backdrop{background:rgba(20,22,36,0.58);backdrop-filter:blur(6px)}
+.cc-modal-in{padding:38px;max-height:calc(100vh - 64px);overflow-y:auto}
+@media (max-width:680px){
+  .cc-modal-in{padding:54px 24px 28px}
+}
+
+.cc-modal-close{
+  position:absolute;
+  top:16px;
+  right:16px;
+  width:44px;
+  height:44px;
+  border-radius:999px;
+  background:transparent;
+  border:1px solid rgba(37,42,66,0.22);
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  color:var(--cc-ink);
+  cursor:pointer;
+}
+.cc-modal-close svg{width:20px;height:20px}
+.cc-modal-close:hover{border-color:var(--cc-ink)}
+
+.cc-option{
+  display:grid;
+  grid-template-columns:22px minmax(0,1fr);
+  gap:13px;
+  align-items:start;
+  margin-top:18px;
+  padding:16px;
+  border:1px solid var(--cc-border);
+  border-radius:12px;
+  cursor:pointer;
+}
+.cc-option:has(input:disabled){cursor:default}
+.cc-option input[type="checkbox"]{
+  width:20px;
+  height:20px;
+  margin:3px 0 0;
+  accent-color:var(--cc-focus);
+}
+.cc-opt-name{display:block;font-size:0.96rem;font-weight:700;color:var(--cc-heading)}
+.cc-opt-desc{display:block;margin-top:2px;font-size:0.85rem;line-height:1.6;color:var(--cc-muted)}
+
+.cc-modal-actions{display:flex;justify-content:flex-end;margin-top:28px}
+
+/* ── keyboard focus ── */
+.cc-card :focus-visible,
+.cc-modal :focus-visible,
+.cc-footlink:focus-visible{
+  outline:3px solid var(--cc-focus);
+  outline-offset:4px;
+}

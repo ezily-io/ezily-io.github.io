@@ -829,12 +829,29 @@ a.cell{text-decoration:none;color:inherit}
 .mf-contained > .mf-loop{grid-column:8 / 13;align-self:center}
 /* Lines only; the labels are .chip text laid over them (see build.py), so
    there is no text baked into the artwork and nothing for a screen reader to
-   miss -- it reads "LINE", "Shopee", "電商官網" same as it would in a table. */
-.mf-loop{position:relative;aspect-ratio:300 / 260}
+   miss -- it reads "LINE", "Shopee", "電商官網" same as it would in a table.
+   ⚠️ width:100% is load-bearing, not a default left in for tidiness. Every
+   child is position:absolute, so the box has no in-flow content to size
+   itself from; a grid item normally stretches to its track regardless, but
+   that stretch did not resolve here with aspect-ratio and zero content in the
+   same box, and the item measured 0x0. Explicit width turns the aspect-ratio
+   into a real height instead of 0 either side of it. */
+.mf-loop{position:relative;aspect-ratio:300 / 260;width:100%}
 .mf-loop-lines{position:absolute;inset:0;width:100%;height:100%}
 .mf-loop-lines path{fill:none;stroke:var(--border-strong);stroke-width:2;stroke-linejoin:round}
 .mf-loop-arrow{fill:var(--purple-fill)}
-.mf-loop-node{position:absolute;transform:translate(-50%,-50%);
+/* ⚠️ `translate`, not `transform`, and that is the whole reason this centres.
+   These nodes are .chip elements, and the scroll reveal further down owns
+   `transform` on every chip: `.js [data-rv] .chip` sets translateY(12px) and
+   `.js [data-rv].rv-in .chip` sets `transform:none` at (0,4,0), which beat this
+   rule's (0,1,0) and wiped the -50%,-50% the moment the section revealed. The
+   node then hung off its own left edge by half its width, and because "Shopee"
+   is the widest label it pushed 26px past .mf-loop at 1440 and put real
+   horizontal scroll on the page at 375, 1000 and 1180 in both languages - the
+   failure §5.3 calls critical.
+   The `translate` property is a separate longhand: the reveal still animates
+   `transform`, this still centres, and the two compose instead of racing. */
+.mf-loop-node{position:absolute;translate:-50% -50%;
   background:var(--paper);white-space:nowrap}
 @media (max-width:900px){
   .mf-contained{grid-template-columns:1fr}
@@ -1263,6 +1280,32 @@ tbody td{color:var(--muted)}
   .navmenu .d{display:none}
   .navtop .caret{display:none}
   .foot-cols{grid-template-columns:1fr}
+}
+
+/* ── The bar's second squeeze, below 375px, 2026-09-23 ──
+   The 768 block above already fixed this once by hiding the language label, and
+   its comment records the failure exactly: the toggle wraps and the bar stands
+   122px tall. That fix left 11px of slack at 375, which is none at 360 - a
+   mainstream Android width, not an edge case - so the bar was two rows on every
+   page in both languages from 374px down. Measured at 360: four controls at
+   62 + 45 + 53 + 133 is 292px, three 8px gaps bring the row to 316px, and the
+   bar's 23px padding leaves 312px.
+
+   The width is taken back from padding and gaps rather than from any control,
+   because the controls are touch targets and §7 floors those at 44px. Verified
+   at 320, 360 and 374 in both languages after this change: the bar is one 70px
+   row, and the toggle, the picker, the CTA and the logo all still measure at
+   least 44px in both dimensions. English is the binding case, not 繁中 -
+   "Talk with us" sets an 116px button against 跟我們聊聊's 105px, and an earlier
+   candidate that fixed 繁中 at 320 still wrapped in English.
+
+   ⚠️ Scoped to 374 and below on purpose. 375 and up is not broken, and widening
+   this query would change the bar's inset on widths that render correctly. If a
+   longer CTA label ever ships, this budget is what it has to fit. */
+@media (max-width:374px){
+  .bar-in{gap:6px;padding-inline:14px}
+  .bar .btn-sm{padding-inline:14px}
+  .langlink{padding-inline:6px}
 }
 
 /* ═══════════════════════════════════════════════════════════════════
