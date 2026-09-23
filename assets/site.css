@@ -673,6 +673,12 @@ section{padding-block:var(--rhythm)}
 .cell{background:var(--paper-raised);border:1px solid var(--rule);
   border-radius:var(--r-card);box-shadow:var(--shadow-card);
   padding:var(--pad-surface);display:flex;flex-direction:column;gap:12px}
+/* A .cell that is itself the link, rather than a static feature tile - the
+   listing pages' card grid (build_listing() in build.py). */
+a.cell{text-decoration:none;color:inherit}
+/* The first entry spans the row, so a listing's most useful post reads bigger
+   without a publish date or a featured: flag to keep in sync. */
+.blog-grid .cell:first-child{grid-column:1/-1}
 
 /* The Ink plate — roughly one per two light sections */
 .ink{background:var(--ink);color:var(--paper)}
@@ -959,10 +965,20 @@ section{padding-block:var(--rhythm)}
 .compare .now li{border-inline-start-color:var(--green);color:var(--ink)}
 .compare .now .label{color:var(--green)}
 
-/* Step flow — the verb is the label, never numbered */
+/* Step flow — the verb is the label, never numbered. The base grid is cut for
+   four; a five-step flow (touchpoints.md's cycle) gets its own exact column
+   count so the fifth step never wraps alone onto an orphan row -- the defect a
+   fixed repeat(4,1fr) produced. A small chevron bridges the gap between each
+   pair of top rules, turning the row of rules into one joined line. It only
+   renders in this single-row state: past 900px the grid wraps to fewer columns
+   and reading order stops running left to right, so the media queries below
+   turn it back off rather than let it point at the wrong step. */
 .flow{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:var(--gap-body)}
-.step{display:flex;flex-direction:column;gap:8px;padding-top:16px;border-top:2px solid var(--ink)}
+.flow:has(.step:nth-child(5)){grid-template-columns:repeat(5,1fr)}
+.step{display:flex;flex-direction:column;gap:8px;padding-top:16px;border-top:2px solid var(--ink);position:relative}
 .step b{font-family:var(--f-display);font-size:var(--fs-sub);font-weight:600;line-height:var(--lh-sub)}
+.step:not(:last-child)::after{content:"";position:absolute;top:-4px;right:-14px;width:8px;height:8px;
+  border-top:2px solid var(--ink);border-right:2px solid var(--ink);transform:rotate(45deg)}
 
 /* Capture band — labeled placeholders. Fabricated UI is banned. */
 .slots{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:var(--gap-body)}
@@ -1082,6 +1098,13 @@ tbody td{color:var(--muted)}
   /* .group.c3 stays three across down to 768. Two columns would leave the
      third cell alone beside an empty half, and §6 rules the cell count exact. */
   .flow{grid-template-columns:repeat(2,1fr)}
+  /* Five doesn't split into two even rows either (2,2,1), so it skips straight
+     to the stacked single column it would reach at 768 anyway. */
+  .flow:has(.step:nth-child(5)){grid-template-columns:1fr}
+  /* The chevron only makes sense while every step reads left to right in one
+     row (see the base rule's comment). Past this point the grid has already
+     wrapped, so turn it off rather than have it point at the wrong step. */
+  .step:not(:last-child)::after{content:none}
 }
 @media (max-width:768px){
   /* --rhythm is a clamp now (§11.5); it reaches 56px on its own at this width. */
@@ -1270,6 +1293,7 @@ tbody td{color:var(--muted)}
 .js [data-rv].rv-in .hl-items li:nth-child(4),
 .js [data-rv].rv-in .chip:nth-child(4),
 .js [data-rv].rv-in .row:nth-child(4){transition-delay:calc(var(--stagger)*3)}
+.js [data-rv].rv-in .step:nth-child(5),
 .js [data-rv].rv-in .hl-items li:nth-child(5),
 .js [data-rv].rv-in .chip:nth-child(5),
 .js [data-rv].rv-in .row:nth-child(5){transition-delay:calc(var(--stagger)*4)}
@@ -1372,11 +1396,16 @@ tbody td{color:var(--muted)}
   .foot-col nav a:hover,.foot-bar a:hover{color:var(--paper)}
   .socials a:hover{transform:translateY(-1px);background:rgba(250,248,243,.10)}
   .inline-cta:hover{border-bottom-color:var(--purple)}
-  .row:hover{background:var(--paper-raised)}
+  /* Every other hover ground on this file is --paper-deep, the recessed tier.
+     This one was the odd one out at --paper-raised: full-bleed pure white on
+     the cream page, with no radius to soften the edge against .row's own
+     border-bottom - an abrupt slab rather than a highlight. */
+  .row:hover{background:var(--paper-deep)}
   .row:hover .row-t{color:var(--purple)}
   /* §7.3: cards and cells lift 1 to 2px. */
   .cell,.card{transition:transform .22s var(--ease),border-color .22s ease}
   .cell:hover,.card:hover{transform:translateY(-2px)}
+  a.cell:hover .h3{color:var(--purple)}
   /* §7.4: the one piece of decorative motion on the site. It marks the row
      being read, which is why it is allowed to be decorative. */
   .hl-items li::before{transition:transform .3s var(--ease),background-color .3s ease}

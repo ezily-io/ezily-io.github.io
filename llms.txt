@@ -81,7 +81,7 @@ Every page is published in American English at https://ezily.io/ and in Traditio
 
 ### Careers
 
-- [人才招募](https://ezily.io/zh/careers): 客人買完就變成一筆訂單，品牌再付錢找同一個人。我們在做的是讓那個人留下來。
+- [人才招募](https://ezily.io/zh/careers): Ezily 正在招募各領域的專家，一起完成我們對於未來 Agentic Commerce 的想像。如果你也對未來商務世界有不同看法，歡迎來和我們聊聊！
 - [(Senior) Customer Success Manager](https://ezily.io/zh/careers/customer-success-manage): 負責客戶從導入到續約的整段過程。品牌把商品、庫存和訂單交給 Orchestrate，中間怎麼調整由你判斷。
 - [Lead Frontend Engineer](https://ezily.io/zh/careers/frontend-engineering-lead): 決定前端架構，也實際動手寫，包含 AI 功能的串流回應介面。
 - [Full Stack Engineer](https://ezily.io/zh/careers/full-stack-engineer): 端到端開發 Touchpoints 和 Orchestrate 的功能，上線之後也自己扛。
