@@ -244,18 +244,6 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ezily.io/careers/senior-designer"/>
   </url>
   <url>
-    <loc>https://ezily.io/careers/senior-devops</loc>
-    <xhtml:link rel="alternate" hreflang="en-US" href="https://ezily.io/careers/senior-devops"/>
-    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://ezily.io/zh/careers/senior-devops"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ezily.io/careers/senior-devops"/>
-  </url>
-  <url>
-    <loc>https://ezily.io/zh/careers/senior-devops</loc>
-    <xhtml:link rel="alternate" hreflang="en-US" href="https://ezily.io/careers/senior-devops"/>
-    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://ezily.io/zh/careers/senior-devops"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ezily.io/careers/senior-devops"/>
-  </url>
-  <url>
     <loc>https://ezily.io/careers/senior-product-manager</loc>
     <xhtml:link rel="alternate" hreflang="en-US" href="https://ezily.io/careers/senior-product-manager"/>
     <xhtml:link rel="alternate" hreflang="zh-TW" href="https://ezily.io/zh/careers/senior-product-manager"/>

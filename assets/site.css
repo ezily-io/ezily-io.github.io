@@ -1000,6 +1000,92 @@ a.cell{text-decoration:none;color:inherit}
   .mf-contained > .mf-loop{grid-column:auto;max-width:280px;margin:var(--space-8) auto 0}
 }
 
+/* ══ .cv: the Touchpoints converge diagram, 2026-09-23 ══════════════════════
+   Ported from design/moments-converge-v2.html by instruction, the same way as
+   .sync above: the source's seven colours are --paper, --paper-raised, --ink,
+   --muted, --rule, --purple and --green, so no token was added, and its
+   colour-mix tints, accent glow and deeper shadows were left behind for §1's
+   accent budget and §11.8's one elevation tier. Its 10 to 13px labels are held
+   at §11.1's 14px floor. The copy keeps the manifesto's own stack and the
+   diagram takes the other six columns. */
+.mf-cv > .stack{grid-column:1 / 7}
+.mf-cv > .cv{grid-column:7 / 13;align-self:center}
+.cv{min-width:0;padding:var(--pad-surface);background:var(--paper-raised);
+  border:1px solid var(--rule);border-radius:var(--r-panel);box-shadow:var(--shadow-card)}
+.cv-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-start;
+  gap:12px;margin-bottom:24px}
+.cv-head > div{flex:1 0 auto}
+.cv-kicker{color:var(--muted);font-size:var(--fs-label);font-weight:600;line-height:var(--lh-ui);
+  letter-spacing:var(--tr-meta)}
+.cv-title{margin-top:4px;font-family:var(--f-display);font-size:var(--fs-sub);font-weight:600;
+  line-height:var(--lh-sub);letter-spacing:var(--tr-sub)}
+.cv-status{flex:0 0 auto;display:inline-flex;align-items:center;gap:8px;min-height:32px;
+  padding:4px 12px;border:1px solid var(--rule);border-radius:var(--r-pill);color:var(--muted);
+  font-size:var(--fs-label);font-weight:500;line-height:1;white-space:nowrap}
+.cv-status::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--green)}
+.cv-node{display:grid;grid-template-columns:auto minmax(0,1fr);gap:12px;align-items:center;
+  padding:12px 16px;border:1px solid var(--rule);border-radius:var(--r-card);background:var(--paper-raised)}
+.cv-who{width:min(22rem,100%);margin-inline:auto}
+.cv-av,.cv-mk{width:40px;height:40px;display:grid;place-items:center;color:var(--paper-raised)}
+.cv-av{border-radius:50%;background:var(--ink)}
+.cv-mk{border-radius:var(--r-badge);background:var(--purple)}
+.cv-av svg,.cv-mk svg,.cv-ic svg{display:block;width:20px;height:20px}
+.cv-tx{min-width:0;display:grid;gap:2px;line-height:var(--lh-ui)}
+.cv-tx > span{color:var(--muted);font-size:var(--fs-label);font-weight:600}
+.cv-tx strong{font-size:1rem;font-weight:600}
+.cv-src{font-style:normal;color:var(--purple)}
+.cv-gate{border-color:var(--purple)}
+.cv-gate .cv-tx > span{color:var(--purple)}
+.cv-map{display:block;width:100%;height:auto;overflow:visible;color:var(--border-strong)}
+.cv-map path{fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.cv-map circle{fill:var(--paper-raised);stroke:var(--purple);stroke-width:1.5}
+.cv[data-active="0"] [data-r="0"],.cv[data-active="1"] [data-r="1"],
+.cv[data-active="2"] [data-r="2"]{color:var(--purple);stroke-width:2.25}
+/* Icon over label rather than beside it: three across in a six-column cell
+   leaves about 130px per door, and "Momo／Shopee" beside a 34px icon would
+   break mid-name. 72px tall, over the 44px floor. The resting edge is
+   --border-strong because a control boundary needs 3:1. */
+.cv-doors{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.cv-door{min-width:0;min-height:72px;display:flex;flex-direction:column;align-items:flex-start;
+  justify-content:center;gap:8px;padding:12px;border:1px solid var(--border-strong);
+  border-radius:var(--r-badge);background:var(--paper-raised);color:var(--ink);font:inherit;
+  text-align:start;cursor:pointer}
+.cv-door strong{font-size:.9375rem;font-weight:600;line-height:var(--lh-ui);overflow-wrap:anywhere}
+.cv-door[aria-pressed="true"]{border-color:var(--purple);background:var(--paper)}
+.cv-door:focus-visible{outline-offset:2px;border-radius:var(--r-badge)}
+.cv-ic{width:36px;height:36px;display:grid;place-items:center;border:1px solid var(--rule);
+  border-radius:var(--r-sm);background:var(--paper-deep);color:var(--muted)}
+.cv-door[aria-pressed="true"] .cv-ic{border-color:var(--purple);background:var(--paper-raised);color:var(--purple)}
+.cv-link{position:relative;width:1px;height:24px;margin-inline:auto;background:var(--border-strong)}
+.cv-link::after{content:"";position:absolute;left:50%;bottom:0;width:7px;height:7px;
+  border-right:1.5px solid var(--border-strong);border-bottom:1.5px solid var(--border-strong);
+  transform:translateX(-50%) rotate(45deg)}
+/* The three steps, each one done. The arrows between them are drawn, not
+   typed, so a screen reader reads three list items and no "right arrow". */
+.cv-flow{display:flex;justify-content:space-around;align-items:center;gap:8px;margin-top:12px;
+  padding:12px 16px;border:1px solid var(--rule);border-radius:var(--r-badge);background:var(--paper)}
+.cv-flow li{position:relative;flex:1 1 0;display:grid;justify-items:center;gap:4px;min-width:0;
+  color:var(--green);font-size:var(--fs-label);font-weight:600;line-height:var(--lh-ui);text-align:center}
+.cv-flow li::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--green)}
+.cv-flow li + li::after{content:"";position:absolute;left:-6px;top:50%;width:6px;height:6px;
+  border-top:1.5px solid var(--border-strong);border-right:1.5px solid var(--border-strong);
+  transform:translate(-50%,-50%) rotate(45deg)}
+.cv-note{margin-top:16px;color:var(--muted);font-size:var(--fs-label);line-height:var(--lh-ui);text-align:center}
+/* Tablet: the manifesto stacks at 900 like its other diagram, and the drawing
+   keeps its routes. It holds the left edge rather than centring, per §6. */
+@media (max-width:900px){
+  .mf-cv > .stack,.mf-cv > .cv{grid-column:auto}
+  .mf-cv > .cv{margin-top:var(--space-8);width:100%;max-width:40rem}
+}
+/* Phone: the doors stack, so the routes have nothing left to fan out to and
+   go; one hairline tick stands in for each join. */
+@media (max-width:640px){
+  .cv{padding:20px;border-radius:var(--r-group)}
+  .cv-map{display:none}
+  .cv-doors{grid-template-columns:1fr;margin-block:16px}
+  .cv-door{min-height:56px;flex-direction:row;align-items:center;gap:12px}
+  .cv-flow{padding-inline:12px}
+}
 /* Editorial split — inverted proportions so it is not the classic */
 .split{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(28px,5vw,64px);align-items:start;margin-top:var(--gap-body)}
 /* purple = 互動經營 · green = 轉換優化 · ink = Orchestrate. Gold is absent on
@@ -1278,6 +1364,23 @@ tbody td{color:var(--muted)}
 .row-m{font-size:var(--fs-label);line-height:var(--lh-ui);color:var(--subtle);
   letter-spacing:var(--tr-meta);white-space:nowrap;
   min-width:0;overflow:hidden;text-overflow:ellipsis}
+/* ── Row thumbnails, 2026-09-23 ──
+   The careers listing carries the same illustration each posting shows, at
+   thumbnail size. Only rows that HAVE one take .row-media, so a role whose
+   image the old site never had keeps the two-column row it always had and the
+   list does not go ragged.
+   align-items switches from baseline to center here: baseline is right when the
+   row is two blocks of type, and wrong the moment one of the three is a picture
+   with no baseline to sit on. */
+.row-media{grid-template-columns:auto minmax(0,1fr) minmax(0,18rem);align-items:center}
+.row-thumb{display:block;flex:none}
+/* Square, because the migrated art is square and §10 records why it is not
+   re-cut to 3:2. height is set explicitly for the same reason .cell-media
+   needs it: the markup carries width/height attributes, which are
+   presentational hints, and without an author height the hint would win and
+   the thumb would render 900px tall. */
+.row-thumb img{display:block;width:72px;height:72px;object-fit:cover;
+  border-radius:var(--r-sm)}
 .rows-note{margin-top:2.5em}
 /* The apply button sits under the list it belongs to, clear of the last row's
    hairline rather than tucked against it. */
@@ -1333,6 +1436,15 @@ tbody td{color:var(--muted)}
   .btn{padding-inline:28px}
   .row{grid-template-columns:1fr}
   .row-m{max-width:100%}
+  /* Thumb and title stay side by side on a phone; only the slug drops. A
+     full-width image here would make each row taller than the screen. */
+  /* start, not center: the text block runs four or five lines at this width,
+     and a centred thumb floats against the middle of the paragraph instead of
+     sitting with the title it belongs to. Desktop rows are short enough that
+     centring reads correctly there. */
+  .row-media{grid-template-columns:auto minmax(0,1fr);align-items:start}
+  .row-media .row-m{grid-column:1 / -1}
+  .row-thumb img{width:64px;height:64px}
   .bar nav{display:none}
   table{min-width:26rem}
 }
@@ -1586,6 +1698,9 @@ tbody td{color:var(--muted)}
 .sync-btn:active{transform:scale(.985)}
 .sync-map path{transition:stroke .18s ease}
 .sync-state,.sync-ic{transition:color .18s ease,background-color .18s ease,border-color .18s ease}
+.cv-door{transition:transform .16s var(--ease),border-color .18s ease,background-color .18s ease}
+.cv-door:active{transform:scale(.985)}
+.cv-map path,.cv-ic,.cv-src{transition:color .18s ease,background-color .18s ease,border-color .18s ease}
 
 /* ── Interaction: named properties, never `all` ── */
 /* Three rules govern this section.
@@ -1653,6 +1768,8 @@ tbody td{color:var(--muted)}
   .row:hover .row-t{color:var(--purple)}
   .sync-btn:hover{border-color:var(--ink)}
   .sync-btn[aria-pressed="true"]:hover{border-color:var(--purple)}
+  .cv-door:hover{border-color:var(--ink)}
+  .cv-door[aria-pressed="true"]:hover{border-color:var(--purple)}
   /* §7.3: cards and cells lift 1 to 2px. */
   .cell,.card{transition:transform .22s var(--ease),border-color .22s ease}
   .cell:hover,.card:hover{transform:translateY(-2px)}
@@ -1672,6 +1789,8 @@ tbody td{color:var(--muted)}
   .js .hero .sync{animation:none;opacity:1;transform:none}
   .sync-card,.sync-btn{transition:border-color .18s ease,background-color .18s ease}
   .sync-stage[data-state="busy"] .sync-card,.sync-btn:active{transform:none}
+  .cv-door{transition:border-color .18s ease,background-color .18s ease}
+  .cv-door:active{transform:none}
   /* Fewer and gentler, not none: colour and background still transition, so a
      hover or a press still reads as an answer. Only movement is dropped. */
   .btn,.row,.cell,.card,.navtoggle .nt-a,.navtoggle .nt-b,.navtop .caret,
