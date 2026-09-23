@@ -1478,7 +1478,12 @@ tbody td{color:var(--muted)}
   /* Two columns here, and the thumbnail spans both grid ROWS so it still runs
      the full height - the slug moves into the text column rather than under
      the picture, which is what it would do at `1 / -1`. */
-  .row-media{grid-template-columns:auto minmax(0,1fr);align-items:stretch}
+  /* ⚠️ grid-template-rows is declared so `1 / -1` below has something to mean.
+     Without it the text block and the slug are IMPLICIT rows, and -1 resolves
+     to the end of the explicit grid - which is row 1 - so the thumbnail covered
+     the title and stopped, leaving 35px of paper above the hairline. */
+  .row-media{grid-template-columns:auto minmax(0,1fr);grid-template-rows:auto auto;
+    align-items:stretch}
   .row-media .row-thumb{grid-row:1 / -1}
   .row-media .row-m{grid-column:2}
   .row-thumb img{width:84px}
