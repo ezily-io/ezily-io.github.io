@@ -35,7 +35,7 @@ Every page is published in American English at https://ezily.io/ and in Traditio
 
 ### Careers
 
-- [Careers](https://ezily.io/careers): Customers buy once and turn into an order, then the brand pays to reach the same person again. We're building the part that keeps them.
+- [Careers](https://ezily.io/careers): Ezily is hiring across every discipline to build what we think agentic commerce turns into. If you read that future differently, we want to hear it.
 - [(Senior) Customer Success Manager](https://ezily.io/careers/customer-success-manage): Own the customer from onboarding through renewal as brands move their products, inventory, and orders onto Orchestrate.
 - [Lead Frontend Engineer](https://ezily.io/careers/frontend-engineering-lead): Decide the frontend architecture and write the code, streaming interfaces for the AI features included.
 - [Full Stack Engineer](https://ezily.io/careers/full-stack-engineer): Build features end to end across Touchpoints and Orchestrate, and stay responsible for what you ship.
