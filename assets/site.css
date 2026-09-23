@@ -1406,16 +1406,23 @@ tbody td{color:var(--muted)}
    the row's own padding is the only thing between the image and the hairline
    above and below it, so a drift between these numbers shows as a sliver of
    paper at one edge and not the other. */
+/* The plate the art sits on. Every one of these illustrations has the same
+   near-white ground (#FCFCFE, sampled from all six), so --paper-raised is
+   within a percent of it and the letterbox `contain` leaves reads as part of
+   the picture rather than as a gap around it. */
 .row-thumb{display:block;align-self:stretch;overflow:hidden;
+  background:var(--paper-raised);
   margin-block:calc(var(--row-pad) * -1)}
-/* height:100% is the point - the width is the fixed axis now and the height
-   follows the row, so a long description makes a taller image rather than
-   leaving a gap. object-fit:cover then crops the square source to whatever
-   portrait box that lands on; the figure in every one of these illustrations
-   is centred, which is what makes a centre crop safe here.
-   No radius: the image meets the row's hairlines top and bottom, and a rounded
+/* ⚠️ contain, not cover, and that is the whole point of this rule. The plate
+   is a fixed width with a height that follows the row, so under `cover` the
+   crop was a function of how long each description happened to be: a 121px row
+   cut about 14% off the sides of a square source and a 151px row cut 31%. Some
+   thumbnails looked cropped and some did not, in the same list, for a reason no
+   reader could see. `contain` fits the whole square and crops nothing, and the
+   plate behind it absorbs what is left over.
+   No radius: the plate meets the row's hairlines top and bottom, and a rounded
    corner against a full-bleed edge reads as a mistake rather than a detail. */
-.row-thumb img{display:block;width:104px;height:100%;object-fit:cover}
+.row-thumb img{display:block;width:104px;height:100%;object-fit:contain}
 .rows-note{margin-top:2.5em}
 /* The apply button sits under the list it belongs to, clear of the last row's
    hairline rather than tucked against it. */
@@ -1484,11 +1491,17 @@ tbody td{color:var(--muted)}
      Without it the text block and the slug are IMPLICIT rows, and -1 resolves
      to the end of the explicit grid - which is row 1 - so the thumbnail covered
      the title and stopped, leaving 35px of paper above the hairline. */
+  /* ⚠️ The thumbnail stops running full height here, and that is a real
+     trade-off rather than an oversight. A phone row is 178-300px tall because
+     the description wraps to four or five lines; a full-height plate holding an
+     84px square would be up to 200px of empty white per row. Full-bleed and
+     never-crop cannot both hold on a square source in a box that tall, so at
+     this width the square wins and the plate is exactly the art. */
   .row-media{grid-template-columns:auto minmax(0,1fr);grid-template-rows:auto auto;
-    align-items:stretch}
-  .row-media .row-thumb{grid-row:1 / -1}
+    align-items:start}
+  .row-media .row-thumb{grid-row:1 / -1;align-self:start;margin-block:0}
   .row-media .row-m{grid-column:2}
-  .row-thumb img{width:84px}
+  .row-thumb img{width:84px;height:84px}
   .bar nav{display:none}
   table{min-width:26rem}
 }
