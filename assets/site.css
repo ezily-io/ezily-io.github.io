@@ -680,6 +680,22 @@ a.cell{text-decoration:none;color:inherit}
    without a publish date or a featured: flag to keep in sync. */
 .blog-grid .cell:first-child{grid-column:1/-1}
 
+/* Blog hero images, migrated from the old ezily.io/blog on 2026-09-23 by
+   instruction - see MARKETING-DESIGN.md §10 for the override note. A .cell
+   carrying one drops its own padding to let the image bleed to the card's
+   edge, and moves the inset to a .cell-body wrapper around the text instead.
+   The 3:2 ratio is every migrated file's actual shape (checked at build time,
+   not assumed), so it never letterboxes or crops a face out of frame. */
+.cell-media{padding:0;gap:0}
+.cell-media > img{display:block;width:100%;aspect-ratio:3/2;object-fit:cover;
+  border-radius:var(--r-card) var(--r-card) 0 0}
+.cell-media .cell-body{padding:var(--pad-surface);display:flex;flex-direction:column;gap:12px}
+/* Same image, above the H1's own text column rather than inside a card - the
+   posting itself. .prose's own children are measure-capped but the container
+   is not, so this runs the article's full wrap width. */
+.post-hero{margin-top:var(--gap-body);border-radius:var(--r-card);overflow:hidden}
+.post-hero img{display:block;width:100%;aspect-ratio:3/2;object-fit:cover}
+
 /* The Ink plate — roughly one per two light sections */
 .ink{background:var(--ink);color:var(--paper)}
 .ink .body,.ink .lead,.ink .edit,.ink .small{color:var(--ink-muted)}

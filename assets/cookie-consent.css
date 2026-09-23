@@ -16,10 +16,20 @@
   --cc-border:rgba(37,42,66,0.14);
 }
 
+/* ⚠️ Type comes from site.css's --f / --f-display rather than from this
+   component's own stack, and that is a correction made 2026-09-23. The card
+   shipped on Nunito and Lora, with Noto Serif TC behind the latter for 繁中,
+   which put three extra families on the Google Fonts request of EVERY page for
+   one component most readers dismiss once. MARKETING-DESIGN.md §3 runs the site
+   on one family per language, and §14 had just retired Noto Serif TC outright,
+   so this was also reintroducing a face that had been removed.
+   --f and --f-display are per-script, so the card now follows the page into
+   Poppins or Noto Sans TC instead of hard-coding a stack that guessed. Colour
+   stays this component's own; only the type is handed back. */
 .cc-card,.cc-modal{
   box-sizing:border-box;
   font-size:16px;
-  font-family:"Nunito","Noto Sans TC",system-ui,sans-serif;
+  font-family:var(--f);
   color:var(--cc-ink);
 }
 .cc-card *,.cc-modal *{box-sizing:border-box}
@@ -41,14 +51,20 @@
 .cc-card[hidden]{display:none}
 .cc-card-in{display:flex;flex-direction:column;gap:22px}
 
-.cc-kicker{margin:0;font-size:0.94rem;font-weight:700;letter-spacing:0.14em;color:var(--cc-muted);line-height:1.7}
+/* Positive tracking is for small Latin labels only (§11.3); 繁中 runs 0 on
+   every sign, so the default here is 0 and Latin opts back in. */
+.cc-kicker{margin:0;font-size:0.94rem;font-weight:700;letter-spacing:0;color:var(--cc-muted);line-height:1.7}
+html[lang^="en"] .cc-kicker{letter-spacing:0.14em}
 .cc-title{
   margin:6px 0 10px;
-  font-family:"Lora","Noto Serif TC",Georgia,serif;
-  font-weight:500;
+  font-family:var(--f-display);
+  font-weight:600;
   font-size:clamp(1.45rem,3.5vw,1.9rem);
   line-height:1.35;
-  letter-spacing:-0.035em;
+  /* ⚠️ Was a flat -0.035em, which §11.3 forbids outright on 繁中 - tracking is
+     never negative there, and that rule had no exception for a component. The
+     token carries the per-script value: -.022em on Latin, 0 on 繁中. */
+  letter-spacing:var(--tr-sub);
   color:var(--cc-heading);
 }
 .cc-desc{margin:0;font-size:0.94rem;line-height:1.7;color:var(--cc-muted)}
