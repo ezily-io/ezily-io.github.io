@@ -804,6 +804,7 @@ a.cell{text-decoration:none;color:inherit}
 .cell-media > img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;
   border-radius:var(--r-card) var(--r-card) 0 0}
 .cell-media .cell-body{padding:var(--pad-surface);display:flex;flex-direction:column;gap:12px}
+.cell-media .cell-mask{border-radius:0 0 var(--r-card) var(--r-card)}
 /* Listing cards carry no "read" line (2026-09-23, by instruction). The card
    is the link; on hover or keyboard focus an Ink mask covers it and a
    "閱讀全文" button fades up in the middle. The button is the reversed brand
@@ -812,9 +813,10 @@ a.cell{text-decoration:none;color:inherit}
    sees it and a tap simply opens the post. :focus-visible shows it at any
    pointer, so the keyboard gets the same answer the mouse does. */
 a.cell{position:relative}
-.cell-mask{position:absolute;inset:-1px;border-radius:inherit;display:flex;
+a.cell .cell-body{position:relative}
+.cell-mask{position:absolute;inset:-1px;border-radius:var(--r-card);display:flex;
   align-items:center;justify-content:center;pointer-events:none;opacity:0;
-  background:color-mix(in srgb,var(--ink) 80%,transparent)}
+  background:color-mix(in srgb,var(--ink) 55%,transparent)}
 .cell-mask .btn{background:var(--lilac);color:var(--ink);transform:translateY(6px)}
 a.cell:focus-visible .cell-mask{opacity:1}
 a.cell:focus-visible .cell-mask .btn{transform:none}
