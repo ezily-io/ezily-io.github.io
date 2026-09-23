@@ -316,6 +316,14 @@ a{color:var(--purple)}
 .label{font-size:var(--fs-label);font-weight:500;letter-spacing:var(--tr-label);
   line-height:var(--lh-ui);text-transform:uppercase;color:var(--muted)}
 .measure{max-width:var(--measure)}
+/* ── {{字}} → .nb, the no-break run, 2026-09-23 ──
+   繁中 breaks between any two 漢字, so a two-character last line and a split
+   bisyllabic word are the DEFAULT outcome, not an edge case, and text-wrap:
+   pretty has no word boundaries to work with. This binds a run so the break
+   cannot fall inside it. build.py caps a run at 12 漢字 widths against the
+   375px body column, because nowrap is precisely how a page gets the
+   horizontal overflow §5.3 calls a critical failure. */
+.nb{white-space:nowrap}
 /* Editorial. §14 retires Newsreader: it was Latin-only, so 繁中 fell back to the
    body sans and the editorial voice simply did not exist on the primary
    language. Poppins italic carries it on Latin. On 繁中 it is Noto Sans TC 600,
