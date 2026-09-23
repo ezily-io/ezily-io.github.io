@@ -821,6 +821,27 @@ a.cell{text-decoration:none;color:inherit}
   .mf-photo::after{background:none}
 }
 
+/* ── .mf-contained: the manifesto's other `vis`, a diagram instead of a photo,
+   2026-09-23. Shares .mf's 12-column grid but skips every rule above this
+   comment -- no bleed, no mask, no ink-panel fade -- because a line diagram is
+   a normal grid cell, not art pinned to the section's edge. */
+.mf-contained > .stack{grid-column:1 / 8}
+.mf-contained > .mf-loop{grid-column:8 / 13;align-self:center}
+/* Lines only; the labels are .chip text laid over them (see build.py), so
+   there is no text baked into the artwork and nothing for a screen reader to
+   miss -- it reads "LINE", "Shopee", "電商官網" same as it would in a table. */
+.mf-loop{position:relative;aspect-ratio:300 / 260}
+.mf-loop-lines{position:absolute;inset:0;width:100%;height:100%}
+.mf-loop-lines path{fill:none;stroke:var(--border-strong);stroke-width:2;stroke-linejoin:round}
+.mf-loop-arrow{fill:var(--purple-fill)}
+.mf-loop-node{position:absolute;transform:translate(-50%,-50%);
+  background:var(--paper);white-space:nowrap}
+@media (max-width:900px){
+  .mf-contained{grid-template-columns:1fr}
+  .mf-contained > .stack{grid-column:auto}
+  .mf-contained > .mf-loop{grid-column:auto;max-width:280px;margin:var(--space-8) auto 0}
+}
+
 /* Editorial split — inverted proportions so it is not the classic */
 .split{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(28px,5vw,64px);align-items:start;margin-top:var(--gap-body)}
 /* purple = 互動經營 · green = 轉換優化 · ink = Orchestrate. Gold is absent on
