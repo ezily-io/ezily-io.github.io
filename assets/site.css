@@ -809,6 +809,17 @@ a.cell{text-decoration:none;color:inherit}
    is not, so this runs the article's full wrap width. */
 .post-hero{margin-top:var(--gap-body);border-radius:var(--r-card);overflow:hidden}
 .post-hero img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover}
+/* ── Careers postings, 2026-09-23 ──
+   The role illustrations migrated from the old ezily.io/careers are square and
+   were displayed square there (473px). A 3:2 crop would take 209px off a
+   1254px source top and bottom, and the figure in every one of them is centred
+   and nearly full-height, so that crop clips heads. The ratio is overridden
+   rather than the art re-cut.
+   Capped well under the text column: at the measure's full width a square
+   illustration is the tallest thing on the page and outranks the H1 above it,
+   which is the wrong order on a posting whose job is to be read. */
+.post-hero-sq{max-width:min(100%,380px)}
+.post-hero-sq img{aspect-ratio:1/1}
 
 /* The Ink plate — roughly one per two light sections */
 .ink{background:var(--ink);color:var(--paper)}
@@ -1200,6 +1211,39 @@ a.cell{text-decoration:none;color:inherit}
 .prose h1 + .jd-note{font-size:.9375rem;line-height:var(--lh-ui);
   color:var(--subtle);margin-top:1.3em}
 .prose .jd-note + p{font-size:var(--fs-sub);margin-top:1.6em}
+
+/* ── Blog post: the Medium reading column ──
+   ⚠️ Overrides §5.2's 554px article span and §5.3's no-centring rule, by
+   instruction (2026-09-23): blog posts read like a Medium story. Measured off
+   medium.com at 1440: one centred 680px column carrying the title, the
+   standfirst, the picture and every paragraph; title 42px, standfirst 22px
+   muted, body 20/32 in near-black, section heads at body-plus-a-bit rather
+   than display size, paragraphs ~1.7em apart. The container still does not
+   move: the column centres inside .wrap. Scoped to .post, so careers and legal
+   keep the document treatment above. Body face stays the site's own; Medium's
+   serif has no CJK partner here and the editorial serif is retired (§13.4). */
+.prose.post{--post-col:42.5rem;--post-gap:1.7em;
+  font-size:clamp(1.125rem,1.07rem + .24vw,1.25rem)}      /* 18 → 20, as Medium */
+html[lang^="zh"] .prose.post{--post-gap:1.45em}            /* 1.85 leading already opens it */
+.prose.post > *{max-width:var(--post-col);margin-inline:auto}
+.prose.post h1{font-size:clamp(2rem,1.72rem + 1.2vw,2.625rem);   /* 32 → 42 */
+  line-height:var(--lh-dm);letter-spacing:var(--tr-h2)}
+html[lang^="en"] .prose.post h1{line-height:var(--lh-sub)}
+.prose.post .post-lede{font-size:var(--fs-sub);line-height:var(--lh-sub);
+  color:var(--muted);margin-top:.7em}
+.prose.post .post-hero{margin-top:2em}
+.prose.post p,.prose.post ol,.prose.post ul{color:var(--ink);margin-top:var(--post-gap)}
+.prose.post .post-hero + p{margin-top:2em}
+.prose.post li::marker{color:var(--muted)}
+.prose.post ol,.prose.post ul{gap:.45em}
+.prose.post h2{font-size:var(--fs-h3);font-weight:600;line-height:var(--lh-sub);
+  letter-spacing:var(--tr-sub);margin-top:2em}
+.prose.post h3{font-size:var(--fs-sub);line-height:var(--lh-sub);margin-top:1.7em}
+.prose.post :is(h2,h3) + :is(p,ul,ol){margin-top:.6em}
+/* Medium's section break is three dots, not a rule. */
+.prose.post hr{width:48px;height:4px;border:0;margin:2.6em auto;
+  background:radial-gradient(circle,var(--ink) 1.6px,transparent 2px) 0 0/16px 4px repeat-x}
+.prose.post .tablewrap{margin-top:var(--post-gap)}
 
 /* Header illustrations on job and blog posts. They arrive as a bare markdown
    image inside its own paragraph, and several are square at 2048px, so without
