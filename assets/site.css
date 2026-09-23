@@ -804,6 +804,20 @@ a.cell{text-decoration:none;color:inherit}
 .cell-media > img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;
   border-radius:var(--r-card) var(--r-card) 0 0}
 .cell-media .cell-body{padding:var(--pad-surface);display:flex;flex-direction:column;gap:12px}
+/* Listing cards carry no "read" line (2026-09-23, by instruction). The card
+   is the link; on hover or keyboard focus an Ink mask covers it and a
+   "閱讀全文" button fades up in the middle. The button is the reversed brand
+   button the Ink plate already uses, lilac on Ink at 11.93:1. The mask is
+   opacity only (§9), and it is hover-gated below, so a touch screen never
+   sees it and a tap simply opens the post. :focus-visible shows it at any
+   pointer, so the keyboard gets the same answer the mouse does. */
+a.cell{position:relative}
+.cell-mask{position:absolute;inset:-1px;border-radius:inherit;display:flex;
+  align-items:center;justify-content:center;pointer-events:none;opacity:0;
+  background:color-mix(in srgb,var(--ink) 80%,transparent)}
+.cell-mask .btn{background:var(--lilac);color:var(--ink);transform:translateY(6px)}
+a.cell:focus-visible .cell-mask{opacity:1}
+a.cell:focus-visible .cell-mask .btn{transform:none}
 /* Same image, above the H1's own text column rather than inside a card - the
    posting itself. .prose's own children are measure-capped but the container
    is not, so this runs the article's full wrap width. */
@@ -1330,6 +1344,15 @@ html[lang^="en"] .prose.post h1{line-height:var(--lh-sub)}
 .prose.post hr{width:48px;height:4px;border:0;margin:2.6em auto;
   background:radial-gradient(circle,var(--ink) 1.6px,transparent 2px) 0 0/16px 4px repeat-x}
 .prose.post .tablewrap{margin-top:var(--post-gap)}
+/* Careers and legal share the column (2026-09-23). Neither opens on a
+   standfirst, so the document treatment's "first paragraph is a lede" rule is
+   switched off here: a posting's contract terms and a policy's effective date
+   read at body size, as every paragraph does on Medium. The square careers
+   illustration keeps its 380px cap, centred in the column as Medium centres a
+   narrower image. */
+.prose.post h1 + p:not(.post-lede,.jd-note),.prose.post .jd-note + p{font-size:inherit;margin-top:2em}
+.prose.post p.jd-note{font-size:.9375rem;color:var(--subtle);margin-top:.9em}
+.prose.post .post-hero-sq{max-width:min(100%,380px)}
 
 /* Header illustrations on job and blog posts. They arrive as a bare markdown
    image inside its own paragraph, and several are square at 2048px, so without
@@ -1356,9 +1379,10 @@ tbody td{color:var(--muted)}
    width and left the title with roughly 60px between 769px and about 1100px,
    one word per line. Capping the track at 18rem and letting the slug elide is
    the same answer the 768px rule already reached for, applied at every width. */
-.row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,18rem);gap:12px 32px;
+.row{--row-pad:26px;
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,18rem);gap:12px 32px;
   align-items:baseline;
-  padding-block:26px;border-bottom:1px solid var(--rule);text-decoration:none;color:inherit}
+  padding-block:var(--row-pad);border-bottom:1px solid var(--rule);text-decoration:none;color:inherit}
 .row-t{font-family:var(--f-display);font-size:var(--fs-sub);font-weight:600;line-height:var(--lh-sub)}
 .row-d{color:var(--muted);font-size:1rem;margin-top:8px;max-width:var(--measure);text-wrap:pretty}
 .row-m{font-size:var(--fs-label);line-height:var(--lh-ui);color:var(--subtle);
@@ -1372,15 +1396,24 @@ tbody td{color:var(--muted)}
    align-items switches from baseline to center here: baseline is right when the
    row is two blocks of type, and wrong the moment one of the three is a picture
    with no baseline to sit on. */
-.row-media{grid-template-columns:auto minmax(0,1fr) minmax(0,18rem);align-items:center}
-.row-thumb{display:block;flex:none}
-/* Square, because the migrated art is square and §10 records why it is not
-   re-cut to 3:2. height is set explicitly for the same reason .cell-media
-   needs it: the markup carries width/height attributes, which are
-   presentational hints, and without an author height the hint would win and
-   the thumb would render 900px tall. */
-.row-thumb img{display:block;width:72px;height:72px;object-fit:cover;
-  border-radius:var(--r-sm)}
+/* stretch, not center: the thumbnail runs the row's full height, so the track
+   has to be told to fill rather than to sit in the middle of it. */
+.row-media{grid-template-columns:auto minmax(0,1fr) minmax(0,18rem);align-items:stretch}
+/* ⚠️ The negative margin is what makes it full-bleed, and it is tied to
+   --row-pad rather than repeating 26px, because the two have to move together:
+   the row's own padding is the only thing between the image and the hairline
+   above and below it, so a drift between these numbers shows as a sliver of
+   paper at one edge and not the other. */
+.row-thumb{display:block;align-self:stretch;overflow:hidden;
+  margin-block:calc(var(--row-pad) * -1)}
+/* height:100% is the point - the width is the fixed axis now and the height
+   follows the row, so a long description makes a taller image rather than
+   leaving a gap. object-fit:cover then crops the square source to whatever
+   portrait box that lands on; the figure in every one of these illustrations
+   is centred, which is what makes a centre crop safe here.
+   No radius: the image meets the row's hairlines top and bottom, and a rounded
+   corner against a full-bleed edge reads as a mistake rather than a detail. */
+.row-thumb img{display:block;width:104px;height:100%;object-fit:cover}
 .rows-note{margin-top:2.5em}
 /* The apply button sits under the list it belongs to, clear of the last row's
    hairline rather than tucked against it. */
@@ -1442,9 +1475,13 @@ tbody td{color:var(--muted)}
      and a centred thumb floats against the middle of the paragraph instead of
      sitting with the title it belongs to. Desktop rows are short enough that
      centring reads correctly there. */
-  .row-media{grid-template-columns:auto minmax(0,1fr);align-items:start}
-  .row-media .row-m{grid-column:1 / -1}
-  .row-thumb img{width:64px;height:64px}
+  /* Two columns here, and the thumbnail spans both grid ROWS so it still runs
+     the full height - the slug moves into the text column rather than under
+     the picture, which is what it would do at `1 / -1`. */
+  .row-media{grid-template-columns:auto minmax(0,1fr);align-items:stretch}
+  .row-media .row-thumb{grid-row:1 / -1}
+  .row-media .row-m{grid-column:2}
+  .row-thumb img{width:84px}
   .bar nav{display:none}
   table{min-width:26rem}
 }
@@ -1774,6 +1811,11 @@ tbody td{color:var(--muted)}
   .cell,.card{transition:transform .22s var(--ease),border-color .22s ease}
   .cell:hover,.card:hover{transform:translateY(-2px)}
   a.cell:hover .h3{color:var(--purple)}
+  .cell-mask{transition:opacity .22s ease}
+  .cell-mask .btn{transition:transform .28s var(--ease)}
+  a.cell:hover .cell-mask{opacity:1}
+  a.cell:has(.cell-mask):hover .h3{color:inherit}   /* the mask carries the state */
+  a.cell:hover .cell-mask .btn{transform:none}
   /* §7.4: the one piece of decorative motion on the site. It marks the row
      being read, which is why it is allowed to be decorative. */
   .hl-items li::before{transition:transform .3s var(--ease),background-color .3s ease}
@@ -1796,6 +1838,7 @@ tbody td{color:var(--muted)}
   .btn,.row,.cell,.card,.navtoggle .nt-a,.navtoggle .nt-b,.navtop .caret,
   .hl-items li::before{transition:none}
   .btn:hover,.socials a:hover,.cell:hover,.card:hover{transform:none}
+  .cell-mask .btn{transform:none;transition:none}
   .hl-items li:hover::before{transform:translateY(-.35em)}
   .btn:active,.langlink:active,.socials a:active,.navtoggle:active,.qrm-x:active{transform:none}
   .navgroup:hover .navtop .caret,.navgroup:focus-within .navtop .caret{transform:none}
