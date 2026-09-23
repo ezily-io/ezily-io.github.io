@@ -408,7 +408,7 @@ html[lang^="en"] .mark{background-size:100% .95em;padding:.02em .18em}
   transition:background-color .2s ease,border-radius .2s ease,border-color .2s ease,
     box-shadow .2s ease}
 .bar-in > a[aria-label="Ezily"]{min-height:44px;display:inline-flex;align-items:center}
-.logo{height:26px;width:auto;display:block}
+.logo{height:32px;width:auto;display:block}
 .bar nav{display:flex;gap:4px;margin-inline-start:auto;flex-wrap:wrap}
 /* Link styling lives on .navtop and .navmenu a further down. A generic
    `.bar nav a` rule here outranks both and breaks the dropdown. */
