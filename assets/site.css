@@ -1280,13 +1280,19 @@ a.cell:focus-visible .cell-mask .btn{transform:none}
 .slots-one{grid-template-columns:1fr}
 .slot-wide{aspect-ratio:16/9}
 
+/* Slot options — unordered cards for conversion types. */
+.slot-opts{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:var(--gap-body)}
+.slot-opt{display:flex;flex-direction:column;gap:8px;padding:20px;
+  border:1px solid var(--rule);border-radius:var(--r-card);background:var(--paper-raised)}
+.slot-opt b{font-family:var(--f-display);font-size:var(--fs-sub);font-weight:600;line-height:var(--lh-sub)}
+
 /* Carousel — pure CSS, no JS. Radio inputs drive the visible slide. */
 .carousel{position:relative;overflow:hidden;border-radius:var(--r-card);
   margin-top:var(--gap-body);background:var(--paper-deep)}
 .car-r{position:absolute;opacity:0;pointer-events:none}
-.car-slide{display:none}
+.car-slide{position:absolute;inset:0;opacity:0;transition:opacity .3s}
 .car-slide img{display:block;width:100%;height:auto}
-.car-r:checked+.car-slide{display:block}
+.car-r:checked+.car-slide{position:relative;opacity:1}
 .car-dots{display:flex;justify-content:center;gap:12px;padding:16px 0}
 .car-dot{position:relative;width:10px;height:10px;border-radius:50%;background:var(--border-strong);
   cursor:pointer;transition:background .2s}
@@ -1490,7 +1496,7 @@ tbody td{color:var(--muted)}
 @media (max-width:768px){
   /* --rhythm is a clamp now (§11.5); it reaches 56px on its own at this width. */
   body{font-size:1rem}
-  .group.c2,.group.c3,.group.c4,.compare,.slots,.flow{grid-template-columns:1fr}
+  .group.c2,.group.c3,.group.c4,.compare,.slots,.slot-opts,.flow{grid-template-columns:1fr}
   .hero-grid{grid-template-columns:1fr}
   .hero-head,.hero-foot{grid-column:auto}
   /* The schematic used to be hidden here too, on the ground that stacking it
