@@ -1922,7 +1922,7 @@ tbody td{color:var(--muted)}
 .qrm{padding:0;border:1px solid var(--rule);border-radius:var(--r-panel);
   background:var(--paper-raised);color:var(--ink);
   max-width:480px;width:calc(100% - 2 * var(--pad));
-  box-shadow:0 24px 60px rgba(36,30,43,.18);position:relative}
+  box-shadow:0 24px 60px rgba(36,30,43,.18)}
 .qrm::backdrop{background:rgba(36,30,43,.55)}
 .qrm-x{position:absolute;top:12px;right:12px;width:40px;height:40px;
   display:grid;place-items:center;border:1px solid var(--rule);
