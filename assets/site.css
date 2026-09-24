@@ -2184,14 +2184,14 @@ tbody td{color:var(--muted)}
   gap:24px;align-items:end;padding:54px 0 0}
 .problem-conclusion strong{font-size:clamp(2rem,4vw,4rem);font-weight:500;
   letter-spacing:-.045em;line-height:1.08}
-.problem-conclusion strong span{display:block;color:var(--green)}
+.problem-conclusion strong span{display:block;color:var(--purple)}
 .problem-conclusion p{max-width:500px;margin:0 0 8px auto;color:var(--muted)}
 
 .principles{padding:var(--section-lg) 0;background:var(--paper-raised)}
 .principles-layout{display:grid;grid-template-columns:4fr 8fr;
   gap:clamp(48px,7vw,96px)}
 .principles-aside{position:sticky;top:126px;align-self:start}
-.principles-aside h2 .mark{color:var(--green)}
+.principles-aside h2 .mark{color:var(--purple)}
 .principles-aside p{max-width:350px;color:var(--muted)}
 .principles-list{position:relative;margin:0;padding:0;list-style:none}
 .principles-list::before{position:absolute;top:0;bottom:0;left:31px;
@@ -2200,9 +2200,8 @@ tbody td{color:var(--muted)}
   gap:28px;min-height:190px;padding:0 0 42px}
 .principle:last-child{padding-bottom:0}
 .principle-number{position:relative;z-index:2;display:grid;width:64px;height:64px;
-  place-items:center;border-radius:50%;background:var(--green);color:#fff;
+  place-items:center;border-radius:50%;background:var(--purple);color:#fff;
   font-size:1rem;font-weight:600}
-.principle:last-child .principle-number{background:var(--purple)}
 .principle-copy{padding:2px 0 0}
 .principle-copy h3{margin-bottom:12px}
 .principle:last-child h3{color:var(--purple)}
