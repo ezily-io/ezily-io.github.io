@@ -2130,6 +2130,7 @@ tbody td{color:var(--muted)}
 .bp-hero-grid{display:grid;grid-template-columns:repeat(12,1fr);
   gap:var(--gutter);align-items:center}
 .bp-hero-copy{grid-column:1 / span 7}
+.bp-hero-copy h1,.bp-hero-copy .h1{margin-bottom:28px}
 .bp-hero-copy .lede{max-width:610px}
 .bp-hero-copy .eyebrow{margin:0 0 22px;color:var(--purple);
   font-size:.75rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase}
