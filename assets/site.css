@@ -1592,7 +1592,7 @@ tbody td{color:var(--muted)}
 
 /* ── Footer: four columns, then a bottom bar ── */
 .foot{background:var(--ink);color:var(--paper);
-  border-radius:var(--r-xl) var(--r-xl) 0 0;padding-block:64px 40px}
+  padding-block:64px 40px}
 .foot .small,.foot .body{color:var(--ink-muted)}                 /* 7.52:1 */
 .foot-in{display:block;max-width:var(--wrap);margin:0 auto;padding-inline:var(--pad)}
 .foot-cols{display:grid;grid-template-columns:1.3fr 1fr 1fr 1.2fr;gap:40px}
@@ -2239,7 +2239,7 @@ tbody td{color:var(--muted)}
 
 .closing{padding:var(--section-lg) 0;background:var(--ink);
   color:var(--paper-raised);overflow:hidden;margin-bottom:0}
-main:has(> .closing:last-child) + .foot{border-radius:0;
+main:has(> .closing:last-child) + .foot{
   border-top:1px solid rgba(255,255,255,.08)}
 .closing-grid{display:grid;grid-template-columns:7fr 5fr;
   gap:var(--gutter);align-items:center}
