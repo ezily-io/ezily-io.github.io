@@ -32,6 +32,7 @@
   --purple-deep:#5B23C4;                    /* hover and press. 7.65:1 reversed */
   --green:#2E6B4F;                          /* incoming second anchor. 5.94:1 */
   --green-pale:#E8F5EE;                     /* 16.47:1 with ink on it */
+  --purple-pale:#EDE5FB;                    /* light purple tint for badges/chips */
   --lilac:#DCC6FF; --yellow:#FFD86F;
   /* Incoming's #EAE5F0 is 1.17:1 on the new cream, weaker than the #E3DACB it
      replaces. Hairlines are this site's whole separation device, so it is
@@ -122,7 +123,7 @@
      ⚠️ And if a shape is ever moved back under a button, the OLD ceiling
      returns and these values fail it. Geometry is load-bearing here. */
   --shape-purple:rgba(150,69,254,.14);
-  --shape-green:rgba(46,107,79,.14);
+  --shape-green:rgba(124,58,237,.14);       /* mapped to purple per brand decision */
   --shape-lilac:rgba(220,198,255,.30);
   --gap-body:var(--space-8);                /* section head to section body, 36 → 48 */
   --pad-surface:var(--space-7);             /* inset shared by cell, card, compare, 32 → 40 */
@@ -701,8 +702,8 @@ html[lang^="en"] .hero--sync{--fs-h1:clamp(2.25rem,1.4578rem + 3.3803vw,3.5rem)}
 /* The state pill takes --green on --green-pale, 5.62:1, and drops to muted on
    the recessed ground while the channels are catching up. */
 .sync-state{flex:0 0 auto;display:inline-flex;align-items:center;gap:8px;min-height:32px;
-  padding:4px 12px;border:1px solid var(--green);border-radius:var(--r-pill);
-  background:var(--green-pale);color:var(--green);font-size:var(--fs-label);font-weight:600;
+  padding:4px 12px;border:1px solid var(--purple);border-radius:var(--r-pill);
+  background:var(--purple-pale);color:var(--purple);font-size:var(--fs-label);font-weight:600;
   line-height:1;white-space:nowrap}
 .sync-state::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor}
 .sync-stage[data-state="busy"] .sync-state{border-color:var(--border-strong);
@@ -726,7 +727,7 @@ html[lang^="en"] .hero--sync{--fs-h1:clamp(2.25rem,1.4578rem + 3.3803vw,3.5rem)}
 .sync-tx > span{color:var(--muted);font-size:var(--fs-label)}
 .sync-go{color:var(--muted);font-size:1.25rem;line-height:1}
 .sync-map{grid-column:2;grid-row:1;align-self:stretch;width:100%;height:100%;overflow:visible}
-.sync-map path{fill:none;stroke:var(--green);stroke-width:1.5;stroke-linecap:round;
+.sync-map path{fill:none;stroke:var(--purple);stroke-width:1.5;stroke-linecap:round;
   vector-effect:non-scaling-stroke}
 .sync-stage[data-state="busy"] .sync-map path{stroke:var(--rule)}
 /* Three equal rows with no gap between them, so the card centres fall on the
@@ -735,18 +736,18 @@ html[lang^="en"] .hero--sync{--fs-h1:clamp(2.25rem,1.4578rem + 3.3803vw,3.5rem)}
 .sync-ch{grid-column:3;grid-row:1;align-self:stretch;display:grid;grid-auto-rows:1fr}
 .sync-row{display:flex;align-items:center;padding-block:8px}
 .sync-card{width:100%;min-height:72px;display:grid;grid-template-columns:40px minmax(0,1fr);gap:12px;
-  align-items:center;padding:12px;border:1px solid var(--green);border-radius:var(--r-card);
+  align-items:center;padding:12px;border:1px solid var(--purple);border-radius:var(--r-card);
   background:var(--paper-raised);box-shadow:var(--shadow-card)}
 .sync-stage[data-state="busy"] .sync-card{border-color:var(--rule)}
 .sync-card .sync-ic{border:1px solid var(--rule)}
 .sync-st{display:flex;align-items:center;gap:8px}
-.sync-st::before{content:"";flex:0 0 auto;width:6px;height:6px;border-radius:50%;background:var(--green)}
+.sync-st::before{content:"";flex:0 0 auto;width:6px;height:6px;border-radius:50%;background:var(--purple)}
 .sync-stage[data-state="busy"] .sync-st::before{background:var(--border-strong)}
 .sync-note{grid-column:1 / -1;grid-row:2;justify-self:start;display:flex;align-items:center;gap:12px;
   margin-inline-start:24px;max-width:26rem;padding:12px 16px;border:1px solid var(--rule);
   border-radius:var(--r-badge);background:var(--paper-raised);box-shadow:var(--shadow-card);
   font-size:.9375rem;line-height:var(--lh-ui)}
-.sync-note svg{flex:0 0 auto;width:20px;height:20px;color:var(--green)}
+.sync-note svg{flex:0 0 auto;width:20px;height:20px;color:var(--purple)}
 .sync-note strong{font-weight:600}
 /* Tablet: stacked, copy first. The diagram keeps its three columns - the
    connectors are the point of it - and holds the left edge rather than
@@ -1046,7 +1047,7 @@ a.cell:focus-visible .cell-mask .btn{transform:none}
 .cv-status{flex:0 0 auto;display:inline-flex;align-items:center;gap:8px;min-height:32px;
   padding:4px 12px;border:1px solid var(--rule);border-radius:var(--r-pill);color:var(--muted);
   font-size:var(--fs-label);font-weight:500;line-height:1;white-space:nowrap}
-.cv-status::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--green)}
+.cv-status::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--purple)}
 .cv-node{display:grid;grid-template-columns:auto minmax(0,1fr);gap:12px;align-items:center;
   padding:12px 16px;border:1px solid var(--rule);border-radius:var(--r-card);background:var(--paper-raised)}
 .cv-who{width:min(22rem,100%);margin-inline:auto}
@@ -1089,8 +1090,8 @@ a.cell:focus-visible .cell-mask .btn{transform:none}
 .cv-flow{display:flex;justify-content:space-around;align-items:center;gap:8px;margin-top:12px;
   padding:12px 16px;border:1px solid var(--rule);border-radius:var(--r-badge);background:var(--paper)}
 .cv-flow li{position:relative;flex:1 1 0;display:grid;justify-items:center;gap:4px;min-width:0;
-  color:var(--green);font-size:var(--fs-label);font-weight:600;line-height:var(--lh-ui);text-align:center}
-.cv-flow li::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--green)}
+  color:var(--purple);font-size:var(--fs-label);font-weight:600;line-height:var(--lh-ui);text-align:center}
+.cv-flow li::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--purple)}
 .cv-flow li + li::after{content:"";position:absolute;left:-6px;top:50%;width:6px;height:6px;
   border-top:1.5px solid var(--border-strong);border-right:1.5px solid var(--border-strong);
   transform:translate(-50%,-50%) rotate(45deg)}
@@ -1119,7 +1120,7 @@ a.cell:focus-visible .cell-mask .btn{transform:none}
 .dot{width:8px;height:8px;border-radius:50%;flex:none;display:inline-block;
   background:var(--purple-fill)}
 .dot-purple{background:var(--purple-fill)}
-.dot-green{background:var(--green)}
+.dot-green{background:var(--purple)}
 .dot-ink{background:var(--ink)}
 /* Any label carrying a layer dot, not only the two places that happened to
    need one first. Without this a dot outside .cell butts against its text.
@@ -1129,7 +1130,7 @@ a.cell:focus-visible .cell-mask .btn{transform:none}
 
 .chipset{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
 /* The conversion set reads as the completing half of the pair. */
-.chip-green{border-color:var(--green);color:var(--green);background:var(--green-pale)}
+.chip-green{border-color:var(--purple);color:var(--purple);background:var(--purple-pale)}
 /* A static label, not a control: .chip is a <span> listing module names, so it
    is not focusable and the 44px touch-target rule does not apply to it. */
 .chip{border:1px solid var(--border-strong);border-radius:var(--r-pill);padding:8px 16px;font-size:.9375rem}
@@ -1152,7 +1153,7 @@ a.cell:focus-visible .cell-mask .btn{transform:none}
 .badge{display:inline-flex;align-items:center;gap:8px;border-radius:var(--r-badge);
   padding:3px 14px;font-size:var(--fs-label);font-weight:500;line-height:var(--lh-ui)}
 .badge-purple{background:var(--purple);color:#FFFFFF}   /* 5.70:1 */
-.badge-green{background:var(--green-pale);color:var(--ink)}  /* 16.47:1 */
+.badge-green{background:var(--purple-pale);color:var(--ink)}  /* 16.47:1 */
 /* Refused: the export's gold `promo` and pink `blush` tones, and its tilt={-2}
    sticker treatment. Gold is the sale CTA and labels no category; a rotated
    element is decoration carrying no information. */
@@ -1251,8 +1252,8 @@ a.cell:focus-visible .cell-mask .btn{transform:none}
 .compare > div.then{background:var(--paper-deep)}
 .compare ul{display:flex;flex-direction:column;gap:16px;margin-top:16px}
 .compare li{padding-inline-start:16px;border-inline-start:2px solid var(--border-strong);color:var(--muted)}
-.compare .now li{border-inline-start-color:var(--green);color:var(--ink)}
-.compare .now .label{color:var(--green)}
+.compare .now li{border-inline-start-color:var(--purple);color:var(--ink)}
+.compare .now .label{color:var(--purple)}
 
 /* Step flow — the verb is the label, never numbered. The base grid is cut for
    four; a five-step flow (touchpoints.md's cycle) gets its own exact column
@@ -1992,7 +1993,7 @@ tbody td{color:var(--muted)}
     linear-gradient(to bottom,color-mix(in oklch,var(--rule) 42%,transparent) 1px,transparent 1px);
   background-size:64px 64px}
 .mini-hero::after{content:"";position:absolute;right:-110px;bottom:-180px;width:440px;height:440px;
-  border:1px solid color-mix(in oklch,var(--green) 32%,transparent);border-radius:50%;pointer-events:none}
+  border:1px solid color-mix(in oklch,var(--purple) 32%,transparent);border-radius:50%;pointer-events:none}
 .mini-hero-grid{position:relative;z-index:1;display:grid;
   grid-template-columns:repeat(12,minmax(0,1fr));gap:24px;align-items:center}
 .mini-hero-copy{grid-column:1 / span 6}
@@ -2001,9 +2002,9 @@ tbody td{color:var(--muted)}
 .mini-hero .cta-row{margin-top:32px}
 .value-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:30px}
 .value-chip{min-height:36px;display:inline-flex;align-items:center;
-  border:1px solid color-mix(in oklch,var(--green) 44%,var(--rule));border-radius:var(--r-sm);
-  padding:7px 13px;color:var(--green);
-  background:color-mix(in oklch,var(--green) 6%,var(--paper));
+  border:1px solid color-mix(in oklch,var(--purple) 44%,var(--rule));border-radius:var(--r-sm);
+  padding:7px 13px;color:var(--purple);
+  background:color-mix(in oklch,var(--purple) 6%,var(--paper));
   font-size:.8125rem;font-weight:600}
 .journey{grid-column:7 / -1;position:relative;min-height:570px;overflow:hidden;
   border:1px solid var(--rule);border-radius:var(--r-panel);
@@ -2011,29 +2012,29 @@ tbody td{color:var(--muted)}
 .journey-head{display:flex;align-items:center;justify-content:space-between;gap:16px;
   border-bottom:1px solid var(--rule);padding:20px 24px;
   color:var(--muted);font-size:.6875rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase}
-.journey-live{display:flex;align-items:center;gap:8px;color:var(--green);letter-spacing:.06em}
-.journey-live::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--green)}
+.journey-live{display:flex;align-items:center;gap:8px;color:var(--purple);letter-spacing:.06em}
+.journey-live::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--purple)}
 .journey-body{position:relative;height:490px;padding:46px 30px;
   background-image:
     linear-gradient(to right,color-mix(in oklch,var(--rule) 34%,transparent) 1px,transparent 1px),
     linear-gradient(to bottom,color-mix(in oklch,var(--rule) 34%,transparent) 1px,transparent 1px);
   background-size:72px 72px}
-.route{position:absolute;left:64px;right:64px;top:50%;height:3px;background:var(--green)}
+.route{position:absolute;left:64px;right:64px;top:50%;height:3px;background:var(--purple)}
 .route::after{content:"";position:absolute;right:-2px;top:-6px;width:12px;height:12px;
-  border-right:3px solid var(--green);border-top:3px solid var(--green);transform:rotate(45deg)}
+  border-right:3px solid var(--purple);border-top:3px solid var(--purple);transform:rotate(45deg)}
 .route-stage{position:absolute;width:146px;min-height:150px;
   border:1px solid var(--rule);border-radius:var(--r-card);padding:18px;
   background:var(--paper-raised);box-shadow:0 14px 30px color-mix(in oklch,var(--ink) 8%,transparent)}
 .route-stage::after{content:"";position:absolute;left:22px;width:13px;height:13px;
-  border:3px solid var(--paper-raised);border-radius:50%;background:var(--green);
-  box-shadow:0 0 0 1px var(--green)}
+  border:3px solid var(--paper-raised);border-radius:50%;background:var(--purple);
+  box-shadow:0 0 0 1px var(--purple)}
 .route-stage:nth-of-type(1){left:7%;top:48px}
 .route-stage:nth-of-type(1)::after{bottom:-69px}
 .route-stage:nth-of-type(2){left:37%;bottom:38px}
 .route-stage:nth-of-type(2)::after{top:-67px}
 .route-stage:nth-of-type(3){right:7%;top:48px}
 .route-stage:nth-of-type(3)::after{bottom:-69px}
-.route-index{display:block;margin-bottom:18px;color:var(--green);
+.route-index{display:block;margin-bottom:18px;color:var(--purple);
   font-size:.6875rem;font-weight:700;letter-spacing:.1em}
 .route-stage strong{display:block;font-size:1.25rem;line-height:1.35}
 .route-stage span:last-child{display:block;margin-top:8px;color:var(--muted);
@@ -2196,7 +2197,7 @@ tbody td{color:var(--muted)}
 .principles-aside p{max-width:350px;color:var(--muted)}
 .principles-list{position:relative;margin:0;padding:0;list-style:none}
 .principles-list::before{position:absolute;top:0;bottom:0;left:31px;
-  width:2px;background:var(--green);content:""}
+  width:2px;background:var(--purple);content:""}
 .principle{position:relative;display:grid;grid-template-columns:64px 1fr;
   gap:28px;min-height:190px;padding:0 0 42px}
 .principle:last-child{padding-bottom:0}
@@ -2208,7 +2209,7 @@ tbody td{color:var(--muted)}
 .principle:last-child h3{color:var(--purple)}
 .principle-copy p{max-width:650px;margin-bottom:14px;color:var(--muted)}
 .principle-note{display:inline-flex;align-items:center;gap:10px;
-  color:var(--green);font-size:.72rem;font-weight:700;
+  color:var(--purple);font-size:.72rem;font-weight:700;
   letter-spacing:.11em;text-transform:uppercase}
 .principle-note::before{width:24px;height:1px;background:currentColor;content:""}
 
@@ -2253,8 +2254,8 @@ main:has(> .closing:last-child) + .foot{
 .text-cta:hover{gap:22px;color:var(--paper-raised)}
 
 /* ── Conversion hero variant ── */
-.bp-hero--conv .bp-hero-copy .eyebrow{color:var(--green)}
-.bp-hero--conv .hero-head br + *{color:var(--green)}
+.bp-hero--conv .bp-hero-copy .eyebrow{color:var(--purple)}
+.bp-hero--conv .hero-head br + *{color:var(--purple)}
 
 /* ── Conversion demo widget ── */
 .conversion-demo{grid-column:8 / -1;padding:24px;border:1px solid var(--rule);
@@ -2266,12 +2267,12 @@ main:has(> .closing:last-child) + .foot{
   background:var(--paper);color:var(--muted);font-size:.76rem;font-weight:600;line-height:1.35;
   cursor:pointer;transition:background .2s ease,border-color .2s ease,color .2s ease,transform .2s ease}
 .entry-tab:hover{border-color:var(--ink);color:var(--ink);transform:translateY(-2px)}
-.entry-tab[aria-selected="true"]{border-color:var(--green);background:var(--green);color:#fff}
+.entry-tab[aria-selected="true"]{border-color:var(--purple);background:var(--purple);color:#fff}
 .destination-card{position:relative;min-height:342px;padding:26px;border:1px solid var(--rule);
   border-radius:20px;background:var(--paper);overflow:hidden}
 .destination-meta{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:30px}
 .destination-badge{padding:6px 10px;border-radius:12px;
-  background:var(--paper-raised);color:var(--green);font-size:.7rem;font-weight:700}
+  background:var(--paper-raised);color:var(--purple);font-size:.7rem;font-weight:700}
 .destination-time{color:var(--muted);font-size:.72rem;font-weight:600}
 .destination-card .destination-heading{max-width:330px;margin-bottom:12px;font-size:clamp(1.65rem,2.4vw,2.3rem)}
 .destination-card .destination-copy{max-width:360px;margin-bottom:22px;color:var(--muted);font-size:.9rem}
@@ -2280,7 +2281,7 @@ main:has(> .closing:last-child) + .foot{
 .avatar{display:grid;width:34px;height:34px;place-items:center;margin-right:-8px;
   border:2px solid var(--paper);border-radius:50%;background:var(--ink);
   color:#fff;font-size:.64rem;font-weight:700}
-.avatar:nth-child(2){background:var(--green)}
+.avatar:nth-child(2){background:var(--purple)}
 .avatar:nth-child(3){background:var(--purple)}
 .social-proof .destination-proof{color:var(--muted);font-size:.76rem;font-weight:600}
 .checkout-action{display:flex;min-height:48px;align-items:center;justify-content:space-between;
@@ -2305,9 +2306,9 @@ section.journey .journey-head{display:block;max-width:780px;margin-bottom:48px;
 .journey-step:last-child{border-right:0}
 .journey-step::after{position:absolute;top:42px;right:-9px;z-index:2;
   display:grid;width:18px;height:18px;place-items:center;border-radius:50%;
-  background:var(--green);color:#fff;content:"\203A";font-size:.8rem}
+  background:var(--purple);color:#fff;content:"\203A";font-size:.8rem}
 .journey-step:last-child::after{display:none}
-.journey-step span{display:block;margin-bottom:38px;color:var(--green);
+.journey-step span{display:block;margin-bottom:38px;color:var(--purple);
   font-size:.76rem;font-weight:700;letter-spacing:.1em}
 .journey-step h3{margin-bottom:12px;font-size:1.25rem}
 .journey-step p{margin:0;color:var(--muted);font-size:.9rem}
