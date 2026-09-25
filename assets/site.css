@@ -2193,7 +2193,6 @@ tbody td{color:var(--muted)}
 .principles-layout{display:grid;grid-template-columns:4fr 8fr;
   gap:clamp(48px,7vw,96px)}
 .principles-aside{position:sticky;top:126px;align-self:start}
-.principles-aside h2 .mark{color:var(--purple)}
 .principles-aside p{max-width:350px;color:var(--muted)}
 .principles-list{position:relative;margin:0;padding:0;list-style:none}
 .principles-list::before{position:absolute;top:0;bottom:0;left:31px;
