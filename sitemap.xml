@@ -303,4 +303,16 @@
     <xhtml:link rel="alternate" hreflang="zh-TW" href="https://ezily.io/zh/legal/privacy-policy"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ezily.io/legal/privacy-policy"/>
   </url>
+  <url>
+    <loc>https://ezily.io/legal/store-information-returns-customer-service</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://ezily.io/legal/store-information-returns-customer-service"/>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://ezily.io/zh/legal/store-information-returns-customer-service"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ezily.io/legal/store-information-returns-customer-service"/>
+  </url>
+  <url>
+    <loc>https://ezily.io/zh/legal/store-information-returns-customer-service</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://ezily.io/legal/store-information-returns-customer-service"/>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://ezily.io/zh/legal/store-information-returns-customer-service"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ezily.io/legal/store-information-returns-customer-service"/>
+  </url>
 </urlset>
