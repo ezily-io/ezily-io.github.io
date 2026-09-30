@@ -1,6 +1,6 @@
 # Ezily
 
-> Know your customer, close the sale, run every channel. It starts on LINE and isn't bound to LINE.
+> Master your BrandDNA and build a shopping journey for every customer. Know your customer, close the sale, run every channel, with AI and automation.
 
 Every page is published in American English at https://ezily.io/ and in Traditional Chinese (Taiwan) at https://ezily.io/zh.
 
@@ -8,7 +8,7 @@ Every page is published in American English at https://ezily.io/ and in Traditio
 
 ### Overview
 
-- [Ezily](https://ezily.io/): Know your customer, close the sale, run every channel. It starts on LINE and isn't bound to LINE.
+- [Ezily](https://ezily.io/): Master your BrandDNA and build a shopping journey for every customer. Know your customer, close the sale, run every channel, with AI and automation.
 
 ### Touchpoints
 
@@ -53,7 +53,7 @@ Every page is published in American English at https://ezily.io/ and in Traditio
 
 ### Overview
 
-- [Ezily](https://ezily.io/zh): 認識顧客、完成成交、管好通路。從 LINE 開始，不綁在 LINE。
+- [Ezily](https://ezily.io/zh): 掌握品牌基因，為每位顧客打造專屬購物旅程；認識顧客、順利成交、管好通路，交給 AI 和自動化。
 
 ### Touchpoints
 
