@@ -1602,6 +1602,9 @@ tbody td{color:var(--muted)}
 .foot-col nav{display:flex;flex-direction:column;gap:4px}
 .foot-col nav a{font-size:.9375rem;line-height:var(--lh-ui);color:var(--ink-muted);text-decoration:none;
   padding-block:8px;min-height:44px;display:inline-flex;align-items:center}
+/* The contact column reads as a link list under the heading, matching Product
+   and Resources; the CTA is the column's closing action, set apart below it. */
+.foot-contact .foot-cta{margin-top:24px}
 .foot-brand{display:flex;flex-direction:column;gap:16px;max-width:26em}
 /* The footer wordmark is a direct child of this column flex, while the header's
    sits inside its own <a> wrapper. That asymmetry matters: in a column flex the

@@ -21,7 +21,7 @@
 <meta name="twitter:title" content="Ezily">
 <meta name="twitter:description" content="Master your BrandDNA and build a shopping journey for every customer. Know your customer, close the sale, run every channel, with AI and automation.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,600&amp;family=Noto+Sans+TC:wght@400;500;600;700&amp;display=swap">
-<link rel="stylesheet" href="/assets/site.css?v=2e707ca600">
+<link rel="stylesheet" href="/assets/site.css?v=c63472da89">
 <link rel="stylesheet" href="/assets/cookie-consent.css?v=6f87a755fa">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://ezily.io/#organization","name":"Ezily","url":"https://ezily.io/","logo":{"@type":"ImageObject","@id":"https://ezily.io/#logo","url":"https://ezily.io/assets/ezily-logo.svg"},"sameAs":["https://www.linkedin.com/company/ezily","https://www.instagram.com/ezily.io/","https://www.threads.com/@ezily.io"],"areaServed":{"@type":"Country","name":"Taiwan"}},{"@type":"WebSite","@id":"https://ezily.io/#website","url":"https://ezily.io/","name":"Ezily","publisher":{"@id":"https://ezily.io/#organization"},"inLanguage":["zh-TW","en-US"]},{"@type":"WebPage","@id":"https://ezily.io/#page","url":"https://ezily.io/","name":"Ezily","isPartOf":{"@id":"https://ezily.io/#website"},"inLanguage":"en-US","description":"Master your BrandDNA and build a shopping journey for every customer. Know your customer, close the sale, run every channel, with AI and automation."}]}</script>
 <script>document.documentElement.classList.add("js")</script>
@@ -87,18 +87,19 @@
 <p class="small">Know your customer, close the sale, run every channel.</p>
 <div class="socials"><a href="https://www.linkedin.com/company/ezily" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM10 9h3.8v1.7h.05c.53-1 1.83-2.05 3.76-2.05C21 8.65 22 11 22 14.3V21h-4v-6c0-1.5-.5-2.6-1.9-2.6-1.1 0-1.7.75-2 1.5-.1.25-.1.6-.1.95V21h-4z" fill="currentColor"/></svg></a><a href="https://www.instagram.com/ezily.io/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.2" y="3.2" width="17.6" height="17.6" rx="5" fill="none" stroke="currentColor" stroke-width="1.9"/><circle cx="12" cy="12" r="4.1" fill="none" stroke="currentColor" stroke-width="1.9"/><circle cx="17.3" cy="6.7" r="1.25" fill="currentColor"/></svg></a><a href="https://www.threads.com/@ezily.io" target="_blank" rel="noopener" aria-label="Threads"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 7.5c-1.333-3-3.667-4.5-7-4.5c-5 0-8 2.5-8 9s3.5 9 8 9s7-3 7-5s-1-5-7-5c-2.5 0-3 1.25-3 2.5c0 1.5 1 2.5 2.5 2.5c2.5 0 3.5-1.5 3.5-5s-2-4-3-4s-1.833.333-2.5 1" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></div>
 <div class="foot-col"><h2>Product</h2><nav><a href="/touchpoints">Touchpoints</a><a href="/line-mini-app">LINE Mini App</a><a href="/engagement-best-practices">Engagement</a><a href="/conversion-best-practices">Conversion</a><a href="/orchestrate">Orchestrate</a></nav></div><div class="foot-col"><h2>Resources</h2><nav><a href="/blog">Blog</a><a href="/careers">Careers</a></nav></div>
-<div class="foot-col"><h2>Contact</h2>
+<div class="foot-col foot-contact"><h2>Contact</h2>
+<!-- The store-information link leads the column so its first row aligns with the
+     first link in the Product and Resources columns. Like the two addresses in
+     the privacy policy, it leads to legally operative status: verbatim text
+     (company registration, returns, and the pickup address a Taiwan storefront
+     must publish). No address is printed inline here. -->
+<nav><a href="/legal/store-information-returns-customer-service">Store Information</a></nav>
 <!-- Ink, not yellow: DESIGN.md §5 allows one Celebrate Yellow CTA per page and
-     the closing demo CTA is it. This matches the header pill instead. -->
-<a class="btn btn-brand btn-sm" href="https://miniapp.line.me/2009655149-RnfKkD5d/touchpoint/c6e658bf-82a4-4840-b374-ed4ada2a9bbb" data-contact target="_blank" rel="noopener">Talk with us</a>
-<!-- No address is published inline here. The desktop evaluator the removed
-     mailto served is still covered: CONTACT_MODAL renders the LINE code in a
-     dialog rather than following a link a desktop browser cannot open, so the
-     route the comment here used to worry about is the QR, not an inbox. The
-     store-information link below, like the two addresses in the privacy policy,
-     leads to legally operative status: verbatim text (company registration,
-     returns, and the pickup address required for a Taiwan storefront). -->
-<nav class="foot-contact-links"><a href="/legal/store-information-returns-customer-service">Store Information</a></nav>
+     the closing demo CTA is it. This matches the header pill instead. The CTA
+     sits below the links as the column's closing action; the desktop evaluator
+     is covered by CONTACT_MODAL, which renders the LINE code in a dialog rather
+     than following a link a desktop browser cannot open. -->
+<a class="btn btn-brand btn-sm foot-cta" href="https://miniapp.line.me/2009655149-RnfKkD5d/touchpoint/c6e658bf-82a4-4840-b374-ed4ada2a9bbb" data-contact target="_blank" rel="noopener">Talk with us</a>
 </div>
 </div>
 <div class="foot-bar">
