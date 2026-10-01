@@ -12,7 +12,7 @@ Every page is published in American English at https://ezily.io/ and in Traditio
 
 ### Touchpoints
 
-- [Conversion Best Practices](https://ezily.io/conversion-best-practices): Customers arrive with a specific reason and land on a page built for everyone. Here is how e-commerce brands actually lift conversion on LINE.
+- [Conversion Best Practices](https://ezily.io/conversion-best-practices): Group buys, flash sales, VIP events. Each campaign deserves its own storefront, not your homepage. Here is how to build a purpose-built destination for every entry point.
 - [Engagement Best Practices](https://ezily.io/engagement-best-practices): Customers looked, asked, joined the activation, and your list still shows a blank. Here is how e-commerce brands actually run engagement on LINE.
 - [Why E-commerce Brands Need a LINE Mini App](https://ezily.io/line-mini-app): A LINE Mini App lets customers complete a whole purchase inside LINE with no download and no signup. Here is how it differs from LIFF, what e-commerce brands use it for, and what building one actually involves.
 - [Ezily Touchpoints](https://ezily.io/touchpoints): You paid for that traffic once. Recognize those people inside LINE, tag them, and close the sale.
