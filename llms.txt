@@ -58,7 +58,7 @@ Every page is published in American English at https://ezily.io/ and in Traditio
 
 ### Touchpoints
 
-- [轉換優化最佳實務](https://ezily.io/zh/conversion-best-practices): 客人帶著具體的理由點進來，卻看到一個為所有人準備的頁面。這篇整理電商品牌在 LINE 上提高轉換的實際做法。
+- [轉換優化最佳實務](https://ezily.io/zh/conversion-best-practices): 團購、限時搶購、會員專場，每一種入口都該有自己蓋的店，不是同一面首頁。這篇整理怎麼用 Checkout 為每種入口蓋出對的落地頁。
 - [互動經營最佳實務](https://ezily.io/zh/engagement-best-practices): 客人看了、問了、參加了活動，然後在你的名單上還是一片空白。這篇整理電商品牌在 LINE 上經營互動的實際做法。
 - [電商品牌為什麼需要 LINE Mini App](https://ezily.io/zh/line-mini-app): 免下載、免註冊，客人在 LINE 裡完成整段購物流程。這篇說明它和 LIFF 的差別、電商能用它做什麼，以及實際要處理的事。
 - [Ezily Touchpoints](https://ezily.io/zh/touchpoints): 廣告和活動帶來的流量，你已經買過一次。在 LINE 裡把人認出來、留下標籤、直接成交。
