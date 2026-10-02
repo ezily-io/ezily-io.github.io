@@ -39,7 +39,6 @@ Every page is published in American English at https://ezily.io/ and in Traditio
 - [(Senior) Customer Success Manager](https://ezily.io/careers/customer-success-manage): Own the customer from onboarding through renewal as brands move their products, inventory, and orders onto Orchestrate.
 - [Lead Frontend Engineer](https://ezily.io/careers/frontend-engineering-lead): Decide the frontend architecture and write the code, streaming interfaces for the AI features included.
 - [Full Stack Engineer](https://ezily.io/careers/full-stack-engineer): Build features end to end across Touchpoints and Orchestrate, and stay responsible for what you ship.
-- [Senior Designer](https://ezily.io/careers/senior-designer): Own Ezily's design language and one component library across two products, turning complex commerce workflows into interfaces that feel simple.
 - [Senior Product Manager](https://ezily.io/careers/senior-product-manager): Own one area inside Orchestrate, whether product catalog sync, bundles, or inventory operations, and set its direction rather than its schedule.
 - [Senior Sales and Business Development Manager](https://ezily.io/careers/senior-sales-and-bd): Own the commercial pipeline end to end, from self-sourced leads through negotiation and close, against an individual revenue target.
 
@@ -85,7 +84,6 @@ Every page is published in American English at https://ezily.io/ and in Traditio
 - [(Senior) Customer Success Manager](https://ezily.io/zh/careers/customer-success-manage): 負責客戶從導入到續約的整段過程。品牌把商品、庫存和訂單交給 Orchestrate，中間怎麼調整由你判斷。
 - [Lead Frontend Engineer](https://ezily.io/zh/careers/frontend-engineering-lead): 決定前端架構，也實際動手寫，包含 AI 功能的串流回應介面。
 - [Full Stack Engineer](https://ezily.io/zh/careers/full-stack-engineer): 端到端開發 Touchpoints 和 Orchestrate 的功能，上線之後也自己扛。
-- [Senior Designer](https://ezily.io/zh/careers/senior-designer): 負責整間公司的設計語言和設計系統，兩個產品共用一套元件，把複雜的電商流程做成簡單的介面。
 - [Senior Product Manager](https://ezily.io/zh/careers/senior-product-manager): 負責 Orchestrate 裡的一塊：商品主檔同步、組合商品，或庫存營運。決定方向，不是排時程。
 - [Senior Sales and Business Development Manager](https://ezily.io/zh/careers/senior-sales-and-bd): 從開發名單、談判到成交，負責整段業務流程，並且扛個人業績目標。
 
