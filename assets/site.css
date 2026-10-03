@@ -2402,6 +2402,9 @@ section.journey .journey-head{display:block;max-width:780px;margin-bottom:48px;
   border-radius:var(--r-pill);background:var(--lilac)}
 .cr-frame-mark::after{content:"";position:absolute;left:0;top:-34px;
   width:22px;height:22px;border-radius:50%;background:var(--purple-fill)}
+.cr-frame-photo{aspect-ratio:auto;padding:12px}
+.cr-frame-photo img{display:block;width:100%;height:auto;
+  border-radius:calc(var(--r-panel) - 10px)}
 .cr-hero-image figcaption{display:flex;justify-content:space-between;gap:16px;
   padding:18px 3px 0;color:var(--subtle);font-size:.75rem}
 .cr-hero-note{margin-top:46px;padding-top:23px;border-top:1px solid var(--rule);
