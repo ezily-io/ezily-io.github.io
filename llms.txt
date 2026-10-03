@@ -64,7 +64,7 @@ Every page is published in American English at https://ezily.io/ and in Traditio
 
 ### Orchestrate
 
-- [Ezily Orchestrate](https://ezily.io/zh/orchestrate): Momo、Shopee 和你自己的通路，商品、庫存、價格、訂單在一個地方管完。多開一個通路是設定，不是招人。
+- [Ezily Orchestrate](https://ezily.io/zh/orchestrate): Momo、Shopee 和你自己的通路，商品、庫存、價格、訂單集中管理。
 
 ### Notes
 
