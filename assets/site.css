@@ -2788,7 +2788,7 @@ section.journey .journey-head{display:block;max-width:780px;margin-bottom:48px;
 .hp-hero{padding:56px 0 40px}
 .hp-hero-grid{align-items:center}
 .hp-hero-copy{grid-column:span 5;position:relative}
-.hp-hero-copy h1{font-size:clamp(40px,4.5vw,56px);line-height:1.38}
+.hp-hero-copy h1{font-size:clamp(40px,4.5vw,56px);line-height:1.38;font-weight:var(--w-display)}
 .hp-hero-copy h1 span{display:block}
 .hp-hero-copy .hp-lead{font-size:18px;margin-top:24px;max-width:400px}
 .hp-hero-copy .hp-actions{justify-content:flex-start;margin-top:28px;gap:12px 24px}
