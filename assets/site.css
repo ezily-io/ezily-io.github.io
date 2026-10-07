@@ -2853,7 +2853,7 @@ html[lang="en-US"] .hp-orbit .node-sub{font-size:19px}
 .hp-belief>.wrap{position:relative}
 .hp-belief h2{grid-column:span 7;font-size:clamp(36px,4vw,52px)}
 .hp-belief h2 span{color:var(--rule)}
-.hp-belief-sub{grid-column:span 7;margin-top:20px;color:var(--rule);font-size:17px;line-height:1.85}
+.hp-belief .hp-belief-sub{grid-column:span 7;margin-top:20px;color:var(--rule);font-size:17px;line-height:1.85}
 .hp-belief-copy{grid-column:9/-1;align-self:end}
 .hp-belief-copy p{color:var(--rule);font-size:16px;line-height:1.95}
 .hp-belief-copy p+p{margin-top:20px}
