@@ -2,97 +2,97 @@
 
 > Master your BrandDNA and build a shopping journey for every customer. Know your customer, close the sale, run every channel, with AI and automation.
 
-Every page is published in American English at https://ezily.io/ and in Traditional Chinese (Taiwan) at https://ezily.io/zh.
+Every page is published in American English at https://ezily-io.github.io/ and in Traditional Chinese (Taiwan) at https://ezily-io.github.io/zh.
 
 ## English
 
 ### Overview
 
-- [Ezily](https://ezily.io/): Master your BrandDNA and build a shopping journey for every customer. Know your customer, close the sale, run every channel, with AI and automation.
+- [Ezily](https://ezily-io.github.io/): Master your BrandDNA and build a shopping journey for every customer. Know your customer, close the sale, run every channel, with AI and automation.
 
 ### Touchpoints
 
-- [Conversion Best Practices](https://ezily.io/conversion-best-practices): Group buys, flash sales, VIP events. Each campaign deserves its own storefront, not your homepage. Here is how to build a purpose-built destination for every entry point.
-- [Engagement Best Practices](https://ezily.io/engagement-best-practices): Customers looked, asked, joined the activation, and your list still shows a blank. Here is how e-commerce brands actually run engagement on LINE.
-- [Why E-commerce Brands Need a LINE Mini App](https://ezily.io/line-mini-app): A LINE Mini App lets customers complete a whole purchase inside LINE with no download and no signup. Here is how it differs from LIFF, what e-commerce brands use it for, and what building one actually involves.
-- [Ezily Touchpoints | Buying experiences for group buys and VIP events](https://ezily.io/touchpoints): Group buys, flash sales, and VIP events each get their own buying experience. Touchpoints also records what customers choose, so the next recommendation fits them better.
+- [Conversion Best Practices](https://ezily-io.github.io/conversion-best-practices): Group buys, flash sales, VIP events. Each campaign deserves its own storefront, not your homepage. Here is how to build a purpose-built destination for every entry point.
+- [Engagement Best Practices](https://ezily-io.github.io/engagement-best-practices): Customers looked, asked, joined the activation, and your list still shows a blank. Here is how e-commerce brands actually run engagement on LINE.
+- [Why E-commerce Brands Need a LINE Mini App](https://ezily-io.github.io/line-mini-app): A LINE Mini App lets customers complete a whole purchase inside LINE with no download and no signup. Here is how it differs from LIFF, what e-commerce brands use it for, and what building one actually involves.
+- [Ezily Touchpoints | Buying experiences for group buys and VIP events](https://ezily-io.github.io/touchpoints): Group buys, flash sales, and VIP events each get their own buying experience. Touchpoints also records what customers choose, so the next recommendation fits them better.
 
 ### Orchestrate
 
-- [Ezily Orchestrate](https://ezily.io/orchestrate): Momo, Shopee, and the channels you own. Products, inventory, pricing, and orders in one place. Open a channel without staffing one.
+- [Ezily Orchestrate](https://ezily-io.github.io/orchestrate): Momo, Shopee, and the channels you own. Products, inventory, pricing, and orders in one place. Open a channel without staffing one.
 
 ### Notes
 
-- [Notes on running an e-commerce business](https://ezily.io/blog): Running a store is new homework every day. From LINE engagement to repeat purchase to cross-channel operations, we figure it out with you so you take a shorter path.
-- [Five reasons Taiwan e-commerce brands should build a LINE Mini App](https://ezily.io/blog/5-reasons-why-e-commerce-businesses-in-taiwan-should-build-a-line-mini-app): No download, no signup, and service messages that don't depend on friend status. Five reasons, once.
-- [LINE Broadcasts Are Getting Pricey. In 2026, Close the Sale Inside the Conversation](https://ezily.io/blog/conversational-commerce): Broadcasting to 20,000 LINE friends costs an extra ~NT$10,000 a month yet still misses real buyers. In 2026, stop broadcasting — capture intent and close the sale inside each LINE conversation with registration-free checkout.
-- [How to Increase E-commerce Repeat Purchases: 5 Things Brands Need to Rethink About Lead Nurturing and Retention](https://ezily.io/blog/ecommerce-repeat-purchase-lead-nurturing): Want to improve ecommerce repeat purchases without relying on discounts alone? This guide breaks down lead nurturing, repeat purchase strategy, CRM segmentation, and customer reten
-- [LINE Chatbot Not Smart Enough? Diagnose Where You're Stuck With the Visibility Layers Framework](https://ezily.io/blog/line-chatbot-visibility-layers-2026): LINE chatbot can't answer cross-channel questions? It's not a vendor problem. It's a data boundary. Use Ezily's Visibility Layers framework to diagnose.
-- [LINE CRM Is Not About Adding More Tags: A Segmentation and Automation Guide for Ecommerce Brands](https://ezily.io/blog/line-crm-tags): Learn how ecommerce brands can use LINE CRM tags, segmentation, and automation to send smarter messages, improve retention, and reduce broadcast waste.
-- [LINE Mini App for E-commerce: Five Major Shifts for Taiwan’s Brand E-commerce](https://ezily.io/blog/line-mini-app-ecommerce-taiwan): LINE Mini App is changing how Taiwan e-commerce brands interact with customers. This article breaks down five major shifts, three key opportunities, and how Ezily Touchpoints helps
-- [How to run multi-channel e-commerce: five things that work](https://ezily.io/blog/mastering-multi-channel-e-commerce-key-strategies-for-success): When products, inventory, pricing, and orders are scattered across channels, which one to fix first.
-- [Set a goal that actually moves revenue](https://ezily.io/blog/setting-e-commerce-goals-that-actually-move-revenue): Specific goals work. How to break one into numbers you can see every week.
-- [How to Read Shopify Taiwan Case Studies: Do Not Just Copy the Website, Learn How Customers Are Retained](https://ezily.io/blog/shopify-taiwan-cases-line-retention): When researching Shopify Taiwan case studies, brand owners should look beyond design, apps, and checkout. This guide explains how Taiwan ecommerce brands can turn Shopify traffic i
+- [Notes on running an e-commerce business](https://ezily-io.github.io/blog): Running a store is new homework every day. From LINE engagement to repeat purchase to cross-channel operations, we figure it out with you so you take a shorter path.
+- [Five reasons Taiwan e-commerce brands should build a LINE Mini App](https://ezily-io.github.io/blog/5-reasons-why-e-commerce-businesses-in-taiwan-should-build-a-line-mini-app): No download, no signup, and service messages that don't depend on friend status. Five reasons, once.
+- [LINE Broadcasts Are Getting Pricey. In 2026, Close the Sale Inside the Conversation](https://ezily-io.github.io/blog/conversational-commerce): Broadcasting to 20,000 LINE friends costs an extra ~NT$10,000 a month yet still misses real buyers. In 2026, stop broadcasting — capture intent and close the sale inside each LINE conversation with registration-free checkout.
+- [How to Increase E-commerce Repeat Purchases: 5 Things Brands Need to Rethink About Lead Nurturing and Retention](https://ezily-io.github.io/blog/ecommerce-repeat-purchase-lead-nurturing): Want to improve ecommerce repeat purchases without relying on discounts alone? This guide breaks down lead nurturing, repeat purchase strategy, CRM segmentation, and customer reten
+- [LINE Chatbot Not Smart Enough? Diagnose Where You're Stuck With the Visibility Layers Framework](https://ezily-io.github.io/blog/line-chatbot-visibility-layers-2026): LINE chatbot can't answer cross-channel questions? It's not a vendor problem. It's a data boundary. Use Ezily's Visibility Layers framework to diagnose.
+- [LINE CRM Is Not About Adding More Tags: A Segmentation and Automation Guide for Ecommerce Brands](https://ezily-io.github.io/blog/line-crm-tags): Learn how ecommerce brands can use LINE CRM tags, segmentation, and automation to send smarter messages, improve retention, and reduce broadcast waste.
+- [LINE Mini App for E-commerce: Five Major Shifts for Taiwan’s Brand E-commerce](https://ezily-io.github.io/blog/line-mini-app-ecommerce-taiwan): LINE Mini App is changing how Taiwan e-commerce brands interact with customers. This article breaks down five major shifts, three key opportunities, and how Ezily Touchpoints helps
+- [How to run multi-channel e-commerce: five things that work](https://ezily-io.github.io/blog/mastering-multi-channel-e-commerce-key-strategies-for-success): When products, inventory, pricing, and orders are scattered across channels, which one to fix first.
+- [Set a goal that actually moves revenue](https://ezily-io.github.io/blog/setting-e-commerce-goals-that-actually-move-revenue): Specific goals work. How to break one into numbers you can see every week.
+- [How to Read Shopify Taiwan Case Studies: Do Not Just Copy the Website, Learn How Customers Are Retained](https://ezily-io.github.io/blog/shopify-taiwan-cases-line-retention): When researching Shopify Taiwan case studies, brand owners should look beyond design, apps, and checkout. This guide explains how Taiwan ecommerce brands can turn Shopify traffic i
 
 ### Careers
 
-- [Careers](https://ezily.io/careers): Ezily is hiring across every discipline to build what we think agentic commerce turns into. If you read that future differently, we want to hear it.
-- [(Senior) Customer Success Manager](https://ezily.io/careers/customer-success-manage): Own the customer from onboarding through renewal as brands move their products, inventory, and orders onto Orchestrate.
-- [Lead Frontend Engineer](https://ezily.io/careers/frontend-engineering-lead): Decide the frontend architecture and write the code, streaming interfaces for the AI features included.
-- [Full Stack Engineer](https://ezily.io/careers/full-stack-engineer): Build features end to end across Touchpoints and Orchestrate, and stay responsible for what you ship.
-- [Senior Product Manager](https://ezily.io/careers/senior-product-manager): Own one area inside Orchestrate, whether product catalog sync, bundles, or inventory operations, and set its direction rather than its schedule.
-- [Senior Sales and Business Development Manager](https://ezily.io/careers/senior-sales-and-bd): Own the commercial pipeline end to end, from self-sourced leads through negotiation and close, against an individual revenue target.
+- [Careers](https://ezily-io.github.io/careers): Ezily is hiring across every discipline to build what we think agentic commerce turns into. If you read that future differently, we want to hear it.
+- [(Senior) Customer Success Manager](https://ezily-io.github.io/careers/customer-success-manage): Own the customer from onboarding through renewal as brands move their products, inventory, and orders onto Orchestrate.
+- [Lead Frontend Engineer](https://ezily-io.github.io/careers/frontend-engineering-lead): Decide the frontend architecture and write the code, streaming interfaces for the AI features included.
+- [Full Stack Engineer](https://ezily-io.github.io/careers/full-stack-engineer): Build features end to end across Touchpoints and Orchestrate, and stay responsible for what you ship.
+- [Senior Product Manager](https://ezily-io.github.io/careers/senior-product-manager): Own one area inside Orchestrate, whether product catalog sync, bundles, or inventory operations, and set its direction rather than its schedule.
+- [Senior Sales and Business Development Manager](https://ezily-io.github.io/careers/senior-sales-and-bd): Own the commercial pipeline end to end, from self-sourced leads through negotiation and close, against an individual revenue target.
 
 ### Legal
 
-- [Ezily Acceptable Use Policy (AUP)](https://ezily.io/legal/aup): What is not allowed on Ezily: spam, security violations, intellectual property infringement, impersonation, and the LINE platform rules that apply throughout.
-- [Ezily Data Processing Agreement (DPA)](https://ezily.io/legal/dpa): The terms Ezily processes customer data under as a data processor: scope, subprocessors, security measures, and breach notification within 72 hours.
-- [Ezily Privacy Policy](https://ezily.io/legal/privacy-policy): How Ezily collects, processes, and protects personal data under Taiwan's PDPA and GDPR principles, and where Ezily acts as processor rather than controller.
-- [Store Information, Returns & Customer Service](https://ezily.io/legal/store-information-returns-customer-service): Ezily Co., Ltd. store information, returns, and customer service: business registration details, address, contact channels, and the 7-day cooling-off return policy under Taiwan's Consumer Protection Act.
+- [Ezily Acceptable Use Policy (AUP)](https://ezily-io.github.io/legal/aup): What is not allowed on Ezily: spam, security violations, intellectual property infringement, impersonation, and the LINE platform rules that apply throughout.
+- [Ezily Data Processing Agreement (DPA)](https://ezily-io.github.io/legal/dpa): The terms Ezily processes customer data under as a data processor: scope, subprocessors, security measures, and breach notification within 72 hours.
+- [Ezily Privacy Policy](https://ezily-io.github.io/legal/privacy-policy): How Ezily collects, processes, and protects personal data under Taiwan's PDPA and GDPR principles, and where Ezily acts as processor rather than controller.
+- [Store Information, Returns & Customer Service](https://ezily-io.github.io/legal/store-information-returns-customer-service): Ezily Co., Ltd. store information, returns, and customer service: business registration details, address, contact channels, and the 7-day cooling-off return policy under Taiwan's Consumer Protection Act.
 
 ## 繁體中文
 
 ### Overview
 
-- [Ezily](https://ezily.io/zh): 掌握品牌基因，為每位顧客打造專屬購物旅程；認識顧客、順利成交、管好通路，交給 AI 和自動化。
+- [Ezily](https://ezily-io.github.io/zh): 掌握品牌基因，為每位顧客打造專屬購物旅程；認識顧客、順利成交、管好通路，交給 AI 和自動化。
 
 ### Touchpoints
 
-- [轉換優化最佳實務](https://ezily.io/zh/conversion-best-practices): 團購、限時搶購、會員專場，每一種入口都該有自己蓋的店，不是同一面首頁。這篇整理怎麼用 Checkout 為每種入口蓋出對的落地頁。
-- [互動經營最佳實務](https://ezily.io/zh/engagement-best-practices): 客人看了、問了、參加了活動，然後在你的名單上還是一片空白。這篇整理電商品牌在 LINE 上經營互動的實際做法。
-- [電商品牌為什麼需要 LINE Mini App](https://ezily.io/zh/line-mini-app): 免下載、免註冊，客人在 LINE 裡完成整段購物流程。這篇說明它和 LIFF 的差別、電商能用它做什麼，以及實際要處理的事。
-- [Ezily Touchpoints｜團購與會員專場的購物體驗](https://ezily.io/zh/touchpoints): 團購、限時搶購、會員專場，各有不同的購物體驗。Touchpoints 也記下顧客的選擇，讓下次推薦更貼近他。
+- [轉換優化最佳實務](https://ezily-io.github.io/zh/conversion-best-practices): 團購、限時搶購、會員專場，每一種入口都該有自己蓋的店，不是同一面首頁。這篇整理怎麼用 Checkout 為每種入口蓋出對的落地頁。
+- [互動經營最佳實務](https://ezily-io.github.io/zh/engagement-best-practices): 客人看了、問了、參加了活動，然後在你的名單上還是一片空白。這篇整理電商品牌在 LINE 上經營互動的實際做法。
+- [電商品牌為什麼需要 LINE Mini App](https://ezily-io.github.io/zh/line-mini-app): 免下載、免註冊，客人在 LINE 裡完成整段購物流程。這篇說明它和 LIFF 的差別、電商能用它做什麼，以及實際要處理的事。
+- [Ezily Touchpoints｜團購與會員專場的購物體驗](https://ezily-io.github.io/zh/touchpoints): 團購、限時搶購、會員專場，各有不同的購物體驗。Touchpoints 也記下顧客的選擇，讓下次推薦更貼近他。
 
 ### Orchestrate
 
-- [Ezily Orchestrate](https://ezily.io/zh/orchestrate): Momo、Shopee 和你自己的通路，商品、庫存、價格、訂單集中管理。
+- [Ezily Orchestrate](https://ezily-io.github.io/zh/orchestrate): Momo、Shopee 和你自己的通路，商品、庫存、價格、訂單集中管理。
 
 ### Notes
 
-- [電商經營筆記](https://ezily.io/zh/blog): 做電商，每天都有新功課。從 LINE 互動、顧客回購到跨通路營運，和 Ezily 一起研究，少繞點路。
-- [台灣電商品牌該做 LINE Mini App 的五個理由](https://ezily.io/zh/blog/5-reasons-why-e-commerce-businesses-in-taiwan-should-build-a-line-mini-app): 免下載、免註冊、服務訊息不受好友狀態限制。五個理由，一次講完。
-- [LINE 群發越來越貴？2026 改用對話成交更划算](https://ezily.io/zh/blog/conversational-commerce): LINE 群發到 2 萬人每月多花一萬，卻接不住真正想買的人。2026 台灣電商別再對所有人廣播，改用對話成交：在每一則 LINE 對話裡用免註冊結帳當場變訂單。
-- [電商回購怎麼做？從潛在客戶經營到熟客路徑，品牌該重新思考的 5 件事](https://ezily.io/zh/blog/ecommerce-repeat-purchase-lead-nurturing): 電商品牌該怎麼提升回購，不再只靠折扣？這篇文章從潛在客戶經營、熟客路徑、CRM 分群到回購策略，整理品牌現在最該重視的 5 個經營重點。
-- [LINE chatbot 已經不夠聰明了嗎？用「能見度三層級」診斷你卡在哪一層](https://ezily.io/zh/blog/line-chatbot-visibility-layers-2026): 你的 LINE chatbot 答不出「我在 Shopee 買的到貨了嗎」？問題不在選錯廠商，是卡在 data boundary。用 Ezily 的「Chatbot 能見度三層級」5 題自我診斷，看清下一步該升級工具還是 data architecture。
-- [LINE CRM 不是貼更多標籤：電商品牌的分眾標籤架構與自動化推播指南](https://ezily.io/zh/blog/line-crm-tags): 給台灣電商品牌的 LINE CRM 指南，說明如何用標籤、分眾、TAGS 框架與合規資料治理，建立可落地的 LINE 官方帳號會員經營策略。
-- [LINE Mini App 電商新局：台灣品牌電商與顧客互動的五大改變](https://ezily.io/zh/blog/line-mini-app-ecommerce-taiwan): LINE Mini App 的出現，正在改變台灣品牌電商與顧客互動的方式。這不只是多一個新平台，而是讓 LINE 從訊息通路，進一步走向互動、會員、服務與 OMO 的核心位置。這篇文章會從資深電商品牌顧問的角度，拆解 LINE Mini App 帶來的五大改變，以及台灣品牌最值得把握的三大關鍵機會。
-- [多通路電商怎麼管：五個實際做法](https://ezily.io/zh/blog/mastering-multi-channel-e-commerce-key-strategies-for-success): 商品、庫存、價格、訂單散在各通路的時候，先處理哪一個。
-- [訂一個真的會影響營收的目標](https://ezily.io/zh/blog/setting-e-commerce-goals-that-actually-move-revenue): 目標訂得具體才有用。怎麼把目標拆成每週看得到的數字。
-- [Shopify 台灣案例怎麼看？品牌主別只學網站設計，還要學怎麼把顧客留下來](https://ezily.io/zh/blog/shopify-taiwan-cases-line-retention): 搜尋 Shopify 台灣案例時，不只看版型、App 與設計。本文用簡單方法拆解台灣品牌如何把 Shopify 官網流量變成 LINE 好友、顧客偏好資料與下一次回購機會。
+- [電商經營筆記](https://ezily-io.github.io/zh/blog): 做電商，每天都有新功課。從 LINE 互動、顧客回購到跨通路營運，和 Ezily 一起研究，少繞點路。
+- [台灣電商品牌該做 LINE Mini App 的五個理由](https://ezily-io.github.io/zh/blog/5-reasons-why-e-commerce-businesses-in-taiwan-should-build-a-line-mini-app): 免下載、免註冊、服務訊息不受好友狀態限制。五個理由，一次講完。
+- [LINE 群發越來越貴？2026 改用對話成交更划算](https://ezily-io.github.io/zh/blog/conversational-commerce): LINE 群發到 2 萬人每月多花一萬，卻接不住真正想買的人。2026 台灣電商別再對所有人廣播，改用對話成交：在每一則 LINE 對話裡用免註冊結帳當場變訂單。
+- [電商回購怎麼做？從潛在客戶經營到熟客路徑，品牌該重新思考的 5 件事](https://ezily-io.github.io/zh/blog/ecommerce-repeat-purchase-lead-nurturing): 電商品牌該怎麼提升回購，不再只靠折扣？這篇文章從潛在客戶經營、熟客路徑、CRM 分群到回購策略，整理品牌現在最該重視的 5 個經營重點。
+- [LINE chatbot 已經不夠聰明了嗎？用「能見度三層級」診斷你卡在哪一層](https://ezily-io.github.io/zh/blog/line-chatbot-visibility-layers-2026): 你的 LINE chatbot 答不出「我在 Shopee 買的到貨了嗎」？問題不在選錯廠商，是卡在 data boundary。用 Ezily 的「Chatbot 能見度三層級」5 題自我診斷，看清下一步該升級工具還是 data architecture。
+- [LINE CRM 不是貼更多標籤：電商品牌的分眾標籤架構與自動化推播指南](https://ezily-io.github.io/zh/blog/line-crm-tags): 給台灣電商品牌的 LINE CRM 指南，說明如何用標籤、分眾、TAGS 框架與合規資料治理，建立可落地的 LINE 官方帳號會員經營策略。
+- [LINE Mini App 電商新局：台灣品牌電商與顧客互動的五大改變](https://ezily-io.github.io/zh/blog/line-mini-app-ecommerce-taiwan): LINE Mini App 的出現，正在改變台灣品牌電商與顧客互動的方式。這不只是多一個新平台，而是讓 LINE 從訊息通路，進一步走向互動、會員、服務與 OMO 的核心位置。這篇文章會從資深電商品牌顧問的角度，拆解 LINE Mini App 帶來的五大改變，以及台灣品牌最值得把握的三大關鍵機會。
+- [多通路電商怎麼管：五個實際做法](https://ezily-io.github.io/zh/blog/mastering-multi-channel-e-commerce-key-strategies-for-success): 商品、庫存、價格、訂單散在各通路的時候，先處理哪一個。
+- [訂一個真的會影響營收的目標](https://ezily-io.github.io/zh/blog/setting-e-commerce-goals-that-actually-move-revenue): 目標訂得具體才有用。怎麼把目標拆成每週看得到的數字。
+- [Shopify 台灣案例怎麼看？品牌主別只學網站設計，還要學怎麼把顧客留下來](https://ezily-io.github.io/zh/blog/shopify-taiwan-cases-line-retention): 搜尋 Shopify 台灣案例時，不只看版型、App 與設計。本文用簡單方法拆解台灣品牌如何把 Shopify 官網流量變成 LINE 好友、顧客偏好資料與下一次回購機會。
 
 ### Careers
 
-- [人才招募](https://ezily.io/zh/careers): Ezily 正在招募各領域的專家，一起完成我們對於未來 Agentic Commerce 的想像。如果你也對未來商務世界有不同看法，歡迎來和我們聊聊。
-- [(Senior) Customer Success Manager](https://ezily.io/zh/careers/customer-success-manage): 負責客戶從導入到續約的整段過程。品牌把商品、庫存和訂單交給 Orchestrate，中間怎麼調整由你判斷。
-- [Lead Frontend Engineer](https://ezily.io/zh/careers/frontend-engineering-lead): 決定前端架構，也實際動手寫，包含 AI 功能的串流回應介面。
-- [Full Stack Engineer](https://ezily.io/zh/careers/full-stack-engineer): 端到端開發 Touchpoints 和 Orchestrate 的功能，上線之後也自己扛。
-- [Senior Product Manager](https://ezily.io/zh/careers/senior-product-manager): 負責 Orchestrate 裡的一塊：商品主檔同步、組合商品，或庫存營運。決定方向，不是排時程。
-- [Senior Sales and Business Development Manager](https://ezily.io/zh/careers/senior-sales-and-bd): 從開發名單、談判到成交，負責整段業務流程，並且扛個人業績目標。
+- [人才招募](https://ezily-io.github.io/zh/careers): Ezily 正在招募各領域的專家，一起完成我們對於未來 Agentic Commerce 的想像。如果你也對未來商務世界有不同看法，歡迎來和我們聊聊。
+- [(Senior) Customer Success Manager](https://ezily-io.github.io/zh/careers/customer-success-manage): 負責客戶從導入到續約的整段過程。品牌把商品、庫存和訂單交給 Orchestrate，中間怎麼調整由你判斷。
+- [Lead Frontend Engineer](https://ezily-io.github.io/zh/careers/frontend-engineering-lead): 決定前端架構，也實際動手寫，包含 AI 功能的串流回應介面。
+- [Full Stack Engineer](https://ezily-io.github.io/zh/careers/full-stack-engineer): 端到端開發 Touchpoints 和 Orchestrate 的功能，上線之後也自己扛。
+- [Senior Product Manager](https://ezily-io.github.io/zh/careers/senior-product-manager): 負責 Orchestrate 裡的一塊：商品主檔同步、組合商品，或庫存營運。決定方向，不是排時程。
+- [Senior Sales and Business Development Manager](https://ezily-io.github.io/zh/careers/senior-sales-and-bd): 從開發名單、談判到成交，負責整段業務流程，並且扛個人業績目標。
 
 ### Legal
 
-- [Ezily 允許使用政策](https://ezily.io/zh/legal/aup): 使用 Ezily 服務的行為規範：禁止垃圾訊息、安全性違反、智慧財產權侵害與冒充，以及必須遵守的 LINE 平台規範。
-- [Ezily 資料處理協議](https://ezily.io/zh/legal/dpa): Ezily 以資料處理者身分處理客戶資料的條款：處理範圍、次處理者、安全措施，以及個資外洩後 72 小時內通知的義務。
-- [Ezily 隱私權政策](https://ezily.io/zh/legal/privacy-policy): Ezily 依個人資料保護法與 GDPR 原則蒐集、處理與保護個人資料的說明，以及在 Mini App 使用者資料與平台帳號資料上各自擔任的角色。
-- [商店資訊、退貨與客戶服務](https://ezily.io/zh/legal/store-information-returns-customer-service): 易霖科技股份有限公司的商店資訊與退換貨、客戶服務說明：公司統編、食品業者登錄字號、地址與客服管道，以及依消費者保護法的 7 天猶豫期退換貨規定。
+- [Ezily 允許使用政策](https://ezily-io.github.io/zh/legal/aup): 使用 Ezily 服務的行為規範：禁止垃圾訊息、安全性違反、智慧財產權侵害與冒充，以及必須遵守的 LINE 平台規範。
+- [Ezily 資料處理協議](https://ezily-io.github.io/zh/legal/dpa): Ezily 以資料處理者身分處理客戶資料的條款：處理範圍、次處理者、安全措施，以及個資外洩後 72 小時內通知的義務。
+- [Ezily 隱私權政策](https://ezily-io.github.io/zh/legal/privacy-policy): Ezily 依個人資料保護法與 GDPR 原則蒐集、處理與保護個人資料的說明，以及在 Mini App 使用者資料與平台帳號資料上各自擔任的角色。
+- [商店資訊、退貨與客戶服務](https://ezily-io.github.io/zh/legal/store-information-returns-customer-service): 易霖科技股份有限公司的商店資訊與退換貨、客戶服務說明：公司統編、食品業者登錄字號、地址與客服管道，以及依消費者保護法的 7 天猶豫期退換貨規定。
 
