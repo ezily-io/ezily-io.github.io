@@ -25,6 +25,7 @@ Every page is published in American English at https://ezily.io/ and in Traditio
 
 - [Notes on running an e-commerce business](https://ezily.io/blog): Running a store is new homework every day. From LINE engagement to repeat purchase to cross-channel operations, we figure it out with you so you take a shorter path.
 - [Five reasons Taiwan e-commerce brands should build a LINE Mini App](https://ezily.io/blog/5-reasons-why-e-commerce-businesses-in-taiwan-should-build-a-line-mini-app): No download, no signup, and service messages that don't depend on friend status. Five reasons, once.
+- [LINE Broadcasts Are Getting Pricey. In 2026, Close the Sale Inside the Conversation](https://ezily.io/blog/conversational-commerce): Broadcasting to 20,000 LINE friends costs an extra ~NT$10,000 a month yet still misses real buyers. In 2026, stop broadcasting — capture intent and close the sale inside each LINE conversation with registration-free checkout.
 - [How to Increase E-commerce Repeat Purchases: 5 Things Brands Need to Rethink About Lead Nurturing and Retention](https://ezily.io/blog/ecommerce-repeat-purchase-lead-nurturing): Want to improve ecommerce repeat purchases without relying on discounts alone? This guide breaks down lead nurturing, repeat purchase strategy, CRM segmentation, and customer reten
 - [LINE Chatbot Not Smart Enough? Diagnose Where You're Stuck With the Visibility Layers Framework](https://ezily.io/blog/line-chatbot-visibility-layers-2026): LINE chatbot can't answer cross-channel questions? It's not a vendor problem. It's a data boundary. Use Ezily's Visibility Layers framework to diagnose.
 - [LINE CRM Is Not About Adding More Tags: A Segmentation and Automation Guide for Ecommerce Brands](https://ezily.io/blog/line-crm-tags): Learn how ecommerce brands can use LINE CRM tags, segmentation, and automation to send smarter messages, improve retention, and reduce broadcast waste.
@@ -70,6 +71,7 @@ Every page is published in American English at https://ezily.io/ and in Traditio
 
 - [電商經營筆記](https://ezily.io/zh/blog): 做電商，每天都有新功課。從 LINE 互動、顧客回購到跨通路營運，和 Ezily 一起研究，少繞點路。
 - [台灣電商品牌該做 LINE Mini App 的五個理由](https://ezily.io/zh/blog/5-reasons-why-e-commerce-businesses-in-taiwan-should-build-a-line-mini-app): 免下載、免註冊、服務訊息不受好友狀態限制。五個理由，一次講完。
+- [LINE 群發越來越貴？2026 改用對話成交更划算](https://ezily.io/zh/blog/conversational-commerce): LINE 群發到 2 萬人每月多花一萬，卻接不住真正想買的人。2026 台灣電商別再對所有人廣播，改用對話成交：在每一則 LINE 對話裡用免註冊結帳當場變訂單。
 - [電商回購怎麼做？從潛在客戶經營到熟客路徑，品牌該重新思考的 5 件事](https://ezily.io/zh/blog/ecommerce-repeat-purchase-lead-nurturing): 電商品牌該怎麼提升回購，不再只靠折扣？這篇文章從潛在客戶經營、熟客路徑、CRM 分群到回購策略，整理品牌現在最該重視的 5 個經營重點。
 - [LINE chatbot 已經不夠聰明了嗎？用「能見度三層級」診斷你卡在哪一層](https://ezily.io/zh/blog/line-chatbot-visibility-layers-2026): 你的 LINE chatbot 答不出「我在 Shopee 買的到貨了嗎」？問題不在選錯廠商，是卡在 data boundary。用 Ezily 的「Chatbot 能見度三層級」5 題自我診斷，看清下一步該升級工具還是 data architecture。
 - [LINE CRM 不是貼更多標籤：電商品牌的分眾標籤架構與自動化推播指南](https://ezily.io/zh/blog/line-crm-tags): 給台灣電商品牌的 LINE CRM 指南，說明如何用標籤、分眾、TAGS 框架與合規資料治理，建立可落地的 LINE 官方帳號會員經營策略。
