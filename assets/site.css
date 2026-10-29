@@ -2823,8 +2823,11 @@ html[lang="en-US"] .hp-orbit .node-sub{font-size:19px}
 .hp-section-intro h2{max-width:800px}
 .hp-section-intro p{max-width:330px;line-height:1.8;font-size:17px}
 .hp-stage-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px}
-.hp-stage{border-top:1px solid var(--rule);padding-top:24px;display:flex;flex-direction:column;align-items:flex-start}
-.hp-stage-top{width:100%;display:flex;justify-content:space-between;align-items:center;margin-bottom:32px;color:var(--purple-deep);font-size:13px}
+.hp-stage{position:relative;border-top:1px solid var(--rule);padding-top:20px;display:flex;flex-direction:column;align-items:flex-start}
+/* the three stages read as one track: a forward connector carries each into the next */
+.hp-stage:not(:last-child)::after{content:"→";position:absolute;top:0;right:-29px;transform:translateY(-52%);color:var(--border-strong);font-size:18px;line-height:1}
+.hp-stage-top{display:flex;align-items:center;gap:9px;margin-bottom:18px;color:var(--purple-deep);font-size:13px;font-weight:500}
+.hp-stage-top::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--purple-fill);flex:none}
 .hp-stage h3{font-size:28px;margin-bottom:16px}
 .hp-stage p{font-size:16px;line-height:1.9;margin-bottom:22px}
 .hp-stage .hp-text-link{margin-top:auto;font-size:14px}
@@ -2939,6 +2942,7 @@ html[lang="en-US"] .hp-orbit .node-sub{font-size:19px}
   .hp-entry-band{padding-top:0}.hp-entry-grid{gap:20px}.hp-entry-grid h2{font-size:18px}.hp-entry-list{font-size:12px;gap:14px 16px}
   .hp-section-intro{display:block;margin-bottom:32px}.hp-section-intro p{margin-top:20px;font-size:16px}
   .hp-stage-list{grid-template-columns:1fr;gap:28px}.hp-stage-top{margin-bottom:14px}.hp-stage h3{font-size:25px;margin-bottom:12px}.hp-stage p{margin-bottom:8px}
+  .hp-stage:not(:last-child)::after{content:"↓";top:calc(100% + 3px);right:auto;left:0;width:100%;text-align:center;transform:none}
   .hp-product-layout{gap:32px}.hp-product-copy h2{font-size:32px}.hp-product-copy .hp-lead{font-size:16px}.hp-product-facts{margin-top:24px}.hp-product-figure button{padding:10px;border-radius:var(--r-card)}
   .hp-belief h2{font-size:36px}.hp-belief-copy{max-width:520px}.hp-belief-copy p{font-size:15px}
   .hp-belief-art svg{width:160%;max-width:none;margin-left:4%;opacity:.5}
