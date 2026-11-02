@@ -18,7 +18,7 @@
 .ca-careers .cr-top h2,.ca-careers .cr-top-sub{margin:0}
 .ca-careers .cr-top-sub{max-width:42ch;font-size:16px;line-height:1.8}
 .ca-careers .cr-reasons{display:grid;grid-template-columns:repeat(3,1fr);gap:44px}
-.ca-careers .cr-reason{padding:25px 0 0;border-top:1px solid var(--line);border-radius:0;background:none;box-shadow:none}
+.ca-careers .cr-reason{padding:25px 0 0;border:0;border-top:1px solid var(--line);border-radius:0;background:none;box-shadow:none}
 .ca-careers .cr-reason-h{font-size:26px;line-height:1.3;letter-spacing:-.025em;font-weight:500;margin:0 0 18px}
 .ca-careers .cr-reason-b{font-size:16px;line-height:1.8;margin:0}
 .ca-careers .cr-mission{background:var(--ink);color:var(--paper)}
@@ -41,7 +41,7 @@
 .ca-careers .cr-role-arrow{display:flex;align-items:center;justify-content:center;color:var(--deep-purple);font-size:25px}
 .ca-careers .cr-role:hover .cr-role-h{color:var(--deep-purple)}
 .ca-careers .cr-roles-note{font-size:12px;line-height:1.8;margin:27px 0 0}
-.ca-careers .cr-apply{display:flex;align-items:center;justify-content:space-between;gap:30px;margin-top:48px;padding:31px 35px;background:var(--lilac);border-radius:12px}
+.ca-careers .cr-apply{border:0;display:flex;align-items:center;justify-content:space-between;gap:30px;margin-top:48px;padding:31px 35px;background:var(--lilac);border-radius:12px}
 .ca-careers .cr-apply-h{font-size:25px;line-height:1.4;font-weight:500;letter-spacing:-.02em;margin:0 0 9px}
 .ca-careers .cr-apply-b{font-size:14px;color:#624b7c;margin:0}
 body.route-careers-frontend-engineering-lead .cj-back{color:var(--ink)}
