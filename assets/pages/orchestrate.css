@@ -28,3 +28,4 @@
 @media(prefers-reduced-motion:reduce){.or-page *{transition:none!important;animation:none!important}}
 /* The source chevron only described a single unwrapped row of steps. */
 @media(max-width:1050px){.or-page .flow .step::after{content:none;display:none}}
+.or-comparison th{color:var(--ink)}

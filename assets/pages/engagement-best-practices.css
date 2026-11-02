@@ -14,3 +14,4 @@
 /* The editorial list no longer has the legacy numbered timeline spine. */
 .eg-page .principles-list::before{content:none;display:none}
 .eg-page .closing,.eg-page .closing .h2{color:var(--ink)}
+.eg-page .principle-copy h3{color:var(--ink)}
