@@ -23,13 +23,13 @@
   const tabs = [...page.querySelectorAll('[data-cj-stage]')];
   const work = {
     csm: [
-      ["A visible first outcome.", "Validate the handoff, agree the plan, and establish the account's operating rhythm.", ["Scope and customer sign-off", "A visible first outcome", "An operating rhythm"]],
-      ["Turn usage into value.", "Find friction, coordinate the right teams, and turn an evidenced proposal into a scoped experiment.", ["Active platform use", "Cross-team issue ownership", "Evidence for the next experiment"]],
+      ["A visible first outcome.", "Validate the handoff, agree on the plan, and establish the account's operating rhythm.", ["Scope and customer sign-off", "A visible first outcome", "An operating rhythm"]],
+      ["Turn usage into results.", "Find friction, coordinate the right teams, and turn an evidenced proposal into a scoped experiment.", ["Active platform use", "Cross-team issue ownership", "Evidence for the next experiment"]],
       ["Carry the relationship forward.", "Stay accountable for the customer relationship, ongoing value, and a clear renewal conversation.", ["Review delivered value", "Understand the account", "Coordinate the next commitment"]],
     ],
     frontend: [
       ["Build beyond the happy path.", "Component foundations, visual judgment, and accessible interactions all belong in the frontend.", ["A clear next step.", "Your buying experience, ready to use.", "Ready"]],
-      ["Keep the experience useful.", "Handle streaming responses, latency, and loading states as part of the product experience.", ["The response is arriving.", "Keep context visible while the next part arrives.", "Streaming"]],
+      ["Stay useful mid-response.", "Handle streaming responses, latency, and loading states as part of the product experience.", ["The response is arriving.", "Keep context visible while the next part arrives.", "Streaming"]],
       ["Leave a clear recovery path.", "Design fallback behavior and handle imperfect model output gracefully.", ["A way forward.", "Keep the context and explain what can happen next.", "Recovery state"]],
     ],
     fullstack: [
@@ -39,13 +39,13 @@
     ],
     product: [
       ["Start with the merchant.", "Interviews, data, and channel feedback become a clear point of view on what to build."],
-      ["Give momentum direction.", "Choose priorities, write clear requirements, and make informed trade-offs with engineering."],
+      ["Give the team's effort a direction.", "Choose priorities, write clear requirements, and make informed trade-offs with engineering."],
       ["Own the launch and the learning.", "Plan rollout, enable the team, communicate with merchants, and review what happened after launch."],
     ],
     sales: [
       ["Find the right fit.", "Qualify customer pain, urgency, buying readiness, and the likelihood of adoption."],
       ["Make a proposal that can be delivered.", "Negotiate within the agreed guardrails and make scope, terms, and exceptions explicit."],
-      ["Keep the promise connected.", "Create a structured handoff to Customer Success, with the customer need and commitments intact."],
+      ["Carry the promise through the handoff.", "Create a structured handoff to Customer Success, with the customer need and commitments intact."],
     ],
   };
   if (!work[role] || !tabs.length) return;

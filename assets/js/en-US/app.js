@@ -31,7 +31,7 @@ dlg.addEventListener('click',function(e){if(e.target===dlg){var r=dlg.getBoundin
 if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)dlg.close()}});
 })();
 (function(){
-var items=[{title:"Product data",description:"Manage product data centrally. Update once, and it syncs to every channel."},{title:"Inventory",description:"Hold inventory in one place, so every channel shares the updated count."},{title:"Pricing",description:"No logging into each back office. Adjust once, and it syncs to every channel."},{title:"Orders",description:"Keep every channel's orders together, managed from one place."}];
+var items=[{title:"Product data",description:"Manage product data centrally. Update once, and it syncs to every channel."},{title:"Inventory",description:"Hold inventory in one place, so every channel shares the updated count."},{title:"Pricing",description:"Skip logging into each back office. Adjust once, and it syncs to every channel."},{title:"Orders",description:"Keep every channel's orders together and manage them from one place."}];
 var tabs=[].slice.call(document.querySelectorAll('.hp-sync-tab'));
 function sel(n){var it=items[n];
 tabs.forEach(function(t,i){t.setAttribute('aria-selected',String(i===n));t.tabIndex=i===n?0:-1});

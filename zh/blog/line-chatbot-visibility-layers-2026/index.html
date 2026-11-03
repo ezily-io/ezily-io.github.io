@@ -44,16 +44,16 @@
 <p>你的 LINE 好友昨天在 Shopee 買了一雙運動鞋。今天她在 LINE 問你：「這雙還有 US9 嗎？我想多買一雙送人，能一起出貨嗎？」</p>
 <p>你的 LINE chatbot 答她：「請至門市查詢庫存」。或是更慘：「這不在我能回答的範圍內」。</p>
 <p>這不是 chatbot 不夠聰明，是它根本看不到你的 Shopee 訂單、也看不到你官網的即時庫存（real-time inventory）。</p>
-<p>2026 年台灣電商 chatbot 的真正戰場已經不是「自動回覆 FAQ」。LINE 於 2025 年 11 月已經把 FAQ 自動回覆做進官方功能。真正的問題是：你的 chatbot 看得到哪些資料？ 接下來用「Chatbot 能見度三層級」（Chatbot Visibility Layers）這個框架，幫你判斷目前卡在哪一層，以及下一步該升級的是工具還是 data architecture。</p>
+<p>2026 年，台灣電商 chatbot 比的已經不是「自動回覆 FAQ」。LINE 於 2025 年 11 月已經把 FAQ 自動回覆做進官方功能。現在要問的是：你的 chatbot 看得到哪些資料？接下來用「Chatbot 能見度三層級」（Chatbot Visibility Layers）這個框架，幫你判斷目前卡在哪一層，以及下一步該升級的是工具還是 data architecture。</p>
 <p>重點摘要（3 項 takeaway）</p>
 <ol>
 <li>LINE 官方於 2025 年 11 月推出「AI 聊天機器人（β）」後，FAQ 自動回覆已變成聊天進階方案（月費 NT$100）內建功能，不再是第三方 chatbot 廠商的差異化理由。</li>
 <li>Chatbot 能見度三層級（Chatbot Visibility Layers，Ezily 提出的框架）：Layer 1 只看得到品牌上傳的 FAQ 文件；Layer 2 看得到單一通路的訂單／會員資料；Layer 3 看得到跨通路即時資料（訂單、庫存、廣告互動、會員 360）。</li>
-<li>多數台灣電商品牌的 LINE chatbot 卡在 Layer 2，答不出「我在 Shopee 買的到貨了嗎」這類跨通路問題。真正的升級不是換 chatbot 廠商，是在既有 chatbot 前端後面加上一層 cross-channel data infrastructure（跨通路資料基礎設施）。</li>
+<li>多數台灣電商品牌的 LINE chatbot 卡在 Layer 2，答不出「我在 Shopee 買的到貨了嗎」這類跨通路問題。該做的升級不是換 chatbot 廠商，是在既有 chatbot 前端後面加上一層 cross-channel data infrastructure（跨通路資料基礎設施）。</li>
 </ol>
 <h2>為什麼 2026 年要重新看待 LINE chatbot？</h2>
 <p>因為整個賽道的起跑線被 LINE 官方自己往前推了。</p>
-<p>2025 年 11 月，LINE 官方帳號正式推出「AI 聊天機器人（β）」，綁定 聊天進階方案（LINE 於 2025 年 3 月推出的加值服務，月費 NT$100，解鎖聊天紀錄延長、tag 上限提升、記事本備份等功能）使用（來源：LINE Biz-Solutions 官方說明）。品牌只要上傳 PDF、網址或圖片，AI 會自動分析並產生 FAQ，直接在聊天室自動回覆顧客，不需再額外付第三方廠商月費。</p>
+<p>2025 年 11 月，LINE 官方帳號正式推出「AI 聊天機器人（β）」，綁定聊天進階方案（LINE 於 2025 年 3 月推出的加值服務，月費 NT$100，解鎖聊天紀錄延長、tag 上限提升、記事本備份等功能）使用（來源：LINE Biz-Solutions 官方說明）。品牌只要上傳 PDF、網址或圖片，AI 會自動分析並產生 FAQ，直接在聊天室自動回覆顧客，不需再額外付第三方廠商月費。</p>
 <p>也就是說，「有 AI 自動回覆 FAQ」從 2026 起已經是預設配置，不是競爭優勢。過去幾年很多品牌付第三方 chatbot 廠商月費，只為了做 FAQ 自動回覆。這條路現在是送分題。</p>
 <p>會拉開差距的，是 chatbot 能 query 到的 data visibility（資料視野）。</p>
 <h2>Chatbot 能見度三層級：你卡在哪一層？</h2>
@@ -85,14 +85,14 @@
 <p>適合誰： 單價高、SKU 少、客服問題以政策／規格為主的品牌（例如課程、服務預約、少量 SKU 的精品品牌）。適合你的訊號：客服訊息中 80% 以上是重複的 FAQ 類問題。</p>
 <p>不適合誰： 多 SKU 電商、有 real-time inventory 壓力的品牌、需要 order status 查詢的顧客。</p>
 <h3>Layer 2：廠商 chatbot 的真實限制是什麼？</h3>
-<p>Layer 2 是目前多數台灣品牌所在的位置。漸強實驗室、Omnichat、Super 8、BotBonnie、Chatisfy 這類 LINE 技術夥伴，提供 segmentation、tag management、gamification 模組、customer journey design，功能比 Layer 1 多很多。它們真正的價值是把 conversational traffic 轉成訂單：Omnichat 2022 零售對話商務報告指出，透過 chatbot 觸發的購物車再行銷 conversion rate 可達 11.35%、OMO（Online-Merge-Offline，線上線下整合）對話銷售 7.14%、客製化 LINE 歡迎訊息 7.21%（來源：Omnichat 零售對話商務報告）。</p>
+<p>Layer 2 是目前多數台灣品牌所在的位置。漸強實驗室、Omnichat、Super 8、BotBonnie、Chatisfy 這類 LINE 技術夥伴，提供 segmentation、tag management、gamification 模組、customer journey design，功能比 Layer 1 多很多。它們的價值在於把 conversational traffic 轉成訂單：Omnichat 2022 零售對話商務報告指出，透過 chatbot 觸發的購物車再行銷 conversion rate 可達 11.35%、OMO（Online-Merge-Offline，線上線下整合）對話銷售 7.14%、客製化 LINE 歡迎訊息 7.21%（來源：Omnichat 零售對話商務報告）。</p>
 <p>這套「把對話變訂單」的打法，我們在〈[LINE 群發越來越貴？2026 改用對話成交更划算](/blog/conversational-commerce)〉裡有更完整的拆解。</p>
 <p>但 Layer 2 有一個共同限制：它的 data visibility 通常只及於「自己串接的那個通路」。</p>
 <p>舉個每天都在發生的場景：你的品牌同時經營 Shopee 旗艦店、官網（Shopline）、LINE 官方帳號。顧客昨天在 Shopee 下了單，今天在 LINE 問你「我的訂單到哪了？」。你的 Layer 2 chatbot 廠商通常串接的是官網訂單系統，而不是 Shopee，所以它回不出來。</p>
 <p>這不是廠商不努力，是各家 Layer 2 廠商的預設整合，多半鎖在「LINE + 官網（單一開店平台）」的組合裡。你的顧客並不在乎這個技術邊界，他只知道「我在 LINE 問你，你應該要查得到」。</p>
 <h3>Layer 3：Cross-channel data layer，為什麼 chatbot 真正需要它？</h3>
-<p>Cross-channel data layer（跨通路資料層） 指的是把品牌分散在不同系統的銷售、庫存、顧客、廣告資料即時整合在一起的 data infrastructure。它不是又一個 chatbot 廠商，而是讓 chatbot 答得出真正問題的 data plumbing（資料水電工程）。</p>
-<p>這一層把品牌散落在不同系統的資料整合起來：</p>
+<p>Cross-channel data layer（跨通路資料層）是一套 data infrastructure：把品牌分散在不同系統的銷售、庫存、顧客、廣告資料即時整合在一起。它不是又一個 chatbot 廠商，是 data plumbing（資料水電工程），讓 chatbot 答得出顧客實際在問的問題。</p>
+<p>它接進來的資料包括：</p>
 <ol>
 <li>Shopline / Shopee / MOMO 的訂單與商品</li>
 <li>Real-time inventory（官網 + 門市 + 倉庫）</li>
@@ -106,7 +106,7 @@
 <li>「這雙鞋我的尺寸還有嗎？」 → chatbot 查 real-time inventory，不限通路</li>
 <li>「我在官網下的那筆和 Shopee 的能一起出貨嗎？」 → chatbot 交叉比對顧客兩邊 order status</li>
 </ol>
-<p>這就是 Ezily 做的事。Ezily 不是另一個 LINE chatbot 廠商，而是把 Shopline、Shopee、Meta Ads、POS、會員歷史整合成一層 data layer，讓任何 chatbot 前端都能即時查得到。顧客在 LINE 問「我昨天在 Shopee 買的運動鞋到貨了嗎」時，bot 是真的去 query database，而不是回一句「請洽客服」。</p>
+<p>這就是 Ezily 做的事：把 Shopline、Shopee、Meta Ads、POS、會員歷史整合成一層 data layer，讓任何 chatbot 前端都能即時查得到。顧客在 LINE 問「我昨天在 Shopee 買的運動鞋到貨了嗎」時，bot 是真的去 query database，而不是回一句「請洽客服」。</p>
 <p>適合誰： 跨平台經營的品牌（官網 + 至少一個平台）、有實體門市的 OMO 品牌、單一顧客 LTV 高到讓「答不出跨通路問題」會造成實際營收損失的品牌。</p>
 <h2>自我診斷：你的 chatbot 卡在哪一層？</h2>
 <p>用這 5 題快速判斷：</p>
@@ -123,7 +123,7 @@
 <h2>LINE chatbot 不好用，要換廠商還是換架構？</h2>
 <p>如果你已經在 Layer 2、卻覺得 chatbot 還是不夠好用，問題不在「選錯廠商」，在於整個市場都卡在同一個 data boundary。</p>
 <p>換另一家 Layer 2 廠商，你會換到功能組合略有不同、月費可能更便宜的 chatbot。但顧客問「Shopee 訂單到貨了嗎」時，它一樣答不出來。</p>
-<p>真正的升級路徑，是在你既有的 chatbot 前端（可能是 LINE 原生、可能是漸強、可能是 Omnichat）後面加上一層 cross-channel data infrastructure。Omnichat 執行長在 2026 年初的專欄中指出，產業正從「會聊天的 chatbot」轉型為「會做事的 AI Agent」，而後者的前提是能存取到執行任務所需的資料（來源：Omnichat AI Chatbot 完整攻略）。LINE 也在 2025 年 12 月的 LINE BIZ CONVERGE 預告，LAP AI Agent 將於 2026 Q1 分階段上線（來源：LINE BIZ CONVERGE 2025）。AI Agent 會逐漸成為常態，但沒有 cross-channel data layer 的 Agent，仍然只是更漂亮的 Layer 1 或 Layer 2。</p>
+<p>升級的路徑，是在你既有的 chatbot 前端（可能是 LINE 原生、可能是漸強、可能是 Omnichat）後面加上一層 cross-channel data infrastructure。Omnichat 執行長在 2026 年初的專欄中指出，產業正從「會聊天的 chatbot」轉型為「會做事的 AI Agent」，而後者的前提是能存取到執行任務所需的資料（來源：Omnichat AI Chatbot 完整攻略）。LINE 也在 2025 年 12 月的 LINE BIZ CONVERGE 預告，LAP AI Agent 將於 2026 Q1 分階段上線（來源：LINE BIZ CONVERGE 2025）。AI Agent 會逐漸成為常態，但沒有 cross-channel data layer 的 Agent，仍然只是更漂亮的 Layer 1 或 Layer 2。</p>
 <p>Ezily 就是那一層 data infrastructure。</p>
 <h2>常見問題（FAQ）</h2>
 <p>Q1：LINE 原生 AI 聊天機器人（β）和第三方 chatbot 廠商差在哪？</p>
@@ -131,7 +131,7 @@
 <p>Q2：為什麼我的 chatbot 廠商答不出跨通路的訂單問題？</p>
 <p>因為 Layer 2 廠商的預設整合多半綁定「LINE + 單一開店平台」。你的 Shopee 訂單、MOMO 訂單、POS 銷售資料在它的 data visibility 之外。這是各家廠商共通的整合範圍，不是單一廠商的問題。要判斷的是這個範圍涵不涵蓋你實際在賣的通路。</p>
 <p>Q3：換一家 LINE chatbot 廠商就能解決 data boundary 問題嗎？</p>
-<p>通常不會。你會換到功能組合略有不同的 Layer 2 工具，但 data boundary 問題依然存在。真正的升級是在 chatbot 前端後面加上 cross-channel data layer（Layer 3），讓任何 chatbot 前端都能即時 query 到 Shopline、Shopee、POS、inventory、customer 360 資料。</p>
+<p>通常不會。你會換到功能組合略有不同的 Layer 2 工具，但 data boundary 問題依然存在。該做的是在 chatbot 前端後面加上 cross-channel data layer（Layer 3），讓任何 chatbot 前端都能即時 query 到 Shopline、Shopee、POS、inventory、customer 360 資料。</p>
 <p>Q4：小品牌也需要 Layer 3 嗎？</p>
 <p>不一定。如果你只在一個平台經營、SKU 不多、客服問題 80% 以上是 FAQ，Layer 1（LINE 原生 AI 聊天機器人 β，NT$100/月）加上小幅度 Layer 2 就足夠。Cross-channel data layer 的投資報酬在「多平台 + 有 real-time inventory 壓力 + OMO」的品牌身上最明顯。</p>
 <p>Q5：LINE 之後要推的 LAP AI Agent 會改變這個架構嗎？</p>

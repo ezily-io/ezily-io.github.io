@@ -4,7 +4,7 @@
   if (!page) return;
   const modes = {
     group: ["A group chat.\nA reason to buy.", "A little more, together.", "See the group before you join.", "Group progress", "Friends are joining", "Deadline", "With the product", "See the group buy", '#e9def7'],
-    sale: ["A closing-soon alert.\nA moment to act.", "Make the moment yours.", "Countdown, stock, and product. Together.", "Offer closes", "With a clear cutoff", "Stock", "Beside the product", "View the flash sale", '#e4edca'],
+    sale: ["A closing-soon alert.\nA moment to act.", "Make the moment yours.", "Countdown, stock, and product on one page.", "Offer closes", "With a clear cutoff", "Stock", "Beside the product", "View the flash sale", '#e4edca'],
     vip: ["A member invite.\nA reason to return.", "An invitation for you.", "Member access and a selected product mix.", "Access", "Invited members", "Selection", "Exclusive picks", "View member selections", '#f0e2d3'],
   };
   const tabs = [...page.querySelectorAll('[data-tp-mode]')];

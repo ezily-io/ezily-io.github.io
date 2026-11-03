@@ -7,7 +7,7 @@
     group: ["A friend's invitation", "The Everyday Set. Shall we get one together?", "Open the group buy", "The reason to buy travels with the link.", "Should I join?", "Put group progress and the deadline beside the product.", "Group progress", "With the product"],
     drop: ["A launch reminder", "The daily edit is about to drop. Be there for the moment.", "Open the limited drop", "The cutoff belongs in the buying experience.", "What if I wait?", "Make the launch, stock, and cutoff clear before checkout.", "Offer window", "A clear start and finish"],
     gift: ["A reason to give", "A little something, just for you. Make this one personal.", "Open the gifting experience", "The intention to give carries into checkout.", "Who is it for?", "Keep the recipient and gift message together with the order.", "Gift message", "A little something, just for you."],
-    vip: ["An invitation for members", "Your member edit is ready. A selection chosen for you.", "Open the member event", "Membership shapes the products and the message.", "What is for me?", "Let member tags guide access, selections, and the buying context.", "Member access", "An invited selection"],
+    vip: ["An invitation for members", "Your member edit is ready. A selection chosen for you.", "Open the member event", "Membership shapes the products and the message.", "What is for me?", "Use member tags to decide who gets in, which picks they see, and the context they buy in.", "Member access", "An invited selection"],
   };
   const ids = ['cv-entry-label', 'cv-entry-message', 'cv-entry-link', 'cv-entry-context', 'cv-order-title', 'cv-order-description'];
   function select(index) {
