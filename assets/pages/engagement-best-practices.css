@@ -15,3 +15,6 @@
 .eg-page .principles-list::before{content:none;display:none}
 .eg-page .closing,.eg-page .closing .h2{color:var(--ink)}
 .eg-page .principle-copy h3{color:var(--ink)}
+.eg-page .problems .section-intro{display:grid;grid-template-columns:1fr 1fr;column-gap:70px;align-items:end;max-width:none;margin-bottom:44px}.eg-page .problems .section-intro h2{grid-column:auto;margin:0}.eg-page .problems .section-intro>p{grid-column:auto;margin:0;max-width:46ch}.eg-page .problem-grid{display:grid;grid-template-columns:1fr 1fr;column-gap:70px}.eg-page .problem-card{display:block;padding:26px 0 30px}.eg-page .problem-card h3{font-size:22px;max-width:none}.eg-page .problem-card p{margin-top:10px;font-size:15px;max-width:none}
+@media(max-width:1050px){.eg-page .problems .section-intro,.eg-page .problem-grid{column-gap:40px}}
+@media(max-width:760px){.eg-page .problems .section-intro{display:block;margin-bottom:30px}.eg-page .problems .section-intro>p{margin-top:16px}.eg-page .problem-grid{grid-template-columns:1fr}.eg-page .problem-card{padding:22px 0 24px}.eg-page .problem-card h3{font-size:21px}}
