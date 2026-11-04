@@ -13,7 +13,7 @@
 .tp-page .tp-hero-h1{font-size:clamp(54px,6.15vw,82px);line-height:1.07;letter-spacing:-.04em;font-weight:500;margin:0 0 28px;max-width:8.5ch;text-wrap:normal}
 .tp-page .tp-hero-h1 span{color:var(--lilac)}
 .tp-page .tp-hero-lead{font-size:16px;line-height:1.85;max-width:41ch;color:#d7d8e7;margin-bottom:30px}
-.tp-page .tp-actions{display:flex;align-items:center;flex-wrap:wrap;gap:23px}
+.tp-page .tp-actions{display:flex;align-items:center;justify-content:flex-start;flex-wrap:wrap;gap:23px}
 .tp-page .tp-hero .tp-text-link{color:var(--paper);font-size:14px}
 .tp-page .tp-mobile-scene{position:relative;margin:0;min-width:0;padding:0 6px 28px 0}
 .tp-page .tp-mini-phone{position:relative;width:314px;max-width:100%;margin-left:auto;background:var(--paper);color:var(--ink);border-radius:30px;padding:12px 17px 18px;box-shadow:15px 26px 62px #02071c66;transform:rotate(3deg);overflow:hidden}
