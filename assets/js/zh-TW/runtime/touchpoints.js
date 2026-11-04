@@ -1,5 +1,5 @@
 (function(){
-var slides=[{src:"../assets/checkout-manager.png",title:"Checkout 團購管理介面",alt:"Checkout 團購管理介面",width:2370,height:1982},{src:"../assets/checkout-type-selector.png",title:"建立 Checkout 選擇類型介面",alt:"建立 Checkout 選擇類型介面",width:2400,height:1982}],i=0,total=slides.length;
+var slides=[{src:"/assets/checkout-manager.png",title:"Checkout 團購管理介面",alt:"Checkout 團購管理介面",width:2370,height:1982},{src:"/assets/checkout-type-selector.png",title:"建立 Checkout 選擇類型介面",alt:"建立 Checkout 選擇類型介面",width:2400,height:1982}],i=0,total=slides.length;
 var tabs=[].slice.call(document.querySelectorAll('.tp-gallery-tab'));
 var shot=document.getElementById('tp-gimg'),dlg=document.getElementById('tp-gdialog'),exp=document.getElementById('tp-gexpanded');
 function pad(n){return String(n).padStart(2,'0')}

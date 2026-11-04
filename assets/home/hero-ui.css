@@ -3,7 +3,7 @@
 .u-hero .hero-copy{width:51%}
 .u-hero .hero-description{max-width:390px}
 .u-hero .u-stage{position:absolute;right:2.5%;top:103px;width:50%;height:570px;margin:0;z-index:2;isolation:isolate}
-.u-hero .u-front-card{position:absolute;left:17%;top:18px;width:360px;height:510px;z-index:3;background:var(--paper);color:var(--ink);border-radius:16px;box-shadow:14px 28px 65px #03081966;transform:rotate(-4deg);transition:transform .6s cubic-bezier(.16,1,.3,1);overflow:hidden}
+.u-hero .u-front-card{position:absolute;left:13%;top:18px;width:360px;height:510px;z-index:3;background:var(--paper);color:var(--ink);border-radius:16px;box-shadow:14px 28px 65px #03081966;transform:rotate(-4deg);transition:transform .6s cubic-bezier(.16,1,.3,1);overflow:hidden}
 .u-hero .u-front-card[data-active-mode=drop]{transform:rotate(3deg)}
 .u-hero .u-front-card[data-active-mode=gift]{transform:rotate(-2deg)}
 .u-hero .u-front-card[data-active-mode=subscribe]{transform:rotate(1deg)}
@@ -67,16 +67,16 @@
 .u-hero .u-cadence-selected svg{position:absolute;right:5px;top:6px;width:13px;height:13px;fill:none;stroke:var(--lime);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
 .u-hero .u-routine-note{font-size:12px;line-height:1.5;color:var(--muted);margin:7px 0 0}
 .u-hero .u-back-card{position:absolute;border-radius:14px;box-shadow:12px 24px 52px #03081944;color:var(--ink);overflow:hidden;pointer-events:none}
-.u-hero .u-back-top{right:-1%;top:40px;width:210px;height:268px;transform:rotate(9deg);background:var(--lilac);padding:21px 20px}
+.u-hero .u-back-top{right:1%;top:44px;width:200px;height:268px;transform:rotate(7deg);background:var(--lilac);padding:21px 20px}
 .u-hero .u-mini-brand{display:block;font-size:15px;line-height:1.4;letter-spacing:-.035em;font-weight:600}
 .u-hero .u-next-label{display:block;font-size:21px;font-weight:500;line-height:1.2;letter-spacing:-.03em;margin-top:14px;max-width:8ch}
 .u-hero .u-back-product{position:absolute;width:180px;height:153px;left:28px;top:86px}
 .u-hero .u-back-strip{position:absolute;bottom:0;left:0;right:0;padding:11px 14px;font-size:12px;line-height:1.5;background:var(--lime)}
-.u-hero .u-back-bottom{left:-12%;bottom:40px;width:220px;height:160px;background:#efe3d4;padding:18px 19px;transform:rotate(-8deg)}
+.u-hero .u-back-bottom{left:-15%;bottom:40px;width:220px;height:160px;background:#efe3d4;padding:18px 19px;transform:rotate(-8deg)}
 .u-hero .u-back-gift{position:absolute;width:108px;height:89px;right:-15px;bottom:-11px}
 .u-hero .u-mini-label{display:block;font-size:12px;line-height:1.5;color:#745c4b}
 .u-hero .u-gift-quote{display:block;font-size:17px;line-height:1.35;letter-spacing:-.025em;font-weight:500;margin-top:12px}
-.u-hero .u-stage-caption{position:absolute;bottom:8px;left:17%;width:360px;font-size:12px;line-height:1.6;color:#c9c8db;text-align:center}
+.u-hero .u-stage-caption{position:absolute;bottom:8px;left:13%;width:360px;font-size:12px;line-height:1.6;color:#c9c8db;text-align:center}
 .u-hero .u-tabs{display:flex;gap:7px}
 .u-hero .u-tabs button{position:relative;border:1px solid transparent;border-radius:40px;padding:10px 17px;background:transparent;color:#c6c7d9;font-size:12px;white-space:nowrap;transition:background .2s,color .2s,border-color .2s}
 .u-hero .u-tabs button:hover{color:var(--paper);border-color:#faf8ff44}
