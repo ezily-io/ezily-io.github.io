@@ -27,6 +27,11 @@
       ["Turn usage into results.", "Find friction, coordinate the right teams, and turn an evidenced proposal into a scoped experiment.", ["Active platform use", "Cross-team issue ownership", "Evidence for the next experiment"]],
       ["Carry the relationship forward.", "Stay accountable for the customer relationship, ongoing value, and a clear renewal conversation.", ["Review delivered value", "Understand the account", "Coordinate the next commitment"]],
     ],
+    csmtp: [
+      ["One use case, live first.", "Learn the brand's goals, its LINE Official Account, and its commerce setup, then plan the first launch.", ["Goals and success criteria", "Current LINE and commerce setup", "A first launch plan"]],
+      ["Clear the blockers to launch.", "Turn the need into an interaction flow, line up content and data, and test it to launch with the brand and our teams.", ["Flow and content requirements", "Pre-launch testing", "Agreed responsibilities"]],
+      ["Let the results set the next step.", "Read the funnel from exposure to conversion, and say plainly what worked and where people dropped off.", ["Funnel and drop-offs", "A performance review", "Feedback for the product team"]],
+    ],
     frontend: [
       ["Build beyond the happy path.", "Component foundations, visual judgment, and accessible interactions all belong in the frontend.", ["A clear next step.", "Your buying experience, ready to use.", "Ready"]],
       ["Stay useful mid-response.", "Handle streaming responses, latency, and loading states as part of the product experience.", ["The response is arriving.", "Keep context visible while the next part arrives.", "Streaming"]],
@@ -56,7 +61,7 @@
     page.querySelector('#cj-work-title').textContent = data[0];
     page.querySelector('#cj-work-copy').textContent = data[1];
     page.querySelector('#cj-work-panel').setAttribute('aria-labelledby', tabs[active].id);
-    if (role === 'csm') page.querySelectorAll('[data-cj-item]').forEach((node, position) => { node.textContent = data[2][position]; });
+    if (role === 'csm' || role === 'csmtp') page.querySelectorAll('[data-cj-item]').forEach((node, position) => { node.textContent = data[2][position]; });
     if (role === 'frontend') {
       page.querySelector('[data-cj-preview]').dataset.cjPreview = ['default', 'streaming', 'recovery'][active];
       ['cj-preview-title', 'cj-preview-copy', 'cj-preview-action'].forEach((id, position) => { page.querySelector('#' + id).textContent = data[2][position]; });

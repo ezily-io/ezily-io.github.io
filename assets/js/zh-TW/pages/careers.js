@@ -27,6 +27,11 @@
       ["讓用量變成成效。", "找出卡住的地方，協調對的團隊，把有根據的提案變成範圍明確的實驗。", ["平台被穩定使用", "跨團隊問題一路追到底", "下一個實驗的依據"]],
       ["把關係延續下去。", "持續為客戶關係和長期價值負責，帶出一場清楚的續約對話。", ["回顧已交付的價值", "摸清這個客戶", "談定下一步的承諾"]],
     ],
+    csmtp: [
+      ["先讓一個情境上線。", "搞懂品牌的目標、LINE 官方帳號和現有的電商設定，排出第一個上線計畫。", ["目標與成功標準", "現有的 LINE 與電商設定", "第一個上線計畫"]],
+      ["卡住的地方，一路追到上線。", "把需求拆成互動流程，備齊內容和資料，和品牌、內部團隊一起測到上線。", ["互動流程與內容需求", "上線前測試", "雙方分工確認"]],
+      ["用成效決定下一步。", "看曝光、互動、完成到轉換的漏斗，講清楚哪裡有效、哪裡流失。", ["漏斗與流失點", "成效回顧簡報", "帶回產品的回饋"]],
+    ],
     frontend: [
       ["不只顧好順利的情況。", "元件基礎、視覺判斷、無障礙互動，都是前端的事。", ["下一步很清楚。", "你的購物體驗準備好了。", "可以開始"]],
       ["回應途中，也要好用。", "串流回應、延遲和載入狀態，都當成產品體驗的一部分來處理。", ["回覆正在產生。", "下一段出來之前，前面的內容都還在。", "串流中"]],
@@ -56,7 +61,7 @@
     page.querySelector('#cj-work-title').textContent = data[0];
     page.querySelector('#cj-work-copy').textContent = data[1];
     page.querySelector('#cj-work-panel').setAttribute('aria-labelledby', tabs[active].id);
-    if (role === 'csm') page.querySelectorAll('[data-cj-item]').forEach((node, position) => { node.textContent = data[2][position]; });
+    if (role === 'csm' || role === 'csmtp') page.querySelectorAll('[data-cj-item]').forEach((node, position) => { node.textContent = data[2][position]; });
     if (role === 'frontend') {
       page.querySelector('[data-cj-preview]').dataset.cjPreview = ['default', 'streaming', 'recovery'][active];
       ['cj-preview-title', 'cj-preview-copy', 'cj-preview-action'].forEach((id, position) => { page.querySelector('#' + id).textContent = data[2][position]; });
