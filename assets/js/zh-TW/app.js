@@ -174,7 +174,8 @@ else if(e.key==='End')n=tabs.length-1;else return;e.preventDefault();sel(n);tabs
     var t = e.target;
     if (!t || !t.closest) return;
     var a = t.closest("a[data-contact]");
-    if (a) {
+    /* Links inside the dialog itself always navigate. */
+    if (a && !d.contains(a)) {
       /* A phone cannot scan a QR code on its own screen, and the href is a
          working miniapp.line.me deep link that opens LINE natively. So coarse
          pointers follow the link and only pointer devices get the code.
