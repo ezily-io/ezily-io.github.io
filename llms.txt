@@ -54,7 +54,7 @@ Every page is published in American English at https://ezily-io.github.io/ and i
 
 ### Overview
 
-- [Ezily｜你的品牌，你的買法](https://ezily-io.github.io/zh): 掌握品牌基因，為每位顧客打造專屬購物旅程；認識顧客、順利成交、管好通路，交給 AI 和自動化。
+- [Ezily｜你的品牌，你的生意方式](https://ezily-io.github.io/zh): 運用 AI 和自動化，串起顧客互動、結帳與跨通路營運，讓團購、限量開賣、送禮與訂閱都展現品牌特色。
 
 ### Touchpoints
 
