@@ -41,3 +41,35 @@ html[lang="zh-TW"] :is(p,li,dd,figcaption,blockquote){text-wrap:pretty}
 .ez-menu-toggle .icon-close,.ez-menu-toggle[aria-expanded=true] .icon-open{display:none}
 .ez-menu-toggle[aria-expanded=true] .icon-close{display:block}
 @media (max-width:760px),(pointer:coarse){.tp-page .tp-icon-button{position:relative}.tp-page .tp-icon-button::after{content:'';position:absolute;inset:-7px}}
+
+/* Comparison table, shared by Touchpoints, Orchestrate and LINE Mini App.
+   The Ezily column is a raised navy-framed card and every row carries a lime
+   check on navy; the other column is muted with a quiet cross. Icons are
+   pseudo-elements, so templates and copy stay untouched. */
+.cmp{--cmp-pad:28px;--cmp-ico:30px;width:100%;border-collapse:separate;border-spacing:0;table-layout:fixed;text-align:left;font-size:16px;line-height:1.75;margin-top:40px}
+.cmp th{text-transform:none;padding:20px var(--cmp-pad);font-size:18px;font-weight:500;line-height:1.4;letter-spacing:-.015em;vertical-align:bottom;text-align:left}
+.cmp th:first-child{color:var(--muted);border-bottom:1px solid var(--line)}
+.cmp th:last-child{padding-top:32px;background:var(--ink);color:var(--paper);border-radius:20px 20px 0 0;border:2px solid var(--ink);border-bottom:0}
+.cmp td{position:relative;vertical-align:top;padding:24px var(--cmp-pad) 24px calc(var(--cmp-pad) + var(--cmp-ico) + 14px);border-bottom:1px solid var(--line);color:var(--muted);transition:background-color .2s,color .2s}
+.cmp td::before{content:'';position:absolute;left:var(--cmp-pad);top:calc(24px + (1.75em - var(--cmp-ico)) / 2);width:var(--cmp-ico);height:var(--cmp-ico);border-radius:50%;background-position:center;background-repeat:no-repeat;background-size:50%}
+.cmp td:first-child::before{background-color:#ece8f2;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23858aa0' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M4.5 4.5l7 7m0-7l-7 7'/%3E%3C/svg%3E")}
+.cmp td:last-child{background:var(--paper-raised);color:var(--ink);font-weight:500;border-inline:2px solid var(--ink)}
+.cmp td:last-child::before{background-color:var(--lime);box-shadow:inset 0 0 0 1.5px var(--ink);background-size:56%;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23111b35' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3.5 8.5l3 3 6-7'/%3E%3C/svg%3E")}
+.cmp th:last-child::before{content:'';display:block;width:28px;height:4px;border-radius:4px;background:var(--lime);margin-bottom:14px}
+.cmp tr:last-child td:first-child{border-bottom:0}
+/* cmp-neutral: the other column is an alternative with its own strengths, not a list of failures, so it gets a plain dot rather than a cross. */
+.cmp-neutral td:first-child::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='2.5' fill='%23858aa0'/%3E%3C/svg%3E")}
+.cmp tr:last-child td:last-child{border-bottom:2px solid var(--ink);border-radius:0 0 20px 20px}
+.cmp tbody tr:hover td:first-child{color:var(--ink)}
+.cmp tbody tr:hover td:last-child{background:var(--purple-pale)}
+.js .cmp[data-rv] td:last-child::before{transform:scale(.2) rotate(-30deg);opacity:0}
+.js .cmp[data-rv].rv-in td:last-child::before{transform:none;opacity:1;transition:transform .5s cubic-bezier(.34,1.56,.64,1),opacity .25s ease-out;transition-delay:.25s}
+.js .cmp[data-rv].rv-in tr:nth-child(2) td:last-child::before{transition-delay:.37s}
+.js .cmp[data-rv].rv-in tr:nth-child(3) td:last-child::before{transition-delay:.49s}
+.js .cmp[data-rv].rv-in tr:nth-child(4) td:last-child::before{transition-delay:.61s}
+.js .cmp[data-rv].rv-in tr:nth-child(5) td:last-child::before{transition-delay:.73s}
+.js .cmp[data-rv].rv-in tr:nth-child(6) td:last-child::before{transition-delay:.85s}
+.js .cmp[data-rv].rv-in tr:nth-child(n+7) td:last-child::before{transition-delay:.97s}
+@media(max-width:760px){.cmp{--cmp-pad:20px;font-size:15px}.cmp th{font-size:17px}.cmp td{padding-block:20px}.cmp td::before{top:calc(20px + (1.75em - var(--cmp-ico)) / 2)}}
+@media(max-width:480px){.cmp{--cmp-pad:13px;--cmp-ico:22px;font-size:14px}.cmp th{font-size:15px;padding-block:16px}.cmp th:last-child{padding-top:24px;border-radius:14px 14px 0 0}.cmp tr:last-child td:last-child{border-radius:0 0 14px 14px}.cmp td{padding:17px var(--cmp-pad) 17px calc(var(--cmp-pad) + var(--cmp-ico) + 9px)}.cmp td::before{top:calc(17px + (1.75em - var(--cmp-ico)) / 2)}}
+@media(prefers-reduced-motion:reduce){.js .cmp[data-rv] td:last-child::before{transform:none;opacity:1}}
