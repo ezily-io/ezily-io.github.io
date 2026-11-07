@@ -58,14 +58,14 @@ Every page is published in American English at https://ezily-io.github.io/ and i
 
 ### Touchpoints
 
-- [轉換優化最佳實務](https://ezily-io.github.io/zh/conversion-best-practices): 團購、限時搶購、會員專場，每一種入口都該有自己的結帳體驗，而不是同一面首頁。這篇整理怎麼為每個入口蓋一間專屬的店。
-- [互動經營](https://ezily-io.github.io/zh/engagement-best-practices): 客人看了、問了、參加了活動，你的名單上還是一片空白。這篇整理電商品牌在 LINE 上經營互動的實際做法。
-- [電商品牌為什麼需要 LINE Mini App](https://ezily-io.github.io/zh/line-mini-app): 免下載、免註冊，客人在 LINE 裡完成整段購物。這篇說明它和 LIFF 差在哪、電商拿它做什麼，以及實際要處理哪些事。
-- [Ezily Touchpoints｜團購與會員專場的購物體驗](https://ezily-io.github.io/zh/touchpoints): 團購、限時搶購、會員專場，各有適合的購物體驗。Touchpoints 也記下顧客的選擇，讓下次推薦更貼近他。
+- [提升購物轉換的實務做法](https://ezily-io.github.io/zh/conversion-best-practices): 團購、限時搶購、會員專場，顧客各有不同的購買需求。這篇整理如何設計專屬頁面，從活動資訊到結帳，讓購買流程更順暢。
+- [互動經營](https://ezily-io.github.io/zh/engagement-best-practices): 顧客看過商品、問過問題，也參加過活動，品牌卻不一定掌握這些資訊。這篇整理電商品牌在 LINE 上經營互動、了解顧客的實際做法。
+- [電商品牌為什麼需要 LINE Mini App](https://ezily-io.github.io/zh/line-mini-app): 免額外下載、免另建帳號，在 LINE 裡完成購物。了解它與 LIFF 的差異、適合電商品牌的使用情境，以及開發與上線需要處理的工作。
+- [Ezily Touchpoints｜團購與會員專場的購物體驗](https://ezily-io.github.io/zh/touchpoints): 團購、限時搶購、會員專場，依活動需求設計購物流程。Touchpoints 記錄顧客的選擇，讓下一次推薦更符合需求。
 
 ### Orchestrate
 
-- [Ezily Orchestrate｜多通路商品、庫存、訂單集中管理](https://ezily-io.github.io/zh/orchestrate): Momo、Shopee 和你自己的通路，商品、庫存、價格、訂單在同一個地方管。開新通路，不用多請人。
+- [Ezily Orchestrate｜多通路商品、庫存、訂單集中管理](https://ezily-io.github.io/zh/orchestrate): 集中管理 Momo、Shopee 與品牌自有通路的商品、庫存、價格與訂單，減少拓展通路時的重複作業。
 
 ### Notes
 
