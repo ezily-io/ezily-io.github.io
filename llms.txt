@@ -38,7 +38,6 @@ Every page is published in American English at https://ezily-io.github.io/ and i
 
 - [Careers](https://ezily-io.github.io/careers): Ezily is hiring across every discipline to build what we think agentic commerce turns into. If you read that future differently, we want to hear it.
 - [(Senior) Customer Success Manager (Orchestrate)](https://ezily-io.github.io/careers/customer-success-manage): Own the customer from onboarding through renewal as brands move their products, inventory, and orders onto Orchestrate.
-- [Lead Frontend Engineer](https://ezily-io.github.io/careers/frontend-engineering-lead): Decide the frontend architecture and write the code, including streaming interfaces for the AI features.
 - [Full Stack Engineer](https://ezily-io.github.io/careers/full-stack-engineer): Build features end to end across Touchpoints and Orchestrate, and stay responsible for what you ship.
 - [(Senior) Customer Success Manager (Touchpoints)](https://ezily-io.github.io/careers/senior-customer-success-manager-touchpoints): Get brands live on their first Touchpoints use case in LINE, read the funnel with them, and bring what you learn back to the product.
 - [Senior Sales and Business Development Manager](https://ezily-io.github.io/careers/senior-sales-and-bd): Own the commercial pipeline end to end, from self-sourced leads through negotiation and close, against an individual revenue target.
@@ -84,7 +83,6 @@ Every page is published in American English at https://ezily-io.github.io/ and i
 
 - [人才招募](https://ezily-io.github.io/zh/careers): Ezily 正在各個領域招募夥伴，一起把我們對 Agentic Commerce 的想像做出來。如果你對這個未來有不同看法，我們想聽聽。
 - [(Senior) Customer Success Manager (Orchestrate)](https://ezily-io.github.io/zh/careers/customer-success-manage): 負責客戶從導入到續約的整段過程。品牌把商品、庫存和訂單交給 Orchestrate，中間怎麼調整由你判斷。
-- [Lead Frontend Engineer](https://ezily-io.github.io/zh/careers/frontend-engineering-lead): 決定前端架構，也實際動手寫，包含 AI 功能的串流回應介面。
 - [Full Stack Engineer](https://ezily-io.github.io/zh/careers/full-stack-engineer): Touchpoints 和 Orchestrate 的功能從頭做到尾，上線之後也自己扛。
 - [(Senior) Customer Success Manager (Touchpoints)](https://ezily-io.github.io/zh/careers/senior-customer-success-manager-touchpoints): 帶品牌在 LINE 裡把第一個 Touchpoints 情境做上線，一起看漏斗，再把學到的帶回產品。
 - [Senior Sales and Business Development Manager](https://ezily-io.github.io/zh/careers/senior-sales-and-bd): 從開發名單、談判到成交，整段業務流程由你負責，也扛個人業績目標。
