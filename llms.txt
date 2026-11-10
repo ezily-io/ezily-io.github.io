@@ -34,6 +34,10 @@ Every page is published in American English at https://ezily-io.github.io/ and i
 - [Set a goal that actually moves revenue](https://ezily-io.github.io/blog/setting-e-commerce-goals-that-actually-move-revenue): Specific goals work. How to break one into numbers you can see every week.
 - [How to Read Shopify Taiwan Case Studies: Do Not Just Copy the Website, Learn How Customers Are Retained](https://ezily-io.github.io/blog/shopify-taiwan-cases-line-retention): Look past design, apps, and checkout in Shopify Taiwan case studies. See how Taiwan brands turn Shopify traffic into LINE friends, intent signals, and repeat engagement.
 
+### Events
+
+- [Events](https://ezily-io.github.io/events): Online talks and in-person meetups from Ezily on LINE engagement, group buys, and running commerce across channels. Upcoming dates and sign-up, all in one place.
+
 ### Careers
 
 - [Careers](https://ezily-io.github.io/careers): Ezily is hiring across every discipline to build what we think agentic commerce turns into. If you read that future differently, we want to hear it.
@@ -78,6 +82,10 @@ Every page is published in American English at https://ezily-io.github.io/ and i
 - [多通路電商怎麼管：五個實際做法](https://ezily-io.github.io/zh/blog/mastering-multi-channel-e-commerce-key-strategies-for-success): 商品、庫存、價格、訂單散在各通路的時候，先處理哪一個。
 - [訂一個真的會影響營收的目標](https://ezily-io.github.io/zh/blog/setting-e-commerce-goals-that-actually-move-revenue): 目標訂得具體才有用。怎麼把目標拆成每週看得到的數字。
 - [Shopify 台灣案例怎麼看？品牌主別只學網站設計，還要學怎麼把顧客留下來](https://ezily-io.github.io/zh/blog/shopify-taiwan-cases-line-retention): 搜尋 Shopify 台灣案例時，不只看版型、App 與設計。本文用簡單方法拆解台灣品牌如何把 Shopify 官網流量變成 LINE 好友、顧客偏好資料與下一次回購機會。
+
+### Events
+
+- [活動](https://ezily-io.github.io/zh/events): Ezily 的線上分享與實體交流。聊 LINE 互動、團購和跨通路經營的實際做法，近期場次和報名都在這裡。
 
 ### Careers
 

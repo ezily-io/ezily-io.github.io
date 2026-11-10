@@ -1,0 +1,11 @@
+/* /events — reuses the blog hero and contact block (pages/blog.css); this
+   file only adds the Luma calendar section. The iframe is third-party, so
+   the frame takes the site's radius and hairline, and the height is fixed
+   rather than measured: Luma does not post its content height out. */
+.ev-page .ev-cal{padding:80px 0 88px}
+.ev-page .ev-cal-head{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;margin-bottom:40px}
+.ev-page .ev-cal-p{font-size:16px;line-height:1.8;margin:0;max-width:44ch}
+.ev-page .ev-frame{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--paper-raised)}
+.ev-page .ev-frame iframe{display:block;width:100%;height:640px;border:0}
+.ev-page .ev-sub{margin-top:28px}
+@media(max-width:700px){.ev-page .ev-cal{padding:52px 0 60px}.ev-page .ev-cal-head{grid-template-columns:1fr;gap:16px;margin-bottom:28px}.ev-page .ev-cal-p{font-size:15px}.ev-page .ev-frame{border-radius:12px}.ev-page .ev-frame iframe{height:560px}}

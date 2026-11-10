@@ -66,6 +66,20 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ezily-io.github.io/engagement-best-practices"/>
   </url>
   <url>
+    <loc>https://ezily-io.github.io/events</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://ezily-io.github.io/events"/>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://ezily-io.github.io/zh/events"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ezily-io.github.io/events"/>
+  </url>
+  <url>
+    <loc>https://ezily-io.github.io/zh/events</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://ezily-io.github.io/events"/>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://ezily-io.github.io/zh/events"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ezily-io.github.io/events"/>
+  </url>
+  <url>
     <loc>https://ezily-io.github.io/line-mini-app</loc>
     <xhtml:link rel="alternate" hreflang="en-US" href="https://ezily-io.github.io/line-mini-app"/>
     <xhtml:link rel="alternate" hreflang="zh-TW" href="https://ezily-io.github.io/zh/line-mini-app"/>
