@@ -95,3 +95,47 @@ html[lang] body.site-page main:not(.ba-page,.cj-job,.lg-page) :is(.journey-head 
 html[lang] body.site-page main:not(.ba-page,.cj-job,.lg-page) :is(.c-start-steps .c-body,.or-page .cell .body,.or-page .step .body,.lm-page .step .body,.lm-page .faq-a,.eg-page .problem-card p,.eg-page .problem-conclusion>p,.eg-page .principles-aside>p,.cv-page .problem-card p,.cv-page .principle p,.cv-page .journey-step p){font-size:16px}
 html[lang] body.site-page main:not(.ba-page,.cj-job,.lg-page) .c-product-role{font-size:14px}
 @media(max-width:760px){html[lang] body.site-page main:not(.ba-page,.cj-job,.lg-page) :is(:is(h1,h2) ~ p,:is(h1,h2) ~ div > p:only-child,.c-your-way .c-body,.cr-top-sub,.cr-mission p,.eg-lead):not(.hero-promise,.edit,.bl-topic,.lede):not(:is(figure,dialog,details,[aria-hidden="true"]) *){font-size:17px}html[lang] body.site-page main:not(.ba-page,.cj-job,.lg-page) :is(.c-start-steps .c-body,.or-page .cell .body,.or-page .step .body,.lm-page .step .body,.lm-page .faq-a,.eg-page .problem-card p,.eg-page .problem-conclusion>p,.eg-page .principles-aside>p,.cv-page .problem-card p,.cv-page .principle p,.cv-page .journey-step p){font-size:15px}}
+
+/* Touchpoints menu, 2026-11-10. Two columns on desktop: a concept diagram that
+   links to the overview, then the three child pages. Anchored to the header,
+   not the summary, so the wide panel never runs off the right edge. On phones
+   the diagram goes and the overview becomes one row. Resources is untouched. */
+.ez-nav details.ez-mega{position:static}
+.ez-mega .ez-mega-panel{left:auto;right:max(clamp(24px,5.2vw,72px),calc((100% - 1280px)/2 + clamp(24px,5.2vw,72px)));top:72px;width:min(860px,calc(100vw - 48px));display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,1fr);gap:0;padding:12px;border-radius:16px}
+.ez-mega-overview{display:flex;flex-direction:column;gap:6px;padding:16px 18px 18px!important;border-radius:12px!important;background:var(--purple-pale);text-decoration:none}
+.ez-mega .ez-mega-overview:hover{background:#e6d8ff}
+.ez-mega-fig{position:relative;display:flex;align-items:center;gap:0;padding:34px 4px 14px;margin-bottom:6px}
+.ez-mega-tag{position:absolute;top:0;left:0;font-size:11px;line-height:1;font-weight:500;color:var(--muted);background:var(--paper);border:1px solid var(--line);border-radius:99px;padding:5px 9px}
+.ez-mega-ins{display:grid;gap:12px}
+.ez-mega-in{width:36px;height:36px;border-radius:10px;background:var(--paper);display:grid;place-items:center;color:var(--deep-purple)}
+.ez-mega-in .icon{width:19px;height:19px}
+.ez-mega-wires{width:34px;height:132px;flex-shrink:0;fill:none;stroke:var(--purple);stroke-width:1.4;opacity:.7}
+.ez-mega-phone{flex:1;min-width:0;max-width:150px;display:grid;gap:7px;padding:12px 10px;background:var(--paper);border:2px solid var(--ink);border-radius:16px}
+.ez-mega-formats{display:grid;gap:6px}
+.ez-mega-formats span{font-size:12px;line-height:1.3;font-weight:500;padding:6px 8px;border-radius:7px;background:var(--paper-deep);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ez-mega-pay{font-size:12px;line-height:1.3;font-weight:600;text-align:center;padding:7px 6px;border-radius:99px;background:var(--lime);color:var(--ink);white-space:nowrap}
+.ez-mega-step{width:22px;height:22px;flex-shrink:0;margin:0 4px;fill:none;stroke:var(--purple);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.ez-mega-done{display:grid;justify-items:center;gap:8px;padding:12px 10px;min-width:72px;background:var(--paper);border:1px solid var(--line);border-radius:12px;font-size:12px;line-height:1.3;font-weight:600;text-align:center}
+.ez-mega-done svg{width:28px;height:28px;padding:5px;border-radius:50%;background:var(--lime);fill:none;stroke:var(--ink);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.ez-mega-eyebrow{font-size:12px;line-height:1.4;color:var(--muted)}
+.ez-mega-title{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:19px;line-height:1.35;font-weight:600}
+.ez-mega-links{display:flex;flex-direction:column;padding:4px 6px 4px 18px}
+.ez-mega .ez-mega-links a{flex:1;display:grid;grid-template-columns:1fr auto;align-items:center;column-gap:16px;row-gap:3px;padding:14px 12px;border-bottom:1px solid var(--line);border-radius:8px}
+.ez-mega .ez-mega-links a:last-child{border-bottom:0}
+.ez-mega-label{grid-column:1;font-size:16px;font-weight:600;line-height:1.35}
+.ez-mega-desc{grid-column:1;font-size:13px;line-height:1.5;color:var(--muted)}
+.ez-mega-links a .icon{grid-column:2;grid-row:1/3;width:18px;height:18px}
+.ez-mega a:focus-visible{outline-offset:-3px}
+.ez-mega a[aria-current=page] .ez-mega-label,.ez-mega a[aria-current=page] .ez-mega-eyebrow{color:var(--deep-purple)}
+@media(max-width:980px) and (min-width:761px){.ez-mega .ez-mega-panel{grid-template-columns:1fr;width:min(460px,calc(100vw - 48px))}.ez-mega-links{padding:8px 0 0}}
+@media(max-width:760px){
+.ez-nav details.ez-mega{position:relative}
+.ez-mega .ez-mega-panel{position:static;width:100%;display:grid;grid-template-columns:1fr;padding:4px 10px;border-radius:0}
+.ez-mega-fig,.ez-mega-title,.ez-mega-desc,.ez-mega-links a .icon{display:none}
+.ez-mega .ez-mega-overview{background:transparent;padding:0 12px!important;border-radius:6px!important;min-height:44px;justify-content:center;align-items:flex-start;text-align:left}
+.ez-mega-eyebrow{font-size:13px;color:inherit}
+.ez-mega-links{padding:0}
+.ez-mega .ez-mega-links a{display:flex;align-items:center;min-height:44px;padding:0 12px;border-bottom:0;border-radius:6px}
+.ez-mega-label{font-size:13px;font-weight:500}
+.ez-nav>a,.ez-nav summary,.ez-dropdown a{min-height:44px;display:flex;align-items:center}
+}

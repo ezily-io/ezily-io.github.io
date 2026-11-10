@@ -6,7 +6,7 @@
   header?.querySelectorAll('details').forEach(group=>group.addEventListener('toggle',()=>{if(group.open)header.querySelectorAll('details').forEach(other=>{if(other!==group)other.open=false;});}));
   document.addEventListener('click',event=>{if(!header?.contains(event.target)){close();header?.querySelectorAll('details').forEach(d=>d.open=false);}});
   header?.querySelectorAll('a').forEach(link=>link.addEventListener('click',close));
-  document.addEventListener('keydown',event=>{if(event.key==='Escape'){const open=header?.dataset.menu==='open';close();header?.querySelectorAll('details').forEach(d=>d.open=false);if(open)toggle?.focus();}});
+  document.addEventListener('keydown',event=>{if(event.key==='Escape'){const open=header?.dataset.menu==='open';const group=header?.querySelector('details[open]');close();header?.querySelectorAll('details').forEach(d=>d.open=false);if(open)toggle?.focus();else group?.querySelector('summary')?.focus();}});
   document.querySelectorAll('[data-toc]').forEach(nav=>{
     const target=nav.closest('main')?.querySelector('[data-toc-target]');
     const list=nav.querySelector('[data-toc-list]');
