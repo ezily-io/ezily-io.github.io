@@ -1,5 +1,5 @@
 .u-hero .u-product-art img,.u-hero .u-drop-product>img,.u-hero .u-gift-product>img,.u-hero .u-back-product,.u-hero .u-back-gift{object-fit:contain}
-.u-hero .hero-main{min-height:710px;padding-top:132px;padding-bottom:80px}
+.u-hero{padding-top:0}.u-hero .hero-main{min-height:620px;padding-top:80px;padding-bottom:64px}
 .u-hero .hero-copy{width:51%}
 .u-hero .hero-description{max-width:390px}
 .u-hero .u-stage{position:absolute;right:2.5%;top:103px;width:50%;height:570px;margin:0;z-index:2;isolation:isolate}
@@ -37,7 +37,7 @@
 .u-hero .u-drop-panel .u-shop-format{background:var(--ink);color:var(--paper)}
 .u-hero .u-drop-product{position:relative;height:128px;background:var(--lime);border-radius:10px;overflow:hidden;flex-shrink:0}
 .u-hero .u-drop-product>img{position:absolute;width:215px;height:181px;right:10px;top:-13px;transform:rotate(10deg)}
-.u-hero .u-drop-label{position:absolute;left:15px;top:18px;z-index:2;font-size:12px;line-height:1.5;font-weight:600;writing-mode:vertical-rl;letter-spacing:.05em}
+.u-hero .u-drop-label{position:absolute;left:15px;top:18px;z-index:2;font-size:12px;line-height:1.5;font-weight:600;writing-mode:vertical-rl;letter-spacing:0}
 .u-hero .u-drop-panel .u-shop-title{font-size:26px;margin-top:0;max-width:11ch}
 .u-hero .u-reminder{display:flex;align-items:center;gap:12px;padding:12px 0;font-size:12px;line-height:1.5;border-top:1px solid #111b3530}
 .u-hero .u-reminder>div{display:flex;flex-direction:column;gap:3px}
