@@ -139,3 +139,5 @@ html[lang] body.site-page main:not(.ba-page,.cj-job,.lg-page) .c-product-role{fo
 .ez-mega-label{font-size:13px;font-weight:500}
 .ez-nav>a,.ez-nav summary,.ez-dropdown a{min-height:44px;display:flex;align-items:center}
 }
+/* LINE partner badge: LINE artwork unaltered; 60px is LINE's screen minimum, 30px = 0.5x clear space. */
+.ez-footer-badge,.lm-partner-badge{display:block;width:auto;height:60px;max-width:100%;margin-top:30px}
