@@ -295,4 +295,20 @@ else if(e.key==='End')n=tabs.length-1;else return;e.preventDefault();sel(n);tabs
       dialog.close();
     });
   }
+})();(function(){
+var list=document.querySelector('[data-lg-tabs]');if(!list)return;
+var tabs=[].slice.call(list.querySelectorAll('[role=tab]'));
+var panels=tabs.map(function(t){return document.getElementById(t.getAttribute('aria-controls'))});
+var nav=[].slice.call(document.querySelectorAll('.lg-docnav a[href*="/legal/privacy-policy"]'));
+function sel(n){
+tabs.forEach(function(t,i){var on=i===n;t.setAttribute('aria-selected',String(on));t.tabIndex=on?0:-1;panels[i].hidden=!on});
+[].forEach.call(document.querySelectorAll('[data-lg-for]'),function(o){o.hidden=o.dataset.lgFor!==panels[n].id});
+nav.forEach(function(a){var ck=a.getAttribute('href').indexOf('#'+panels[1].id)>-1;if(ck===(n===1))a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});}
+function fromHash(){var id=location.hash.slice(1);for(var i=0;i<panels.length;i++){if(panels[i].id===id){sel(i);return true}}return false}
+tabs.forEach(function(t,i){
+t.addEventListener('click',function(e){e.preventDefault();sel(i);history.replaceState(null,'','#'+panels[i].id)});
+t.addEventListener('keydown',function(e){var k=e.key,n=k==='ArrowRight'?(i+1)%tabs.length:k==='ArrowLeft'?(i-1+tabs.length)%tabs.length:k==='Home'?0:k==='End'?tabs.length-1:-1;
+if(n<0)return;e.preventDefault();sel(n);tabs[n].focus();history.replaceState(null,'','#'+panels[n].id)});});
+window.addEventListener('hashchange',function(){fromHash()});
+if(!fromHash()){var d=panels.findIndex(function(p){return p.id===list.dataset.lgDefault});sel(d<0?0:d)}
 })();
