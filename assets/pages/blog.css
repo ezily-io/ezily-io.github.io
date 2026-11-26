@@ -11,7 +11,7 @@
 .bl-page .bl-featured-shell{display:grid;grid-template-columns:1.18fr 1fr;gap:58px;align-items:center;padding-block:0;padding-inline:clamp(24px,5.2vw,72px);border:0;border-radius:0;background:transparent}
 .bl-page .bl-featured-image{grid-column:auto;grid-row:auto;display:block;position:relative;min-height:420px;overflow:hidden;border-radius:16px;background:var(--lilac)}
 .bl-page .bl-featured-copy{grid-column:auto;grid-row:auto;min-width:0;padding:0}
-.bl-page .bl-featured-image>img{width:100%;height:100%;position:absolute;inset:0;object-fit:cover;object-position:50% 45%}
+.bl-page .bl-featured-image>img{width:100%;height:100%;border-radius:0;position:absolute;inset:0;object-fit:cover;object-position:50% 45%}
 .bl-page .bl-photo-note{position:absolute;left:25px;bottom:25px;max-width:225px;background:var(--paper);color:var(--ink);padding:21px 24px;border-radius:12px;font-size:23px;line-height:1.3;letter-spacing:-.025em;box-shadow:8px 14px 30px #111b3520}
 .bl-page .bl-featured-h{font-size:clamp(30px,3.3vw,46px);line-height:1.18;letter-spacing:-.035em;font-weight:500;margin:0 0 22px;text-wrap:balance}
 .bl-page .bl-featured-d{font-size:16px;line-height:1.8;color:var(--muted);margin:0 0 24px;max-width:40ch}
@@ -76,11 +76,12 @@
 .bl-page .bl-card{grid-column:auto;display:flex;min-width:0;padding:0;box-shadow:none;border-radius:16px;background:var(--paper-raised);border:1px solid var(--line);overflow:hidden;color:var(--ink)}
 .bl-page .bl-card[hidden]{display:none}
 .bl-page .bl-card-link{display:flex;flex-direction:column;width:100%;text-decoration:none;color:inherit;padding:0;border:0;border-radius:0;background:transparent;transition:none}.bl-page .bl-card-link:hover{transform:none}
-.bl-page .bl-card-img{aspect-ratio:16/10;background:#eee8f6;overflow:hidden;flex:none}
+/* legacy.css rounds this box 20px on all four corners and gives it a bottom margin;
+   the card (16px, overflow hidden) owns the corners, so the image runs flush. */
+.bl-page .bl-card-img{aspect-ratio:16/10;background:#eee8f6;overflow:hidden;flex:none;border-radius:0;margin:0}
 .bl-page .bl-card-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s cubic-bezier(.16,1,.3,1)}
 .bl-page .bl-card-link:hover .bl-card-img img{transform:scale(1.03)}
-.bl-page .bl-card-img--blank{display:flex;align-items:center;justify-content:center;background:var(--ink);color:var(--lime)}
-.bl-page .bl-card-mark{width:38%;max-width:150px;aspect-ratio:94/42;display:block}
+.bl-page .bl-card-img--blank{background:var(--purple-pale)}
 .bl-page .bl-card-copy{display:flex;flex-direction:column;flex:1;padding:24px 24px 26px}
 .bl-page .bl-card .bl-topic{margin:0 0 12px}
 .bl-page .bl-card-h{font-size:21px;line-height:1.35;font-weight:500;letter-spacing:-.015em;margin:0 0 12px;text-wrap:balance}
@@ -96,7 +97,6 @@
 .bl-page .bl-card--ink .bl-card-d{color:#c3c7d6}
 .bl-page .bl-card--ink .bl-topic{color:var(--lime)}
 .bl-page .bl-card--ink .bl-card-link:hover .bl-card-h{color:var(--lilac)}
-.bl-page .bl-card--ink .bl-card-img--blank{background:var(--deep-purple);color:var(--paper)}
 .bl-page .bl-card--ink .bl-card-link:focus-visible{outline-color:var(--lime)}
 @media(max-width:1000px){.bl-page .bl-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}}
 @media(max-width:700px){.bl-page .bl-grid{grid-template-columns:1fr;gap:20px}.bl-page .bl-card-h{font-size:20px}.bl-page .bl-card-copy{padding:22px 20px 24px}}
